@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.navlinks >*:hover{
+  transition: all 0.4s;
+  background-color: rgba(185, 185, 185, 0.492);
+}
