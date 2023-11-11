@@ -11,10 +11,14 @@ import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
 import secureLocalStorage from "react-secure-storage";
 import { getUserByAccessToken } from '@/lib/auth/getUserByAccessToken'
+import { signoutfunc } from '@/lib/auth/signout'
 import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
 import Skeleton from '@mui/material/Skeleton';
+import { useRouter } from 'next/navigation';
+
 export const Header = () => {
+  const router =useRouter()
   const [loggedIn, setloggedIn] = useState(false);
   const [loading, setloading] = useState(false);
   const [username, setusername] = useState('');
@@ -45,6 +49,17 @@ export const Header = () => {
       fetchUser();
     }
   }, [loggedIn]);
+
+  const handleSignOut = async() => {
+    const signingout = await signoutfunc();
+    secureLocalStorage.removeItem('username')
+    secureLocalStorage.setItem("loggedIn", false)
+    router.push('/')
+    setTimeout(() => {
+      window.location.reload()
+      }, 300);
+    console.log('signingout', signingout);
+  }
   return (
     <header className={`flex bg-black h-20 w-full items-center px-4 md:px-6 sticky top-0 ${isMobile&&'justify-between'}`}>
         <Link href="/">
@@ -97,6 +112,9 @@ export const Header = () => {
               Contact
           </Link>
         </MenuItem>
+              <MenuItem color="primary">
+              <button onClick={handleSignOut}>sign out</button>
+        </MenuItem>
       </Menu>
           </Dropdown>
           
@@ -127,16 +145,23 @@ export const Header = () => {
           </Link>
           
             {loggedIn ?
-              <Link className='flex flex-row items-center gap-x-2' href="/me">
+              <>
               <Avatar sx={{ bgcolor: deepOrange[600] }}>
                         {username[0]}
                 </Avatar>
                 {loading &&
-                  <Skeleton variant="text" sx={{ fontSize: '5rem' }} width={40} height={40} />
+                  <Skeleton variant="text" sx={{ fontSize: '1rem' }} width={80} height={20} />
                 }
-                
-                <span>{username}</span>
-              </Link> :
+                <Dropdown style={{margin:'0'}}>
+                      <MenuButton color="success">
+                      {username}
+                      </MenuButton>
+                      <Menu color="success">
+                        <MenuItem onClick={handleSignOut}>signout</MenuItem>
+                      </Menu>
+                    </Dropdown>
+              </>
+              :
               <Link href="/login" className='border border-2 bg-gray-500 rounded-lg px-1'>
            
               Get started

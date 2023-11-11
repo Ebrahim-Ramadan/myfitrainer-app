@@ -6,9 +6,9 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useRouter } from "next/navigation";
 import secureLocalStorage from "react-secure-storage";
+import {Reload} from '@/components/globals/Reload'
 
-
-const auth = getAuth();
+const auth = getAuth(firebase_app);
 const Login = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [Username, setUsername] = React.useState('');
@@ -21,13 +21,15 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       if (userCredential) {
+        Notify.success('logged in successfully');
         console.log('userCredential.user', userCredential.user);
         secureLocalStorage.setItem("username", userCredential.user.email);
-        Notify.success('logged in successfully');
         secureLocalStorage.setItem("loggedIn", true);
         
         router.push('/')
+        setTimeout(() => {
         window.location.reload()
+        }, 300);
       }
     } catch (error) {
       console.log('signupUsererr', error.code, error.message);
@@ -38,6 +40,8 @@ const Login = () => {
 
   return (
     <>
+      {isLoading &&
+      <Reload/>}
       <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-4">
       <h1 className='text-4xl font-bold'>Login</h1>
         <form onSubmit={(e) => loginUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-9 w-full">
