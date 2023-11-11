@@ -19,7 +19,7 @@ const auth = getAuth(firebase_app);
           if (userCredential) {
             console.log(userCredential.user);
             
-            const userCreation = await handleCreateUser(userCredential.user.email, userCredential.user.uid, userCredential.user.accessToken, {})
+            const userCreation = await handleCreateUser(userCredential.user.email, userCredential.user.uid, {})
             if (userCreation) {
               Notify.success(`signed in as ${userCredential.user.email} now kindly log in`);
 

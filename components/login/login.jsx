@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useRouter } from "next/navigation";
-import useTokenStore from '@/ZustandStore';
+import secureLocalStorage from "react-secure-storage";
+
 
 const auth = getAuth();
 const Login = () => {
@@ -21,11 +22,12 @@ const Login = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       if (userCredential) {
         console.log('userCredential.user', userCredential.user);
-        useTokenStore.setState({ accessToken: userCredential.user.accessToken });
+        secureLocalStorage.setItem("username", userCredential.user.email);
         Notify.success('logged in successfully');
+        secureLocalStorage.setItem("loggedIn", true);
         
         router.push('/')
-
+        window.location.reload()
       }
     } catch (error) {
       console.log('signupUsererr', error.code, error.message);

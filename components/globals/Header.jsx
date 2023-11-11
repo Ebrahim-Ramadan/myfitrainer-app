@@ -9,28 +9,42 @@ import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
-import useTokenStore from '@/ZustandStore';
-import {getUserByAccessToken} from '@/lib/auth/getUserByAccessToken'
+import secureLocalStorage from "react-secure-storage";
+import { getUserByAccessToken } from '@/lib/auth/getUserByAccessToken'
+import Avatar from '@mui/material/Avatar';
+import { deepOrange } from '@mui/material/colors';
+import Skeleton from '@mui/material/Skeleton';
 export const Header = () => {
   const [loggedIn, setloggedIn] = useState(false);
-  const isMobile = useMediaQuery({ maxWidth: 767 }); 
-  const token = useTokenStore((state) => state.accessToken);
+  const [loading, setloading] = useState(false);
+  const [username, setusername] = useState('');
 
-  
+  const isMobile = useMediaQuery({ maxWidth: 767 }); 
+
   React.useEffect(() => {
-    if (token) {
-      setloggedIn(true)
-        }
-    const fetchUser = async () => {
-      console.log('token header', token);
-    const getUser = await getUserByAccessToken(token)
-    
-    if (getUser) {
-      console.log(getUser);
-      } 
+    const storedUserName = secureLocalStorage.getItem("username");
+    if (storedUserName) {
+      console.log('storedUserName', storedUserName);
+      setloggedIn(true);
     }
-fetchUser()
-  }, [token]);
+    const fetchUser = async () => {
+      setloading(true)
+      try {
+        const getUser = await getUserByAccessToken(storedUserName);
+        if (getUser) {
+          console.log(getUser);
+          setusername(getUser.username)
+        }
+      } catch (error) {
+        console.log('getUserByAccessToken error', error);
+      }
+      setloading(false)
+    };
+
+    if (loggedIn) {
+      fetchUser();
+    }
+  }, [loggedIn]);
   return (
     <header className={`flex bg-black h-20 w-full items-center px-4 md:px-6 sticky top-0 ${isMobile&&'justify-between'}`}>
         <Link href="/">
@@ -49,7 +63,8 @@ fetchUser()
           <Dropdown>
             {loggedIn ?
               <MenuButton color="primary">
-              <span>username</span>
+                
+                <span>{username.substring(0, username.indexOf('@'))}</span>
               
             <FontAwesomeIcon icon={faCircleChevronDown} style={{ width: '35px' }} />
               </MenuButton>
@@ -110,16 +125,23 @@ fetchUser()
               Contact
             
           </Link>
-          <Link href="/login" className='border border-2 bg-gray-500 rounded-lg px-1'>
+          
+            {loggedIn ?
+              <Link className='flex flex-row items-center gap-x-2' href="/me">
+              <Avatar sx={{ bgcolor: deepOrange[600] }}>
+                        {username[0]}
+                </Avatar>
+                {loading &&
+                  <Skeleton variant="text" sx={{ fontSize: '5rem' }} width={40} height={40} />
+                }
+                
+                <span>{username}</span>
+              </Link> :
+              <Link href="/login" className='border border-2 bg-gray-500 rounded-lg px-1'>
            
               Get started
             
             </Link>
-            {loggedIn &&
-              <Link className='flex flex-row items-center gap-x-2' href="/me">
-              <Image width={30} height={30} src='' alt='pic'/>
-              <span>username</span>
-          </Link>
             }
           
         </nav> 
