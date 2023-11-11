@@ -1,5 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-[live app](https://gymrat-sigma.vercel.app/) It is still on pre-release alpha version, so fuck around and raise issues 
+This is a [Next.js](https://nextjs.org/) fitness & training progress tracker, [live app](https://gymrat-sigma.vercel.app/) It is still on pre-release alpha version, so fuck around and raise issues 
 ## Getting Started
 
 First, run the development server:
