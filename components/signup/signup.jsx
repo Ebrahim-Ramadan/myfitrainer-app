@@ -6,7 +6,6 @@ import {handleCreateUser} from '@/lib/auth/addUser'
 import Link from 'next/link';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useRouter } from "next/navigation";
-import useTokenStore from '@/ZustandStore';
 import { Reload } from '@/components/globals/Reload';
 const auth = getAuth(firebase_app);
  const Signup = () => {
