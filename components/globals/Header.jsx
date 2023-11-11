@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,12 +9,31 @@ import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
 import MenuItem from '@mui/joy/MenuItem';
-
+import useTokenStore from '@/ZustandStore';
+import {getUserByAccessToken} from '@/lib/auth/getUserByAccessToken'
 export const Header = () => {
+  const [loggedIn, setloggedIn] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 }); 
+  const token = useTokenStore((state) => state.accessToken);
+
+  
+  React.useEffect(() => {
+    if (token) {
+      setloggedIn(true)
+        }
+    const fetchUser = async () => {
+      console.log('token header', token);
+    const getUser = await getUserByAccessToken(token)
+    
+    if (getUser) {
+      console.log(getUser);
+      } 
+    }
+fetchUser()
+  }, [token]);
   return (
     <header className={`flex bg-black h-20 w-full items-center px-4 md:px-6 sticky top-0 ${isMobile&&'justify-between'}`}>
-        <Link href="#">
+        <Link href="/">
           
             
         <Image
@@ -28,17 +47,21 @@ export const Header = () => {
           
           
           <Dropdown>
-            <MenuButton color="primary">
+            {loggedIn ?
+              <MenuButton color="primary">
               <span>username</span>
               
             <FontAwesomeIcon icon={faCircleChevronDown} style={{ width: '35px' }} />
-      </MenuButton>
+              </MenuButton>
+              :
+              <Link href="/login" className='border border-2 bg-gray-500 font-bold rounded-lg p-2'>
+           
+              Get started
+            
+                </Link>
+            }
+            
       <Menu color="primary">
-              <MenuItem color="primary">
-              <Link href="/">
-           Home
-       </Link>
-        </MenuItem>
               <MenuItem color="primary">
               <Link href="/workout">
            Workout
@@ -59,11 +82,6 @@ export const Header = () => {
               Contact
           </Link>
         </MenuItem>
-              <MenuItem color="primary">
-              <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app">
-           Documentation
-       </Link>
-        </MenuItem>
       </Menu>
           </Dropdown>
           
@@ -71,11 +89,7 @@ export const Header = () => {
       ) :
         (
           <nav className="ml-auto flex space-x-5 [&>*]:text-md [&>*]:font-bold items-center navlinks [&>*]:p-2 [&>*]:rounded-lg">
-          <Link href="/">
-           
-              Home
-            
-          </Link>
+          
           <Link href="/workout">
            
               Workout
@@ -100,12 +114,14 @@ export const Header = () => {
            
               Get started
             
+            </Link>
+            {loggedIn &&
+              <Link className='flex flex-row items-center gap-x-2' href="/me">
+              <Image width={30} height={30} src='' alt='pic'/>
+              <span>username</span>
           </Link>
-          <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app">
-           
-              Documentation
-            
-          </Link>
+            }
+          
         </nav> 
       )}
         

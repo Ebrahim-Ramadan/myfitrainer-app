@@ -5,7 +5,8 @@ export default function Home() {
     // <NextUIProvider>
     
     <main className="flex min-h-screen flex-col items-center md:p-24 py-8 px-4">
-      <Start/>
+      <Start />
+      
       </main>
       // </NextUIProvider> //
 

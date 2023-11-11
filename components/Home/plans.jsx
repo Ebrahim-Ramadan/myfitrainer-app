@@ -1,7 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faDumbbell, faHouse } from '@fortawesome/free-solid-svg-icons';
-
 const Plans = () => {
     const plans = [
         { id: 1, icon: faHeart, title: "Personal Training", desc: "Customize your workout sets" },
@@ -22,6 +21,7 @@ const Plans = () => {
                     </p>
                 </div>
             ))}
+           
         </div>
     );
 };
