@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown, faUserPlus, faDumbbell, faCircleInfo , faMoneyCheck, faEnvelope, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
@@ -14,54 +14,56 @@ import { getUserByAccessToken } from '@/lib/auth/getUserByAccessToken'
 import { signoutfunc } from '@/lib/auth/signout'
 import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
-import Skeleton from '@mui/material/Skeleton';
 import { useRouter } from 'next/navigation';
+import { Reload } from './Reload';
 
 export const Header = () => {
-  const router =useRouter()
-  const [loggedIn, setloggedIn] = useState(false);
-  const [loading, setloading] = useState(false);
-  const [username, setusername] = useState('');
+  const router = useRouter();
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [username, setUsername] = useState('');
 
-  const isMobile = useMediaQuery({ maxWidth: 767 }); 
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   React.useEffect(() => {
     const storedUserName = secureLocalStorage.getItem("username");
-    if (storedUserName) {
-      console.log('storedUserName', storedUserName);
-      setloggedIn(true);
-    }
-    const fetchUser = async () => {
-      setloading(true)
-      try {
-        const getUser = await getUserByAccessToken(storedUserName);
-        if (getUser) {
-          console.log(getUser);
-          setusername(getUser.username)
-        }
-      } catch (error) {
-        console.log('getUserByAccessToken error', error);
-      }
-      setloading(false)
-    };
+    const IsloggedIn = secureLocalStorage.getItem("loggedIn");
 
-    if (loggedIn) {
+    if (storedUserName && IsloggedIn) {
+      setLoggedIn(true);
+
+      const fetchUser = async () => {
+        setLoading(true);
+        try {
+          const getUser = await getUserByAccessToken(storedUserName);
+          if (getUser) {
+            setLoggedIn(true);
+            setUsername(getUser.username);
+          }
+        } catch (error) {
+          console.log('getUserByAccessToken error', error);
+        }
+        setLoading(false);
+      };
+
       fetchUser();
     }
-  }, [loggedIn]);
+  }, []);
 
-  const handleSignOut = async() => {
-    const signingout = await signoutfunc();
-    secureLocalStorage.removeItem('username')
-    secureLocalStorage.setItem("loggedIn", false)
-    router.push('/')
+  const handleSignOut = async () => {
+    await signoutfunc();
+    secureLocalStorage.removeItem('username');
+    secureLocalStorage.setItem("loggedIn", false);
+    router.push('/');
     setTimeout(() => {
-      window.location.reload()
-      }, 300);
-    console.log('signingout', signingout);
-  }
+      window.location.reload();
+    }, 300);
+  };
+
   return (
-    <header className={`flex bg-black h-20 w-full items-center px-4 md:px-6 sticky top-0 ${isMobile&&'justify-between'}`}>
+    <header className={`backdrop-blur-xl backdrop-grayscale backdrop-blur-md flex h-20 w-full items-center px-4 md:px-6 sticky top-0 ${isMobile && 'justify-between'}`}>
+      {loading &&
+      <Reload/>}
         <Link href="/">
           
             
@@ -77,44 +79,59 @@ export const Header = () => {
           
           <Dropdown>
             {loggedIn ?
-              <MenuButton color="primary">
-                
+              
+              
+              <MenuButton color="primary" className='space-x-2'>
+              <Avatar sx={{ bgcolor: deepOrange[600] }}>
+              {username[0]}
+      </Avatar>
                 <span>{username.substring(0, username.indexOf('@'))}</span>
               
             <FontAwesomeIcon icon={faCircleChevronDown} style={{ width: '35px' }} />
-              </MenuButton>
+                </MenuButton>
+              
               :
-              <Link href="/login" className='border border-2 bg-gray-500 font-bold rounded-lg p-2'>
+              <Link href="/login" className='border border-2 bg-gray-700 font-bold rounded-lg p-2'>
            
               Get started
             
                 </Link>
             }
             
-      <Menu color="primary">
+            <Menu color="primary">
+            <MenuItem color="primary">
+              <FontAwesomeIcon icon={faUserPlus} /> <span>Add Account</span>
+        </MenuItem>
               <MenuItem color="primary">
-              <Link href="/workout">
-           Workout
+              <FontAwesomeIcon icon={faDumbbell} />
+                <Link href="/workout">
+                Workout
        </Link>
         </MenuItem>
               <MenuItem color="primary">
-              <Link href="/about">
-           About
+              <FontAwesomeIcon icon={faCircleInfo} />
+                <Link href="/about">
+                About
        </Link>
         </MenuItem>
               <MenuItem color="primary">
-              <Link href="/pricing">
-              Pricing
+              <FontAwesomeIcon icon={faMoneyCheck} />
+                <Link href="/pricing">
+                
+                Pricing
           </Link>
         </MenuItem>
               <MenuItem color="primary">
+              <FontAwesomeIcon icon={faEnvelope} />
               <Link href="/contact">
               Contact
           </Link>
-        </MenuItem>
+              </MenuItem>
+              <hr/>
               <MenuItem color="primary">
               <button onClick={handleSignOut}>sign out</button>
         </MenuItem>
+
       </Menu>
           </Dropdown>
           
@@ -149,15 +166,27 @@ export const Header = () => {
               <Avatar sx={{ bgcolor: deepOrange[600] }}>
                         {username[0]}
                 </Avatar>
-                {loading &&
-                  <Skeleton variant="text" sx={{ fontSize: '1rem' }} width={80} height={20} />
-                }
+                
                 <Dropdown style={{margin:'0'}}>
-                      <MenuButton color="success">
+                      <MenuButton color="primary">
                       {username}
                       </MenuButton>
-                      <Menu color="success">
-                        <MenuItem onClick={handleSignOut}>signout</MenuItem>
+                  <Menu color="primary">
+                  <MenuItem color="primary">
+                  <FontAwesomeIcon icon={faUserPlus} />
+                <Link href="/signup">
+                Add Account
+       </Link>
+        </MenuItem>
+                  <MenuItem color="primary">
+                  <FontAwesomeIcon icon={faCodeBranch} />
+                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank'>
+                Documenation
+       </Link>
+        </MenuItem>
+                    <hr/>
+                    <MenuItem onClick={handleSignOut} color="primary">signout</MenuItem>
+                    
                       </Menu>
                     </Dropdown>
               </>

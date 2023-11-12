@@ -20,7 +20,7 @@ const Entry = () => {
               <p className="mx-auto max-w-[700px] text-gray-400 md:text-xl">Get Fit, Stay Healthy, Be Happy</p>
             </div>
             <div className=" text-lg font-bold text-center">
-              <button className='bg-gray-700 rounded-lg p-2 hover:bg-gray-400 transition-all duration-800' onClick={()=>router.push(loggedin?'/progress':'/login')}>Start Training</button>
+              <button className='bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-1000' onClick={()=>router.push(loggedin?'/progress':'/login')}>Start Training</button>
             </div>
           </div >
   )

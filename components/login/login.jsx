@@ -21,12 +21,11 @@ const Login = () => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       if (userCredential) {
-        Notify.success('logged in successfully');
-        console.log('userCredential.user', userCredential.user);
         secureLocalStorage.setItem("username", userCredential.user.email);
         secureLocalStorage.setItem("loggedIn", true);
         
         router.push('/')
+        Notify.success('logged in successfully');
         setTimeout(() => {
         window.location.reload()
         }, 300);
@@ -82,13 +81,13 @@ const Login = () => {
               forget password?
             </Link>
 
-            <button role='submit' className='bg-gray-700 rounded-lg p-2 hover:bg-gray-400 transition-all duration-800'>Login</button>
+            <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg'>Login</button>
       </form>
       
-    </div>
-    <div className="flex flex-col text-md justify-center items-center">
+      </div>
+    <div className="flex flex-col text-md justify-center items-center mt-4">
     <div className="text-xl">Don&#8217;t have an account yet?</div>
-    <Link href="/signup" className="font-medium cursor-pointer">
+    <Link href="/signup" className="font-bold cursor-pointer">
       Sign up
     </Link>
       </div>
