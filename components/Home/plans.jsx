@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faDumbbell, faHouse } from '@fortawesome/free-solid-svg-icons';
 const Plans = () => {
     const plans = [
-        { id: 1, icon: faHeart, title: "Personal Training", desc: "Customize your workout sets" },
+        { id: 1, icon: faHeart, title: "individual Training", desc: "Customize your workout sets" },
         { id: 2, icon: faDumbbell, title: "Nutrition Plans", desc: "Healthy eating plans to achieve your goal." },
         { id: 3, icon: faHouse, title: "Virtual Training", desc: "Workout from the comfort of your home." },
     ];
