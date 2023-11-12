@@ -78,13 +78,13 @@ const auth = getAuth(firebase_app);
           </div>
         </div>
 
-            <button role='submit' className='bg-gray-700 rounded-lg p-2 hover:bg-gray-400 transition-all duration-800'>Signup</button>
+            <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg'>Signup</button>
       </form>
       
     </div>
-    <div className="mt-4 flex flex-col text-md justify-center items-center">
+    <div className="mt-4 flex flex-col text-md justify-center items-center mt-4">
     <div className="text-xl">Already have an account?</div>
-    <Link href="/login" className="font-medium cursor-pointer">
+    <Link href="/login" className="font-bold cursor-pointer">
       Log in
     </Link>
       </div>

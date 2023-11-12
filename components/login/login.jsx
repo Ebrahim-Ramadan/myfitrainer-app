@@ -7,7 +7,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useRouter } from "next/navigation";
 import secureLocalStorage from "react-secure-storage";
 import {Reload} from '@/components/globals/Reload'
-
+import {BasicModalDialog} from './resetPasswordModal'
 const auth = getAuth(firebase_app);
 const Login = () => {
   const [isLoading, setIsLoading] = React.useState(false);
@@ -40,7 +40,8 @@ const Login = () => {
   return (
     <>
       {isLoading &&
-      <Reload/>}
+        <Reload />}
+      
       <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-4">
       <h1 className='text-4xl font-bold'>Login</h1>
         <form onSubmit={(e) => loginUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-9 w-full">
@@ -77,13 +78,13 @@ const Login = () => {
             
           </div>
         </div>
-        <Link href="/users/resetPassword" className="flex justify-end cursor-pointer hover:opacity-70 underline">
-              forget password?
-            </Link>
+        
 
             <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg'>Login</button>
       </form>
-      
+      {/* <a className="flex justify-end cursor-pointer ">
+        <BasicModalDialog/>
+            </a> */}
       </div>
     <div className="flex flex-col text-md justify-center items-center mt-4">
     <div className="text-xl">Don&#8217;t have an account yet?</div>

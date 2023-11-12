@@ -1,7 +1,9 @@
 'use client'
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useState, useEffect } from 'react'
 import secureLocalStorage from 'react-secure-storage';
+import bg from '@/assets/landpage-bg.avif'
 const Entry = () => {
   const [loggedin, setloggedin] = useState('false');
   useEffect(() => {
@@ -13,6 +15,11 @@ const Entry = () => {
   
     return (
       <div className='[&>*]:text-center space-y-4'>
+        <Image
+      src={bg}
+      alt="background image"
+      className="absolute left-0 top-0 w-full h-full -z-10 object-cover"
+    />
     <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-4xl md:text-5xl lg:text-6xl/none">
                 Fitness & Gym Trainer
