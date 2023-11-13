@@ -54,7 +54,7 @@ const auth = getAuth(firebase_app);
             name="username"
             type="email"
             required
-            placeholder="Enter your E-mail"
+            placeholder="your E-mail"
             onChange={(e) => setUsername(e.target.value)}
             className="rounded-lg h-10 font-bold text-black text-md p-2"
           />
@@ -71,7 +71,7 @@ const auth = getAuth(firebase_app);
               type="password"
               required
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
+              placeholder="your password"
               className="rounded-lg h-10 font-bold text-black text-md p-2"
             />
             
@@ -82,9 +82,9 @@ const auth = getAuth(firebase_app);
       </form>
       
     </div>
-    <div className="mt-4 flex flex-col text-md justify-center items-center mt-4">
+    <div className="mt-4 flex flex-col text-md justify-center items-center mt-4 space-y-1">
     <div className="text-xl">Already have an account?</div>
-    <Link href="/login" className="font-bold cursor-pointer">
+    <Link href="/login" className="font-bold cursor-pointer bg-gray-600 hover:bg-gray-700 p-2 rounded-lg">
       Log in
     </Link>
       </div>

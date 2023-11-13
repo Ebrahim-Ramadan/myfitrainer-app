@@ -21,9 +21,7 @@ export function BasicModalDialog() {
     setloadingState(true)
     try {
       const resetProcess = await ResetPassword(email)
-      console.log('resetProcess', resetProcess);
       if (resetProcess === true) {
-        console.log('resetProcess said true');
         Notify.info("email sent successfuly"); 
         setNotFoundEmail(false)
         setOpen(false)
@@ -74,8 +72,12 @@ const handleSubmit = (event) => {
             <Stack spacing={2}>
               <FormControl>
                 <FormLabel>Email</FormLabel>
-                <Input required type='email'
-                  className={`${notFoundEmail && 'border border-2 border-red-500'}`}
+                <Input
+                  placeholder='enter your email'
+                  required type='email'
+                  style={{
+                    border: notFoundEmail ? '2px solid red' : 'none',
+                  }}
                   onFocus={ handleFocus}
                   onChange={(e)=>setEmail(e.target.value)
                   } />
