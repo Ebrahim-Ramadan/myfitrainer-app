@@ -52,8 +52,6 @@ export const Header = () => {
 
   const handleSignOut = async () => {
     await signoutfunc();
-    secureLocalStorage.removeItem('username');
-    secureLocalStorage.setItem("loggedIn", false);
     router.push('/');
     setTimeout(() => {
       window.location.reload();
@@ -100,7 +98,9 @@ export const Header = () => {
             
             <Menu color="primary">
             <MenuItem color="primary">
-              <FontAwesomeIcon icon={faUserPlus} /> <span>Add Account</span>
+              <FontAwesomeIcon icon={faUserPlus} /> <Link href="/signup">
+                Add Account
+       </Link>
         </MenuItem>
               <MenuItem color="primary">
               <FontAwesomeIcon icon={faDumbbell} />
@@ -164,7 +164,7 @@ export const Header = () => {
             {loggedIn ?
               <>
               <Avatar sx={{ bgcolor: deepOrange[600] }}>
-                        {username[0]}
+                        {username.substring(0, [2])}
                 </Avatar>
                 
                 <Dropdown style={{margin:'0'}}>

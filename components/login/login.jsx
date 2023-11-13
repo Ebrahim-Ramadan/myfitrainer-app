@@ -82,13 +82,13 @@ const Login = () => {
 
             <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg'>Login</button>
       </form>
-      {/* <a className="flex justify-end cursor-pointer ">
+      <a className="flex justify-end cursor-pointer ">
         <BasicModalDialog/>
-            </a> */}
+            </a>
       </div>
-    <div className="flex flex-col text-md justify-center items-center mt-4">
+    <div className="flex flex-col text-md justify-center items-center mt-4 space-y-1">
     <div className="text-xl">Don&#8217;t have an account yet?</div>
-    <Link href="/signup" className="font-bold cursor-pointer">
+    <Link href="/signup" className="font-bold cursor-pointer bg-gray-600 hover:bg-gray-700 p-2 rounded-lg">
       Sign up
     </Link>
       </div>
