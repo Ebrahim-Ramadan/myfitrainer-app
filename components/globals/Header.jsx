@@ -17,6 +17,7 @@ import { deepOrange } from '@mui/material/colors';
 import { useRouter } from 'next/navigation';
 import { Reload } from './Reload';
 import { Notify } from 'notiflix';
+import { ReAuthModal } from './ReAuthModal';
 
 export const Header = () => {
   const router = useRouter();
@@ -85,7 +86,7 @@ export const Header = () => {
               
               <MenuButton color="primary" className='space-x-2'>
               <Avatar sx={{ bgcolor: deepOrange[600] }}>
-              {username[0]}
+              {username.substring(0, [2])}
       </Avatar>
                 <span>{username.substring(0, username.indexOf('@'))}</span>
               
@@ -189,10 +190,14 @@ export const Header = () => {
        </Link>
         </MenuItem>
                     <hr/>
-                    <MenuItem onClick={handleSignOut} color="primary">signout</MenuItem>
+                    <MenuItem onClick={handleSignOut} color="warning">
+                      log out
+                      </MenuItem>
                     
                       </Menu>
-                    </Dropdown>
+                      <ReAuthModal Username={username} />
+
+                </Dropdown>
               </>
               :
               <Link href="/login" className='border border-2 bg-gray-500 rounded-lg px-1'>

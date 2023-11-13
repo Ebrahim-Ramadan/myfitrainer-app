@@ -23,15 +23,13 @@ const Login = () => {
       if (userCredential) {
         secureLocalStorage.setItem("username", userCredential.user.email);
         secureLocalStorage.setItem("loggedIn", true);
-        
-        setTimeout(() => {
-        window.location.reload()
-        }, 100);
         Notify.success('logged in successfully', {
           position: 'right-bottom',
         });
         router.push('/')
-        
+        setTimeout(() => {
+          window.location.reload()
+          }, 100);
       }
     } catch (error) {
       console.log('signupUsererr', error.code, error.message);
