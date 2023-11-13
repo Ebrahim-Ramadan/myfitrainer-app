@@ -22,13 +22,17 @@ export function BasicModalDialog() {
     try {
       const resetProcess = await ResetPassword(email)
       if (resetProcess === true) {
-        Notify.info("email sent successfuly"); 
+        Notify.info('email sent successfully', {
+          position: 'center-bottom',
+        });
         setNotFoundEmail(false)
         setOpen(false)
       }
       else {
         setNotFoundEmail(true)
-        Notify.failure("Invalid email. Please provide a valid email address."); 
+        Notify.failure("Invalid email. Please provide a valid email address.", {
+          position: 'right-bottom',
+        }); 
       }
              
 

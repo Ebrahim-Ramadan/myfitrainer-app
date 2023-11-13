@@ -24,15 +24,20 @@ const Login = () => {
         secureLocalStorage.setItem("username", userCredential.user.email);
         secureLocalStorage.setItem("loggedIn", true);
         
-        router.push('/')
-        Notify.success('logged in successfully');
         setTimeout(() => {
         window.location.reload()
-        }, 300);
+        }, 100);
+        Notify.success('logged in successfully', {
+          position: 'right-bottom',
+        });
+        router.push('/')
+        
       }
     } catch (error) {
       console.log('signupUsererr', error.code, error.message);
-      Notify.failure(' error.message');
+      Notify.failure(' error.message', {
+        position: 'right-bottom',
+      });
     }
     setIsLoading(false);
   };

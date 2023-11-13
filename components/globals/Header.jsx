@@ -16,6 +16,7 @@ import Avatar from '@mui/material/Avatar';
 import { deepOrange } from '@mui/material/colors';
 import { useRouter } from 'next/navigation';
 import { Reload } from './Reload';
+import { Notify } from 'notiflix';
 
 export const Header = () => {
   const router = useRouter();
@@ -55,7 +56,10 @@ export const Header = () => {
     router.push('/');
     setTimeout(() => {
       window.location.reload();
-    }, 300);
+    }, 100);
+    Notify.info('signed out', {
+      position: 'right-bottom',
+    })
   };
 
   return (

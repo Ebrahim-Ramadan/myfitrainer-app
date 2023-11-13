@@ -11,7 +11,7 @@ const Plans = () => {
     return (
         <div className='grid md:grid-cols-3 gap-6 sm:grid-cols-1 mt-8 md:mt-40'>
             {plans.map((plan) => (
-                <div key={plan.id} className='rounded-lg border space-y-2 border-2 border-gray-400 p-4 bg-gray-700 opacity-80 flex flex-col'>
+                <div key={plan.id} className='backdrop-blur-lg backdrop-grayscale backdrop-blur-md rounded-lg border space-y-2 border-2 border-gray-400 p-4 opacity-80 flex flex-col'>
                     <div className='flex justify-between items-center'>
                         <p className='text-xl font-bold'>{plan.title}</p>
                         <FontAwesomeIcon icon={plan.icon} style={{ width: '35px' }} />

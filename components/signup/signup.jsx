@@ -23,7 +23,9 @@ const auth = getAuth(firebase_app);
             
             const userCreation = await handleCreateUser(userCredential.user.email, userCredential.user.uid, {})
             if (userCreation) {
-              Notify.success(`signed in as ${userCredential.user.email} now kindly log in`);
+              Notify.success(`signed in as ${userCredential.user.email} now kindly log in`, {
+                position: 'right-bottom',
+              });
 
             router.push('/login')
             }
@@ -34,7 +36,9 @@ const auth = getAuth(firebase_app);
           
         } catch (error) {
           console.log('signupUsererr', error);
-          Notify.failure(error.message);
+          Notify.failure(error.message, {
+            position: 'right-bottom',
+          });
      }
      setisLoading(false)
       };
