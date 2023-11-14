@@ -42,6 +42,10 @@ export const Header = () => {
             setLoggedIn(true);
             setUsername(getUser.username);
           }
+          else {
+            await signoutfunc();
+            setLoggedIn(false)
+          }
         } catch (error) {
           console.log('getUserByAccessToken error', error);
         }
@@ -88,7 +92,9 @@ export const Header = () => {
               <Avatar sx={{ bgcolor: deepOrange[600] }}>
               {username.substring(0, [2])}
       </Avatar>
-                <span>{username.substring(0, username.indexOf('@'))}</span>
+                <span>{
+                  username.length < 10? (username.substring(0, username.indexOf('@'))):
+                  (username.substring(0, 11))}</span>
               
             <FontAwesomeIcon icon={faCircleChevronDown} style={{ width: '35px' }} />
                 </MenuButton>
@@ -195,7 +201,7 @@ export const Header = () => {
                       </MenuItem>
                     
                       </Menu>
-                      <ReAuthModal Username={username} />
+                      {/* <ReAuthModal Username={username} /> */}
 
                 </Dropdown>
               </>

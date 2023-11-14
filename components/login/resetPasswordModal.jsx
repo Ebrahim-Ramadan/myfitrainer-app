@@ -30,7 +30,7 @@ export function BasicModalDialog() {
       }
       else {
         setNotFoundEmail(true)
-        Notify.failure("Invalid email. Please provide a valid email address.", {
+        Notify.failure("we don't have this address in our data", {
           position: 'right-bottom',
         }); 
       }
