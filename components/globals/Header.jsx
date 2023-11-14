@@ -94,7 +94,7 @@ export const Header = () => {
       </Avatar>
                 <span>{
                   username.length < 10? (username.substring(0, username.indexOf('@'))):
-                  (username.substring(0, 11))}</span>
+                  (username.substring(0, 11))+'...'}</span>
               
             <FontAwesomeIcon icon={faCircleChevronDown} style={{ width: '35px' }} />
                 </MenuButton>

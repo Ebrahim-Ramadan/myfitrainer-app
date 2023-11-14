@@ -27,7 +27,7 @@ const Entry = () => {
               <p className="mx-auto max-w-[700px] text-gray-400 md:text-xl">Get Fit, Stay Healthy, Be Happy</p>
             </div>
             <div className=" text-lg font-bold text-center">
-              <button className='backdrop-blur-md backdrop-grayscale rounded-lg p-2 hover:bg-slate-900 transition-all duration-900' onClick={()=>router.push(loggedin?'/progress':'/login')}>Start Training</button>
+              <button className='backdrop-blur-md border border-2  backdrop-grayscale rounded-lg p-2 hover:bg-sky-700 transition-all duration-900' onClick={()=>router.push(loggedin?'/progress':'/login')}>Start Training</button>
             </div>
           </div >
   )
