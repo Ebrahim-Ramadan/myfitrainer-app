@@ -100,7 +100,7 @@ export const Header = () => {
                 </MenuButton>
               
               :
-              <Link href="/login" className='border border-2 bg-gray-700 font-bold rounded-lg p-2'>
+              <Link href="/login" className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900'>
            
               Get started
             
@@ -206,7 +206,7 @@ export const Header = () => {
                 </Dropdown>
               </>
               :
-              <Link href="/login" className='border border-2 bg-gray-500 rounded-lg px-1'>
+              <Link href="/login" className='text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 rounded-lg px-1 duration-900'>
            
               Get started
             
