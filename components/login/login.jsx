@@ -26,10 +26,10 @@ const Login = () => {
         Notify.success('logged in successfully', {
           position: 'right-bottom',
         });
-        router.push('/')
         setTimeout(() => {
           window.location.reload()
-          }, 100);
+        }, 100);
+        router.push('/')
       }
     } catch (error) {
       console.log('signupUsererr', error.code, error.message);

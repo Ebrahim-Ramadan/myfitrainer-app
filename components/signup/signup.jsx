@@ -41,7 +41,9 @@ const auth = getAuth(firebase_app);
           });
      }
      setisLoading(false)
-      };
+   };
+  
+   
   return (
     <>
       {isLoading &&

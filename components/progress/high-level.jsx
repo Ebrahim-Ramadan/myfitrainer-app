@@ -1,13 +1,23 @@
-//import
+import {RoutineSearch} from './RoutineSearch';
 const Entry = () => {
+  // const data = await getData()
   return (
-    <div className="flex justify-center p-8">Here implemented your fitness progress stay fucking tuned</div>
+    <div className="flex flex-col justify-center p-4 md:p-8 w-full">
+    <RoutineSearch/>
+    </div>
   )
 }
 export default Entry;
 //now we made sure the user is logged in, time for passing props
-export async function getServerSideProps() {
-  const res = await fetch('https://api.github.com/repos/vercel/next.js')
-  const data = await res.json()
-  return { props: { data } }
-}
+// async function getData() {
+//   const res = await fetch('https://api.example.com/...', { next: { tags: ['progress'] } })
+//   // The return value is *not* serialized
+//   // You can return Date, Map, Set, etc.
+ 
+//   if (!res.ok) {
+//     // This will activate the closest `error.js` Error Boundary
+//     throw new Error('Failed to fetch data')
+//   }
+ 
+//   return res.json()
+// }
