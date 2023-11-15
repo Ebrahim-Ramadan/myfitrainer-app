@@ -1,11 +1,8 @@
-import React from 'react';
-import Entry from '@/components/progress/high-level';
-
-
-const Page = () => {
+import React from 'react'
+import {Progress} from '@/components/progress/progress'
+ const Page = () => {
   return (
-    <Entry />
-  );
-};
-
+    <Progress/>
+  )
+}
 export default Page;

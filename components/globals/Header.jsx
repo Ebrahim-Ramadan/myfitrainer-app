@@ -108,38 +108,41 @@ export const Header = () => {
             }
             
             <Menu color="primary">
-            <MenuItem color="primary">
-              <FontAwesomeIcon icon={faUserPlus} /> <Link href="/signup">
-                Add Account
-       </Link>
-        </MenuItem>
+            
               <MenuItem color="primary">
               <FontAwesomeIcon icon={faDumbbell} />
                 <Link href="/workout">
-                Workout
+                Routines
        </Link>
         </MenuItem>
-              <MenuItem color="primary">
-              <FontAwesomeIcon icon={faCircleInfo} />
-                <Link href="/about">
-                About
-       </Link>
-        </MenuItem>
+              
               <MenuItem color="primary">
               <FontAwesomeIcon icon={faMoneyCheck} />
-                <Link href="/pricing">
+                <Link href="/progress">
                 
-                Pricing
+                My Progress
           </Link>
-        </MenuItem>
+              </MenuItem>
+              <hr />
               <MenuItem color="primary">
               <FontAwesomeIcon icon={faEnvelope} />
               <Link href="/contact">
               Contact
           </Link>
               </MenuItem>
-              <hr/>
               <MenuItem color="primary">
+              <FontAwesomeIcon icon={faCircleInfo} />
+                <Link href="/about">
+                About
+       </Link>
+        </MenuItem>
+              <hr />
+              <MenuItem color="primary">
+              <FontAwesomeIcon icon={faUserPlus} /> <Link href="/signup">
+                Add Account
+       </Link>
+        </MenuItem>
+              <MenuItem color="danger">
               <button onClick={handleSignOut}>sign out</button>
         </MenuItem>
 
@@ -151,21 +154,18 @@ export const Header = () => {
         (
           <nav className="ml-auto flex space-x-5 [&>*]:text-md [&>*]:font-bold items-center navlinks [&>*]:p-2 [&>*]:rounded-lg">
           
-          <Link href="/workout">
+          <Link href="/routines">
            
-              Workout
+               Routines
             
-          </Link>
+            </Link>
+            
           <Link href="/about">
            
               About
             
           </Link>
-          <Link href="/pricing">
-           
-              Pricing
-            
-          </Link>
+          
           <Link href="/contact">
            
               Contact
@@ -174,10 +174,15 @@ export const Header = () => {
           
             {loggedIn ?
               <>
-              <Avatar sx={{ bgcolor: deepOrange[600] }}>
-                        {username.substring(0, [2])}
+              
+                <Link href="/progress" className='flex flex-row items-center gap-x-2'>
+                <Avatar sx={{ bgcolor: deepOrange[600] }}>
+                  {username.substring(0, [2])}
+                  
                 </Avatar>
-                
+          My Progress
+          
+          </Link>
                 <Dropdown style={{margin:'0'}}>
                       <MenuButton color="primary">
                       {username}

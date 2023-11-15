@@ -9,7 +9,8 @@ import muscleOptions from './muscleOptions';
 import Stack from '@mui/joy/Stack';
 import Button from '@mui/joy/Button';
 import Input from '@mui/joy/Input';
-
+import US from '@/assets/US.jpeg'
+import Image from 'next/image';
 export const RoutineSearch = () => {
   const [loading, setLoading] = useState(false);
   const [exercises, setExercises] = useState([]);
@@ -58,23 +59,24 @@ export const RoutineSearch = () => {
     <>
     
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: 'fit-content' }}>
+
       <div >
         {loading && <Reload />}
 
-        <div className='flex md:flex-row flex-col items-start md:space-x-6 space-y-6 justify-center'>
-          <form className='md:mt-2'>
-                    <label className='font-bold'>Add a muscle routine</label>
+        <div className='flex md:flex-row flex-col md:space-x-2 justify-center'>
+          <form >
           <Input
             autoComplete='on'
-            placeholder='start typing' required type='text'
+            placeholder='start searching...' required type='text'
             value={OneMuscle}
             sx={{zindex: -11111}}
             onChange={(e) => setOneMuscle(e.target.value)}
           />
-          <label className='text-sm text-gray-400 font-bold'>try searching a single muscle</label>
+          
             </form>
+            <label className='text-sm text-gray-400 font-bold flex justify-center py-2'>OR</label>
+            <form
               
-        <form
           className='flex justify-center w-full'
       onSubmit={(event) => {
         event.preventDefault();
@@ -86,18 +88,31 @@ export const RoutineSearch = () => {
       }}
     >
               <Stack spacing={1} alignItems="flex-start"
-              classname='flex flex-row'
+                direction="column"
+                justifyContent="center"
+                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
               >
-                      <label className='items-center font-bold flex gap-x-2'>
-                          <kbd className='rounded-lg text-sm bg-gray-500 px-2'>OR</kbd>
-                      <lable className='text-bg'>search by all muscles</lable>    
-                      </label>
-                  <Select
-                      placeholder="Select a pet…"
-          name="muscles"
+                <div>
+                <Select
+                      placeholder="Select a muscle..."
+                      name="muscles"
                       required
                       classname='w-full block flex-grow'
-                      multiple
+                  multiple
+                  renderValue={(selected) => {
+                    if (selected.length === 0) {
+                      return <span>Select a muscle...</span>;
+                    }
+                    return (
+                      <div>
+                        {selected.map((muscle) => (
+                          <span key={muscle.value}>
+                            {muscle.value},
+                          </span>
+                        ))}
+                      </div>
+                    );
+                  }}
                 sx={{ width: 260, zindex: -11111 }}
                   >
                       {Array.isArray(muscleOptions) &&
@@ -107,8 +122,9 @@ export const RoutineSearch = () => {
                 </Option>
               ))}
                   </Select>
-                  <label className='text-sm text-gray-400 font-bold'>select a muscle or two</label>
-        <Button type="submit" variant='outlined' sx={{zindex: -11111}}>Search</Button>
+                  <label className='text-sm text-gray-400 font-bold'>select a muscle or more</label>
+                  </div>
+        <Button className='bg-blue-500' type="submit" variant='solid' color='primary' sx={{zindex: -11111}}>Search</Button>
       </Stack>
               </form>
 
@@ -117,8 +133,15 @@ export const RoutineSearch = () => {
       </div>
       
     </div>
-      {/* Displaying exercises */}
-      <div className='grid grid-cols-1 md:grid-cols-4 gap-4 md:mt-4 mt-2'>
+     
+      <div className='mt-8'>
+      <hr/>
+      <div className='py-2 md:space-x-2 text-sm text-bg-00 flex flex-row justify-center items-center'>
+        <Image src={US} width={50} height={50} alt='no muscles found' />
+        <p className=''>sub gymbro</p>
+      </div>
+      <div className='mt-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:mt-4 mt-2'>
+      
       {exercises ? (
       exercises.map((exercise) => (
         <RoutinesMap data={exercise} key={exercise.muscle} />
@@ -127,6 +150,7 @@ export const RoutineSearch = () => {
       <p>No Data returned, Maybe A typo in the muscle name?</p>
       )}
       </div>
+</div>
      
     </>
 
