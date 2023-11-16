@@ -67,15 +67,14 @@ export const RoutineSearch = () => {
             autoComplete='on'
             placeholder='start searching...' required type='text'
             value={OneMuscle}
-            sx={{zindex: -11111}}
             onChange={(e) => setOneMuscle(e.target.value)}
           />
           
             </form>
             <label className='text-sm text-gray-400 font-bold flex justify-center py-2'>OR</label>
+
             <form
               
-          className='flex justify-center w-full'
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -86,17 +85,17 @@ export const RoutineSearch = () => {
       }}
     >
               <Stack spacing={1} alignItems="flex-start"
-                direction="column"
+                direction="row"
                 justifyContent="center"
-                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
               >
-                <div>
+                
                 <Select
                       placeholder="Select a muscle..."
                       name="muscles"
                       required
                       classname='w-full block flex-grow'
                   multiple
+                  sx={{ maxWidth: 200, width:200 }}
                   renderValue={(selected) => {
                     if (selected.length === 0) {
                       return <span>Select a muscle...</span>;
@@ -111,7 +110,6 @@ export const RoutineSearch = () => {
                       </div>
                     );
                   }}
-                sx={{ width: 260, zindex: -11111 }}
                   >
                       {Array.isArray(muscleOptions) &&
               muscleOptions.map((muscleOption) => (
@@ -120,11 +118,13 @@ export const RoutineSearch = () => {
                 </Option>
               ))}
                   </Select>
-                  <label className='text-sm text-gray-400 font-bold'>select a muscle or more</label>
-                  </div>
+                 
         <Button className='bg-blue-500' type="submit" variant='solid' color='primary' sx={{zindex: -11111}}>Search</Button>
-      </Stack>
-              </form>
+        
+              </Stack>
+              
+            </form>
+            
 
         </div>
 

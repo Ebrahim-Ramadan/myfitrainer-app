@@ -67,7 +67,7 @@ export const Header = () => {
   };
 
   return (
-    <header className={`backdrop-blur-xl backdrop-grayscale backdrop-blur-md flex h-20 w-full items-center px-4 md:px-6 sticky top-0 ${isMobile && 'justify-between'}`}>
+    <header className={`backdrop-blur-xl backdrop-grayscale backdrop-blur-md flex h-20 w-full items-center px-4 md:px-6 sticky top-0 ${isMobile && 'justify-between z-40'}`}>
       {loading &&
       <Reload/>}
         <Link href="/">
