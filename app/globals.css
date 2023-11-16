@@ -28,7 +28,8 @@ body {
 
 .navlinks >*:hover{
   transition: all 0.4s;
-  background-color: rgba(185, 185, 185, 0.492);
+  background-color: #ffffff;
+  color: #191919;
 }
 
 @keyframes dot-flashing {

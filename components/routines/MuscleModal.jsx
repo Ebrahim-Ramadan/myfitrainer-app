@@ -11,8 +11,8 @@ export const MuscleModal = ({ name, muscle, instructions }) => {
   const [open, setOpen] = React.useState(false);
   const [showFullInstructions, setShowFullInstructions] = React.useState(false);
 
-  const truncatedInstructions = instructions.slice(0, 100);
-  const remainingInstructions = instructions.slice(100);
+  const truncatedInstructions = instructions.slice(0, 150);
+  const remainingInstructions = instructions.slice(150);
 
   const toggleInstructions = () => {
     setShowFullInstructions(!showFullInstructions);
@@ -21,7 +21,7 @@ export const MuscleModal = ({ name, muscle, instructions }) => {
   return (
     <React.Fragment>
       <button
-        className='bg-slate-200 text-black rounded-lg p-2  font-bold hover:bg-slate-300 transition-all duration-900'
+        className='rounded-lg p-2 h-fit bg-[#181616] font-bold hover:bg-[#282424] transition-all duration-900'
         onClick={() => setOpen(true)}
       >
         {name}.

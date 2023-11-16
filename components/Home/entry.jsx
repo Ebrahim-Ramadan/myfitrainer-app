@@ -1,16 +1,8 @@
-'use client'
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import React, { useState, useEffect } from 'react'
-import secureLocalStorage from 'react-secure-storage';
+import React from 'react'
 import bg from '@/assets/landpage-bg.avif'
 const Entry = () => {
-  const [loggedin, setloggedin] = useState('false');
-  useEffect(() => {
-    setloggedin(secureLocalStorage.getItem("loggedIn"))
-  console.log('loggedin entry', loggedin);
-  }, [loggedin]);
-  const router = useRouter()
+
   
   
     return (
@@ -27,7 +19,7 @@ const Entry = () => {
               <p className="mx-auto max-w-[700px] text-slate-200 md:text-xl">Get Fit, Stay Healthy, Be Happy</p>
             </div>
             <div className=" text-lg font-bold text-center text-slate-950">
-              <a className='bg-gray-50 rounded-lg p-2 hover:bg-zinc-300 transition-all duration-900' href={`${loggedin ?'/progress':'/login'}`}>Start Training</a>
+              <a className='bg-gray-50 rounded-lg p-2 hover:bg-zinc-300 transition-all duration-900' href='routines'>Start Training</a>
             </div>
           </div >
   )

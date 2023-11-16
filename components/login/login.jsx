@@ -6,18 +6,15 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useRouter } from "next/navigation";
 import secureLocalStorage from "react-secure-storage";
-import {Reload} from '@/components/globals/Reload'
 import {BasicModalDialog} from './resetPasswordModal'
 const auth = getAuth(firebase_app);
 const Login = () => {
-  const [isLoading, setIsLoading] = React.useState(false);
   const [Username, setUsername] = React.useState('');
   const [Password, setPassword] = React.useState('');
   const router = useRouter()
 
   const loginUser = async (email, password, e) => {
     e.preventDefault();
-    setIsLoading(true);
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       if (userCredential) {
@@ -37,13 +34,11 @@ const Login = () => {
         position: 'right-bottom',
       });
     }
-    setIsLoading(false);
   };
 
   return (
     <>
-      {isLoading &&
-        <Reload />}
+     
       
       <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-4">
       <h1 className='text-4xl font-bold'>Login</h1>

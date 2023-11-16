@@ -10,15 +10,12 @@ import DialogContent from '@mui/joy/DialogContent';
 import Stack from '@mui/joy/Stack';
 import {ResetPassword} from '@/lib/auth/resetPassword.js';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { Reload } from '@/components/globals/Reload';
 
 export function BasicModalDialog() {
   const [open, setOpen] = React.useState(false);
-  const [loadingState, setloadingState] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [notFoundEmail, setNotFoundEmail] = React.useState(false);
   const resetpass = async () => {
-    setloadingState(true)
     try {
       const resetProcess = await ResetPassword(email)
       if (resetProcess === true) {
@@ -40,7 +37,6 @@ export function BasicModalDialog() {
     } catch (error) {
       console.log('resetProcess error', error);
     }
-    setloadingState(false)
     setEmail('')
   }
   const handleFocus = () => {
@@ -66,8 +62,7 @@ const handleSubmit = (event) => {
       <Modal open={open} onClose={() => setOpen(false)} keepMounted>
         
         <ModalDialog>
-        {loadingState &&
-                  <Reload />}
+        
           <DialogTitle>Reset Your Password</DialogTitle>
           <DialogContent>Fill in your email to recieve a message for password reset</DialogContent>
           <form

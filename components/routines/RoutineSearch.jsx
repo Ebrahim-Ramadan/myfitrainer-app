@@ -1,7 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { fetchExercises } from '@/lib/ningaAPI/getAllRoutines';
-import { Reload } from '../globals/Reload';
 import { RoutinesMap } from './RoutinesMap';
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
@@ -61,7 +60,6 @@ export const RoutineSearch = () => {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: 'fit-content' }}>
 
       <div >
-        {loading && <Reload />}
 
         <div className='flex md:flex-row flex-col md:space-x-2 justify-center'>
           <form >
@@ -134,13 +132,14 @@ export const RoutineSearch = () => {
       
     </div>
      
-      <div className='mt-8'>
+      <div className='mt-6'>
       <hr/>
       <div className='py-2 md:space-x-2 text-sm text-bg-00 flex flex-row justify-center items-center'>
         <Image src={US} width={50} height={50} alt='no muscles found' />
-        <p className=''>sub gymbro</p>
+          <p className='font-bold'>{loading ?
+          'fetchng routines...':'smash it! here you go'}</p>
       </div>
-      <div className='mt-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:mt-4 mt-2'>
+      <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-2'>
       
       {exercises ? (
       exercises.map((exercise) => (

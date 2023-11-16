@@ -6,16 +6,13 @@ import {handleCreateUser} from '@/lib/auth/addUser'
 import Link from 'next/link';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useRouter } from "next/navigation";
-import { Reload } from '@/components/globals/Reload';
 const auth = getAuth(firebase_app);
  const Signup = () => {
   const [Username, setUsername] = React.useState('');
   const [Password, setPassword] = React.useState('');
-  const [isLoading, setisLoading] = React.useState(false);
   const router = useRouter()
    const registerUser = async (email, password, e) => {
      e.preventDefault();
-     setisLoading(true);
         try {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential) {
@@ -40,14 +37,12 @@ const auth = getAuth(firebase_app);
             position: 'right-bottom',
           });
      }
-     setisLoading(false)
    };
   
    
   return (
     <>
-      {isLoading &&
-      <Reload/>}
+      
       <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-4">
       <h1 className='text-4xl font-bold'>Sign Up</h1>
       <form onSubmit={(e)=>registerUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-9 w-full">
