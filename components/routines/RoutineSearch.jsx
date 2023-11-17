@@ -50,7 +50,7 @@ export const RoutineSearch = () => {
     const delayDebounceFn = setTimeout(() => {
       console.log(OneMuscle)
       delayedSearch()
-    }, 500)
+    }, 200)
 
     return () => clearTimeout(delayDebounceFn)
   }, [OneMuscle])
