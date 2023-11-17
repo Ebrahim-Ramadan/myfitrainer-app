@@ -34,7 +34,7 @@ export const RoutineSearch = () => {
     if (OneMuscle) {
       try {
         setLoading(true);
-        const data = await fetchExercises(OneMuscle);
+        const data = await fetchExercises(OneMuscle.trim());
         console.log('handleSingleMuscleSearch', data);
         setExercises(data);
       } catch (error) {
