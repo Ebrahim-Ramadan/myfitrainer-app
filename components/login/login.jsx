@@ -64,7 +64,7 @@ const Login = () => {
 
         <div className="w-full flex flex-col gap-y-2">
           <label htmlFor="password" className="text-xl font-medium">
-            Password
+            Passwordd
           </label>
           <div className="flex flex-col gap-y-4">
             <input
