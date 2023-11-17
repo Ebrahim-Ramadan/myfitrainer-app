@@ -7,12 +7,14 @@ import Link from 'next/link';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { useRouter } from "next/navigation";
 const auth = getAuth(firebase_app);
- const Signup = () => {
+const Signup = () => {
+  const [isLoading, setIsLoading] = React.useState(false);
   const [Username, setUsername] = React.useState('');
   const [Password, setPassword] = React.useState('');
   const router = useRouter()
    const registerUser = async (email, password, e) => {
      e.preventDefault();
+     setIsLoading(true);
         try {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
           if (userCredential) {
@@ -37,6 +39,7 @@ const auth = getAuth(firebase_app);
             position: 'right-bottom',
           });
      }
+     setIsLoading(false);
    };
   
    
@@ -79,7 +82,10 @@ const auth = getAuth(firebase_app);
           </div>
         </div>
 
-            <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg'>Signup</button>
+          <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg' disabled={isLoading}>
+            {isLoading ?
+            'processing...':'Signup'}
+            </button>
       </form>
       
     </div>

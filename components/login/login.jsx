@@ -9,12 +9,14 @@ import secureLocalStorage from "react-secure-storage";
 import {BasicModalDialog} from './resetPasswordModal'
 const auth = getAuth(firebase_app);
 const Login = () => {
+  const [isLoading, setIsLoading] = React.useState(false);
   const [Username, setUsername] = React.useState('');
   const [Password, setPassword] = React.useState('');
   const router = useRouter()
 
   const loginUser = async (email, password, e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       if (userCredential) {
@@ -34,6 +36,7 @@ const Login = () => {
         position: 'right-bottom',
       });
     }
+    setIsLoading(false);
   };
 
   return (
@@ -78,7 +81,10 @@ const Login = () => {
         </div>
         
 
-            <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg'>Login</button>
+          <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg' disabled={isLoading}>
+            {isLoading ?
+            'processing...':'Login'}
+            </button>
       </form>
          <a className="flex justify-end cursor-pointer ">
         <BasicModalDialog/>
