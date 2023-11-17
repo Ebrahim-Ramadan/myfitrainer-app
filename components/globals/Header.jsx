@@ -101,7 +101,7 @@ export const Header = () => {
               :
               <Link href="/login" className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900'>
            
-              Get started
+              Get startedd
             
                 </Link>
             }
