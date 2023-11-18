@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleChevronDown, faUserPlus, faDumbbell, faCircleInfo , faMoneyCheck, faEnvelope, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown, faUserPlus, faDumbbell, faCircleInfo , faMoneyCheck, faEnvelope, faCodeBranch, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
@@ -119,7 +119,14 @@ export const Header = () => {
               <FontAwesomeIcon icon={faMoneyCheck} />
                 <Link href="/progress">
                 
-                My Progress
+                Progress
+          </Link>
+              </MenuItem>
+              <MenuItem color="primary">
+              <FontAwesomeIcon icon={faCarrot} />
+                <Link href="/nutrition">
+                
+                Nutritions
           </Link>
               </MenuItem>
               <hr />
@@ -159,9 +166,9 @@ export const Header = () => {
             
             </Link>
             
-          <Link href="/about">
+          <Link href="/nutrition">
            
-              About
+              Nutritions
             
           </Link>
           
