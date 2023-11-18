@@ -17,7 +17,7 @@ import { deepOrange } from '@mui/material/colors';
 import { useRouter } from 'next/navigation';
 import { Reload } from './Reload';
 import { Notify } from 'notiflix';
-
+import gh from '@/assets/gh.svg';
 export const Header = () => {
   const router = useRouter();
   const [loggedIn, setLoggedIn] = useState(false);
@@ -67,7 +67,7 @@ export const Header = () => {
   };
 
   return (
-    <header className={`backdrop-blur-xl backdrop-grayscale backdrop-blur-md flex h-20 w-full items-center px-4 md:px-6 sticky top-0 ${isMobile && 'justify-between z-40'}`}>
+    <header className={`backdrop-blur-xl backdrop-grayscale backdrop-blur-md flex h-20 w-full items-center px-4 md:px-6 sticky top-0 z-40 ${isMobile && 'justify-between'}`}>
       {loading &&
       <Reload/>}
         <Link href="/">
@@ -172,11 +172,7 @@ export const Header = () => {
             
           </Link>
           
-          <Link href="/contact">
-           
-              Contact
-            
-          </Link>
+          
           
             {loggedIn ?
               <>
@@ -197,12 +193,7 @@ export const Header = () => {
                     
                       </MenuButton>
                   <Menu color="primary">
-                  <MenuItem color="primary">
-                  <FontAwesomeIcon icon={faUserPlus} />
-                <Link href="/login">
-                Add Account
-       </Link>
-        </MenuItem>
+
                   <MenuItem color="primary">
                   <FontAwesomeIcon icon={faCodeBranch} />
                 <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank'>
@@ -210,7 +201,24 @@ export const Header = () => {
        </Link>
         </MenuItem>
                     <hr/>
-                    <MenuItem onClick={handleSignOut} color="warning">
+                    <MenuItem color="primary">
+              <FontAwesomeIcon icon={faEnvelope} />
+
+                    <Link href="/contact">
+           
+           Contact
+         
+       </Link>
+                      </MenuItem>
+                    
+                    <hr />
+                    <MenuItem color="warning">
+                  <FontAwesomeIcon icon={faUserPlus} />
+                <Link href="/login">
+                Add Account
+       </Link>
+        </MenuItem>
+                    <MenuItem onClick={handleSignOut} color="danger">
                       log out
                       </MenuItem>
                     
@@ -220,11 +228,17 @@ export const Header = () => {
                 </Dropdown>
               </>
               :
+              <>
+                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2'>
+                  <Image src={gh} width={30} height={30} alt='gh'/>
+                Source Code
+       </Link>
               <Link href="/login" className='text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 rounded-lg px-1 duration-900'>
            
               Get started
             
-            </Link>
+            </Link></>
+
             }
           
         </nav> 

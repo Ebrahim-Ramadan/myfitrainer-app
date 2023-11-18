@@ -88,3 +88,6 @@ stage {
   animation: dot-flashing 1s infinite alternate;
   animation-delay: 1s;
 }
+.gh:hover>*{
+  filter: invert(99%) sepia(5%) saturate(19%) hue-rotate(217deg) brightness(118%) contrast(87%);
+}

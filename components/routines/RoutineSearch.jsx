@@ -119,7 +119,12 @@ export const RoutineSearch = () => {
               ))}
                   </Select>
                  
-        <Button className='bg-blue-500' type="submit" variant='solid' color='primary' sx={{zindex: -11111}}>Search</Button>
+                <Button className='bg-blue-500 ' type="submit" variant='solid' color='primary' disabled={loading}>
+                  {loading ?
+                    'on it...'
+                  :
+                  'Search'}
+                  </Button>
         
               </Stack>
               
@@ -147,7 +152,8 @@ export const RoutineSearch = () => {
       ))
     ) : (
       <p>No Data returned, Maybe A typo in the muscle name?</p>
-      )}
+          )}
+          
       </div>
 </div>
      
