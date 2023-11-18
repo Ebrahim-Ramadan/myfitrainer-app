@@ -18,6 +18,7 @@ import { useRouter } from 'next/navigation';
 import { Reload } from './Reload';
 import { Notify } from 'notiflix';
 import gh from '@/assets/gh.svg';
+import gh_dropdown from '@/assets/gh-dropdown.svg';
 export const Header = () => {
   const router = useRouter();
   const [loggedIn, setLoggedIn] = useState(false);
@@ -99,15 +100,25 @@ export const Header = () => {
                 </MenuButton>
               
               :
-              <Link href="/login" className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900'>
+              <div className='flex flex-row gap-x-2'>
+               <Link href="/login" className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900'>
            
-              Get started
-            
+           Get started
+         
+           </Link>
+           <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
+           <Image src={gh} width={30} height={30} alt='gh'/>
                 </Link>
+              </div>
             }
             
             <Menu color="primary">
-            
+            <MenuItem color="success">
+              <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
+                  <Image src={gh_dropdown} width={30} height={30} alt='gh'/>Source Code
+       </Link>
+              </MenuItem>
+              <hr/>
               <MenuItem color="primary">
               <FontAwesomeIcon icon={faDumbbell} />
                 <Link href="/routines">
@@ -136,12 +147,12 @@ export const Header = () => {
               Contact
           </Link>
               </MenuItem>
-              <MenuItem color="primary">
-              <FontAwesomeIcon icon={faCircleInfo} />
-                <Link href="/about">
-                About
-       </Link>
-        </MenuItem>
+
+             
+              
+
+
+
               <hr />
               <MenuItem color="primary">
               <FontAwesomeIcon icon={faUserPlus} /> <Link href="/login">
@@ -149,7 +160,7 @@ export const Header = () => {
        </Link>
         </MenuItem>
               <MenuItem color="danger">
-              <button onClick={handleSignOut}>sign out</button>
+              <button onClick={handleSignOut}>log out</button>
         </MenuItem>
 
       </Menu>
@@ -193,25 +204,6 @@ export const Header = () => {
                     
                       </MenuButton>
                   <Menu color="primary">
-
-                  <MenuItem color="primary">
-                  <FontAwesomeIcon icon={faCodeBranch} />
-                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank'>
-                Source Code
-       </Link>
-        </MenuItem>
-                    <hr/>
-                    <MenuItem color="primary">
-              <FontAwesomeIcon icon={faEnvelope} />
-
-                    <Link href="/contact">
-           
-           Contact
-         
-       </Link>
-                      </MenuItem>
-                    
-                    <hr />
                     <MenuItem color="warning">
                   <FontAwesomeIcon icon={faUserPlus} />
                 <Link href="/login">
@@ -226,18 +218,22 @@ export const Header = () => {
                       {/* <ReAuthModal Username={username} /> */}
 
                 </Dropdown>
+                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2'>
+                  <Image src={gh} width={30} height={30} alt='gh'/>
+       </Link>
               </>
               :
               <>
-                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2'>
-                  <Image src={gh} width={30} height={30} alt='gh'/>
-                Source Code
-       </Link>
+                
               <Link href="/login" className='text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 rounded-lg px-1 duration-900'>
            
               Get started
             
-            </Link></>
+                </Link>
+                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2'>
+                  <Image src={gh} width={30} height={30} alt='gh'/>
+       </Link></>
+       
 
             }
           
