@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, {Suspense} from 'react';
 import { nutritionsCalc } from '@/lib/ningaAPI/nutritionsCalc.js';
 import {NutritionsResponse} from './NutritionsResponse'
 import Input from '@mui/joy/Input';
@@ -7,10 +7,12 @@ import { Button } from '@mui/joy';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Image from 'next/image';
 import alienEats from '@/assets/alien-eating.webp'
+import { Reload } from '@/components/globals/Reload';
+
 
 const NutritionCalc = () => {
   const [meal, setMeal] = React.useState('');
-  const [loading, setloading] = React.useState('');
+  const [loading, setloading] = React.useState(false);
   const [nutritionsData, setnutritionsData] = React.useState([]);
 
   const getNutritionInfo = async (e) => {
@@ -18,7 +20,7 @@ const NutritionCalc = () => {
     setloading(true)
     if (meal.trim() === '') {
       Notify.info('your meal is empty! you should revalidate it', {
-        position: 'right-bottom',
+        position: 'center-top',
       });
       setloading(false)
       return;
@@ -26,8 +28,7 @@ const NutritionCalc = () => {
 
     try {
       const nutritions = await nutritionsCalc(meal);
-      console.log('Front-end nutritions', nutritions);
-      if (nutritions.length !== 0) {
+      if (nutritions && nutritions.length !== 0) {
         setnutritionsData(nutritions)
       }
       else {
@@ -37,7 +38,10 @@ const NutritionCalc = () => {
       }
     } catch (error) {
       console.error('Error fetching nutrition data:', error);
-      // Handle error or display error message to the user
+      setnutritionsData(null)
+      Notify.info(error.message, {
+        position: 'right-bottom',
+      });
     }
     setloading(false)
   };
@@ -77,17 +81,22 @@ const NutritionCalc = () => {
           </div>
           {nutritionsData.length !== 0 &&
             nutritionsData.map((nutritionData) => (
-              <NutritionsResponse key={nutritionData.name} nutritionsResponse={nutritionData} />
+    <Suspense fallback={<Reload/>} key={nutritionData.name} >
+
+                <NutritionsResponse nutritionsResponse={nutritionData} />
+    </Suspense>
+                
             ))
             
           }
-          <hr/>
-          <div className="flex justify-center flex-col items-center gap-y-2"> <Image src={alienEats} width={200} height={200} alt='alien-eating' loading='lazy' className='rounded-lg shadow-lg'/>
-          <a target='_blank' className='text-center underline text-xs md:text-sm hover:text-blue-600 text-blue-500 font-medium' href='https://api-ninjas.com/api/nutrition'>See ningasAPI documentation for more references</a>
-          </div>
+          
           
         </div>
       </form>
+
+      <a target='_blank' className="mt-8 flex justify-center flex-row items-center gap-x-2 text-center underline text-xs md:text-sm hover:text-blue-600 text-blue-500 font-medium" href='https://api-ninjas.com/api/nutrition'> <Image priority src={alienEats} width={40} height={40} alt='alien-eating' className='rounded-full shadow-lg' />
+          <p className=''>See ningasAPI documentation for more references</p>
+          </a>
     </div>
   );
 };

@@ -23,7 +23,7 @@ const Signup = () => {
             const userCreation = await handleCreateUser(userCredential.user.email, userCredential.user.uid, {})
             if (userCreation) {
               Notify.success(`signed in as ${userCredential.user.email} now kindly log in`, {
-                position: 'right-bottom',
+                position: 'center-top',
               });
 
             router.push('/login')
@@ -36,7 +36,7 @@ const Signup = () => {
         } catch (error) {
           console.log('signupUsererr', error);
           Notify.failure(error.message, {
-            position: 'right-bottom',
+            position: 'center-top',
           });
      }
      setIsLoading(false);

@@ -3,9 +3,7 @@ import { MuscleModal } from './MuscleModal';
 import fatcop from '@/assets/fat-cop.png'
 import Image from 'next/image';
 export const RoutinesMap = ({data}) => {
-  console.log('RoutinesMap data', data);
   const exercises = Array.isArray(data.exercises) ? data.exercises : [];
-console.log('exercises', exercises);
   return (
     <div className='pb-2 px-2 rounded-lg border border-2 border-slate-400 space-y-2'>
       <div className='font-bold text-[#d4d3d3] mt-2 underline'>#{data.muscle}</div>

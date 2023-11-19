@@ -20,7 +20,7 @@ export function BasicModalDialog() {
       const resetProcess = await ResetPassword(email)
       if (resetProcess === true) {
         Notify.info('email sent successfully', {
-          position: 'center-bottom',
+          position: 'center-topm',
         });
         setNotFoundEmail(false)
         setOpen(false)
@@ -28,7 +28,7 @@ export function BasicModalDialog() {
       else {
         setNotFoundEmail(true)
         Notify.failure("we don't have this address in our data", {
-          position: 'right-bottom',
+          position: 'center-top',
         }); 
       }
              

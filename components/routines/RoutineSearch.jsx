@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { fetchExercises } from '@/lib/ningaAPI/getAllRoutines';
 import { RoutinesMap } from './RoutinesMap';
 import Select from '@mui/joy/Select';
@@ -10,6 +10,9 @@ import Button from '@mui/joy/Button';
 import Input from '@mui/joy/Input';
 import US from '@/assets/US.jpeg'
 import Image from 'next/image';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Reload } from '@/components/globals/Reload';
+
 export const RoutineSearch = () => {
   const [loading, setLoading] = useState(false);
   const [exercises, setExercises] = useState([]);
@@ -21,7 +24,6 @@ export const RoutineSearch = () => {
     setLoading(true);
     try {
       const data = await fetchExercises(Muscles);
-      console.log('data', data);
       setExercises(data);
     } catch (error) {
       console.error(error);
@@ -34,11 +36,22 @@ export const RoutineSearch = () => {
     if (OneMuscle) {
       try {
         setLoading(true);
-        const data = await fetchExercises(OneMuscle.trim());
-        console.log('handleSingleMuscleSearch', data);
+        if (OneMuscle.trim() === '') {
+          Notify.info('muscle can not be empty', {
+            position: 'center-top',
+          });
+        setLoading(false);
+          return
+        }
+        else {
+          const data = await fetchExercises(OneMuscle.trim());
         setExercises(data);
+        }
       } catch (error) {
         console.error(error);
+        Notify.info(error, {
+          position: 'center-top',
+        });
       } finally {
         setLoading(false);
       }
@@ -48,7 +61,6 @@ export const RoutineSearch = () => {
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
-      console.log(OneMuscle)
       delayedSearch()
     }, 200)
 
@@ -65,7 +77,7 @@ export const RoutineSearch = () => {
           <form >
           <Input
             autoComplete='on'
-            placeholder='start searching...' required type='text'
+            placeholder='start typing...' required type='text'
             value={OneMuscle}
             onChange={(e) => setOneMuscle(e.target.value)}
           />
@@ -80,7 +92,6 @@ export const RoutineSearch = () => {
         const formData = new FormData(event.currentTarget);
         const formJson = Object.fromEntries(formData.entries());
         const selectedMuscles = JSON.parse(formJson.muscles);
-        console.log('selectedMuscles', selectedMuscles);
                   handleSearch(selectedMuscles)
       }}
     >
@@ -140,15 +151,18 @@ export const RoutineSearch = () => {
       <div className='mt-6'>
       <hr/>
       <div className='py-2 md:space-x-2 text-sm text-bg-00 flex flex-row justify-center items-center'>
-        <Image src={US} width={50} height={50} alt='no muscles found' />
+        <Image src={US} width={50} height={50} alt='no muscles found' loading='lazy'/>
           <p className='font-bold'>{loading ?
           'fetchng routines...':'smash it! here you go'}</p>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-2'>
       
       {exercises ? (
-      exercises.map((exercise) => (
-        <RoutinesMap data={exercise} key={exercise.muscle} />
+            exercises.map((exercise) => (
+    <Suspense fallback={<Reload/>} key={exercise.muscle} >
+                <RoutinesMap data={exercise} />
+    </Suspense>
+                
       ))
     ) : (
       <p>No Data returned, Maybe A typo in the muscle name?</p>

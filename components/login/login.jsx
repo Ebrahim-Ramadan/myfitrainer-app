@@ -23,7 +23,7 @@ const Login = () => {
         secureLocalStorage.setItem("username", userCredential.user.email);
         secureLocalStorage.setItem("loggedIn", true);
         Notify.success('logged in successfully', {
-          position: 'right-bottom',
+          position: 'center-top',
         });
         setTimeout(() => {
           window.location.reload()
@@ -33,7 +33,7 @@ const Login = () => {
     } catch (error) {
       console.log('signupUsererr', error.code, error.message);
       Notify.failure(' error.message', {
-        position: 'right-bottom',
+        position: 'center-top',
       });
     }
     setIsLoading(false);

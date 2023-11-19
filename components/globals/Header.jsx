@@ -75,6 +75,7 @@ export const Header = () => {
           
             
         <Image
+          loading='lazy'
           width={50}
           height={50}
            alt="Logo"
@@ -107,7 +108,7 @@ export const Header = () => {
          
            </Link>
            <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
-           <Image src={gh} width={30} height={30} alt='gh'/>
+           <Image src={gh} width={30} height={30} alt='gh' loading='lazy'/>
                 </Link>
               </div>
             }
@@ -115,7 +116,7 @@ export const Header = () => {
             <Menu color="primary">
             <MenuItem color="success">
               <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
-                  <Image src={gh_dropdown} width={30} height={30} alt='gh'/>Source Code
+                  <Image src={gh_dropdown} width={30} height={30} alt='gh' loading='lazy'/>Source Code
        </Link>
               </MenuItem>
               <hr/>
@@ -219,7 +220,7 @@ export const Header = () => {
 
                 </Dropdown>
                 <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2'>
-                  <Image src={gh} width={30} height={30} alt='gh'/>
+                  <Image src={gh} width={30} height={30} alt='gh' loading='lazy'/>
        </Link>
               </>
               :
@@ -231,7 +232,7 @@ export const Header = () => {
             
                 </Link>
                 <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2'>
-                  <Image src={gh} width={30} height={30} alt='gh'/>
+                  <Image src={gh} width={30} height={30} alt='gh' loading='lazy'/>
        </Link></>
        
 
