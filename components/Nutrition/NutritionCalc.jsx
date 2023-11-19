@@ -95,7 +95,7 @@ const NutritionCalc = () => {
       </form>
 
       <a target='_blank' className="mt-8 flex justify-center flex-row items-center gap-x-2 text-center underline text-xs md:text-sm hover:text-blue-600 text-blue-500 font-medium" href='https://api-ninjas.com/api/nutrition'> <Image priority src={alienEats} width={40} height={40} alt='alien-eating' className='rounded-full shadow-lg' />
-          <p className=''>See ningasAPI documentation for more references</p>
+          <p className='text-sm md:text-md'>See ningasAPI documentation</p>
           </a>
     </div>
   );

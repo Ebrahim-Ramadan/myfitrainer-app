@@ -9,7 +9,7 @@ const Plans = () => {
     ];
 
     return (
-        <div className='grid md:grid-cols-3 gap-6 sm:grid-cols-1 mt-8 md:mt-40'>
+        <div className='grid md:grid-cols-3 gap-6 sm:grid-cols-1 mt-8 md:mt-40 text-white'>
             {plans.map((plan) => (
                 <div key={plan.id} className='backdrop-blur-lg backdrop-grayscale backdrop-blur-md rounded-lg border space-y-2 border-2 border-slate-200 p-4 opacity-80 flex flex-col'>
                     <div className='flex justify-between items-center px-1'>
