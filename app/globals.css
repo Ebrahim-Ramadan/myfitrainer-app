@@ -25,7 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
-
+.navlinks{
+  color: white;
+}
 .navlinks >*:hover{
   transition: all 0.4s;
   background-color: #ffffff;
