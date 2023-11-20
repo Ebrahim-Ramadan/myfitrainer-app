@@ -81,7 +81,7 @@ const Login = () => {
         </div>
         
 
-          <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg' disabled={isLoading}>
+          <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg text-white' disabled={isLoading}>
             {isLoading ?
             'processing...':'Login'}
             </button>

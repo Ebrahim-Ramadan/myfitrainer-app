@@ -1,6 +1,7 @@
 import './globals.css'
 import { Header } from '@/components/globals/Header'
 import { GeistSans } from "geist/font/sans";
+import { Footer } from '@/components/globals/Footer';
 
 export const metadata = {
   title: 'gymrat',
@@ -13,6 +14,7 @@ export default function RootLayout({ children }) {
       <body className={GeistSans.className}>
         <Header />
         {children}
+        <Footer/>
       </body>
     </html>
     

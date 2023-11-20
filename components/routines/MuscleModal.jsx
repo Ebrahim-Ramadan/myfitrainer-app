@@ -21,7 +21,7 @@ export const MuscleModal = ({ name, muscle, instructions }) => {
   return (
     <React.Fragment>
       <button
-        className='rounded-lg p-2 h-fit bg-[#181616] font-bold hover:bg-[#282424] transition-all duration-900'
+        className='text-white rounded-lg p-2 h-fit bg-[#181616] font-bold hover:bg-[#282424] transition-all duration-900'
         onClick={() => setOpen(true)}
       >
         {name}.

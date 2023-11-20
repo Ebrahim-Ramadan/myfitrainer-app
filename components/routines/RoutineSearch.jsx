@@ -26,7 +26,7 @@ export const RoutineSearch = () => {
       const data = await fetchExercises(Muscles);
       setExercises(data);
     } catch (error) {
-      console.error(error);
+      console.error('handleSearch',error);
     }
     setLoading(false);
   };
@@ -49,7 +49,7 @@ export const RoutineSearch = () => {
         }
       } catch (error) {
         console.error(error);
-        Notify.info(error, {
+        Notify.failure(`delayedSearch ${error.message}`, {
           position: 'center-top',
         });
       } finally {

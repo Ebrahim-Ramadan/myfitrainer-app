@@ -2,7 +2,7 @@ import {RoutineSearch} from './RoutineSearch';
 const Entry = () => {
   // const data = await getData()
   return (
-    <div className="flex flex-col justify-center p-4 md:p-8 w-full">
+    <div className="h-screen mb-12 flex flex-col justify-center p-4 md:p-8 w-full">
     <label className='text-xl m-2 flex justify-center font-bold'>Add a muscle routine</label>
 
     <RoutineSearch/>
