@@ -1,12 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
-
+import {Subscribe} from './Subscribe'
 export const Footer = () => {
   return (
 
-    <section className="py-12 px-4 text-white z-40 bg-gray-900">
+    <section className="py-12 px-8 text-white z-40 bg-gray-900">
       <div className="container mx-auto md:grid md:grid-cols-3 flex flex-col gap-8">
-        <div>
+        <div className="flex flex-col gap-y-2">
           <Image
             alt="Gym logo"
             className="mb-2"
@@ -18,8 +18,13 @@ export const Footer = () => {
             }}
             width="60"
           />
-          <h2 className="text-2xl font-bold mb-2">FitGym</h2>
-          <p className="text-sm">Your number one source for fitness and wellbeing.</p>
+          <h2 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-red-500 to-blue-500">
+            GymRat
+            <br />
+            <p className="text-sm">Your number one tracker for fitness and wellbeing.</p>
+          </h2>
+              <p>Subscribe To Our News</p>
+          <Subscribe/>
         </div>
         <div>
           <h2 className="text-2xl font-bold mb-2">Quick Links</h2>

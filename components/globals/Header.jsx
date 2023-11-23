@@ -63,7 +63,7 @@ export const Header = () => {
       window.location.reload();
     }, 100);
     Notify.info('signed out', {
-      position: 'right-bottom',
+      position: 'center-top',
     })
   };
 

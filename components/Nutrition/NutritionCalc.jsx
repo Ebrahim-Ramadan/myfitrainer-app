@@ -33,14 +33,14 @@ const NutritionCalc = () => {
       }
       else {
         Notify.info('no nutritions found in our base, try a different prompt', {
-          position: 'right-bottom',
+          position: 'center-top',
         });
       }
     } catch (error) {
       console.error('Error fetching nutrition data:', error);
       setnutritionsData(null)
       Notify.info(error.message, {
-        position: 'right-bottom',
+        position: 'center-top',
       });
     }
     setloading(false)
