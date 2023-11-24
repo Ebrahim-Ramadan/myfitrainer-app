@@ -17,7 +17,7 @@ export const RoutinesMap = ({data}) => {
       
       <ul className='flex flex-col space-y-2'>
         {exercises.map((routine) => (
-          <MuscleModal key={routine.name} name={routine.name} muscle={routine.muscle} instructions={routine.instructions} />
+          <MuscleModal key={routine.name} routine={ routine} />
         ))}
       </ul>
     </div>

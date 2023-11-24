@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleChevronDown, faUserPlus, faDumbbell, faCircleInfo , faMoneyCheck, faEnvelope, faCodeBranch, faCarrot } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown, faUserPlus, faDumbbell, faCircleInfo , faMoneyCheck, faEnvelope, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';

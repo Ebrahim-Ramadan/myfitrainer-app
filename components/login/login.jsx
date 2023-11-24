@@ -81,7 +81,7 @@ const Login = () => {
         </div>
         
 
-          <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg text-white' disabled={isLoading}>
+          <button role='submit' className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900' disabled={isLoading}>
             {isLoading ?
             'processing...':'Login'}
             </button>
@@ -90,9 +90,9 @@ const Login = () => {
         <BasicModalDialog/>
             </a> 
       </div>
-    <div className="flex flex-col text-md justify-center items-center mt-4 space-y-1">
-    <div className="text-xl">Don&#8217;t have an account yet?</div>
-    <Link href="/signup" className="font-bold cursor-pointer bg-gray-600 hover:bg-gray-700 p-2 rounded-lg">
+    <div className="flex flex-col text-md font-bold justify-center items-center mt-2 space-y-1 mb-4">
+    <div className="text-xl ">Don&#8217;t have an account yet?</div>
+    <Link href="/signup" className="rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900">
       Sign up
     </Link>
       </div>
