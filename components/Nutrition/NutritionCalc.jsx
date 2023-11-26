@@ -73,7 +73,7 @@ const NutritionCalc = () => {
                 color='primary'
                 disabled={loading}
               >
-                {loading?'on it...':'Search'}
+                {loading?'...':'Calculate'}
                 
               </Button>
             </div>

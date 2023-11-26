@@ -46,9 +46,9 @@ const Signup = () => {
   return (
     <>
       
-      <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-4">
+      <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-2">
       <h1 className='text-4xl font-bold'>Sign Up</h1>
-      <form onSubmit={(e)=>registerUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-9 w-full">
+      <form onSubmit={(e)=>registerUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-4 w-full">
         <div className="w-full flex flex-col gap-y-2">
           <label htmlFor="username" className="text-xl font-medium">
             E-mail
@@ -58,7 +58,7 @@ const Signup = () => {
             name="username"
             type="email"
             required
-            placeholder="your E-mail"
+            placeholder="Enter your E-mail"
             onChange={(e) => setUsername(e.target.value)}
             className="rounded-lg h-10 font-bold text-black text-md p-2"
           />
@@ -75,23 +75,23 @@ const Signup = () => {
               type="password"
               required
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="your password"
+              placeholder="Enter your password"
               className="rounded-lg h-10 font-bold text-black text-md p-2"
             />
             
           </div>
         </div>
 
-          <button role='submit' className='font-bold bg-gray-700 rounded-lg p-2 hover:bg-gray-600 transition-all duration-800 text-lg text-white' disabled={isLoading}>
+          <button role='submit' className='text-lg font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900' disabled={isLoading}>
             {isLoading ?
             'processing...':'Signup'}
             </button>
       </form>
       
     </div>
-    <div className="mt-4 flex flex-col text-md justify-center items-center mt-4 space-y-1">
+    <div className="mt-4 flex flex-col font-bold text-md justify-center items-center mt-4 space-y-1 mb-4">
     <div className="text-xl">Already have an account?</div>
-    <Link href="/login" className="font-bold cursor-pointer bg-gray-600 hover:bg-gray-700 p-2 rounded-lg">
+    <Link href="/login" className=" rounded-lg px-2 py-1 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900">
       Log in
     </Link>
       </div>

@@ -109,7 +109,6 @@ export const RoutineSearch = () => {
                       placeholder="Select a muscle..."
                       name="muscles"
                       required
-                      classname='w-full block flex-grow'
                   multiple
                   sx={{ maxWidth: 200, width:200 }}
                   renderValue={(selected) => {

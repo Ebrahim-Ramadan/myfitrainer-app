@@ -4,7 +4,7 @@ import {Subscribe} from './Subscribe'
 export const Footer = () => {
   return (
 
-    <section className="py-12 px-8 text-white z-40 bg-gray-900">
+    <section className="py-12 px-8 text-white z-40 bg-gray-950">
       <div className="container mx-auto md:grid md:grid-cols-3 flex flex-col gap-8">
         <div className="flex flex-col gap-y-2">
           <Image
