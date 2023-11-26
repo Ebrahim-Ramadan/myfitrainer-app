@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faPen } from '@fortawesome/free-solid-svg-icons';
 import secureLocalStorage from "react-secure-storage";
 import { Notify } from 'notiflix';
-import {HighLevel} from './HIghLevel'
+import {HighLevel} from './HighLevel'
 import { Reload } from '../globals/Reload';
 export const Progress = () => {
   const [Routines, setRoutines] = useState([]);
