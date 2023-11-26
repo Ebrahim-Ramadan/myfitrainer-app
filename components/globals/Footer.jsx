@@ -28,7 +28,7 @@ export const Footer = () => {
         </div>
         <div>
           <h2 className="text-2xl font-bold mb-2">Quick Links</h2>
-          <ul className="space-y-1 text-sm">
+          <ul className="space-y-1 text-sm font-bold">
             <li>
               <Link className="text-white hover:text-gray-300" href="/progress">
                 Progress Tracker

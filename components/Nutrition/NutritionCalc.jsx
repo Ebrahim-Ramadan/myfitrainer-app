@@ -47,8 +47,8 @@ const NutritionCalc = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 p-4">
-      <form onSubmit={getNutritionInfo} className="w-full max-w-2xl bg-gray-800 shadow-md rounded-md p-6">
+    <div className="flex flex-col items-center justify-center  bg-gray-950 p-4">
+      <form onSubmit={getNutritionInfo} className="w-full max-w-2xl shadow-md rounded-md p-6">
         <h1 className="text-2xl font-bold mb-4 text-center text-white">Calculate Your Food Nutritions</h1>
         <div className="grid w-full max-w-sm gap-4 mx-auto">
           <div className="grid gap-1.5">
@@ -58,7 +58,7 @@ const NutritionCalc = () => {
 
             <div className='grid grid-cols-7'>
               <Input
-                className="bg-gray-700 text-white col-span-5"
+                className="bg-gray-900 text-white col-span-5"
                 id="food-quantity"
                 placeholder="Enter A Meal"
                 type="text"

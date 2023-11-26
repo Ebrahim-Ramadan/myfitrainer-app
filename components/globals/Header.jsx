@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleChevronDown, faUserPlus, faDumbbell, faListCheck , faStopwatch20, faEnvelope, faCarrot } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown, faUserPlus, faFileCircleExclamation,faCodeBranch, faListCheck , faStopwatch20, faEnvelope, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
@@ -74,12 +74,8 @@ export const Header = () => {
         <Link href="/">
           
             
-        <Image
-          loading='lazy'
-          width={50}
-          height={50}
-           alt="Logo"
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD90lEQVR4nO2aa4hVVRTHt42O44OJHMnw7WCigw7pFxMZE1HESPsQyVTKoCB+EGUsfICIQUQqZEKC+klBwQcTmKBWED0cJ6KYVIxERoXyQUU26eC7+cVy/ke3t3tv59x77p05Mb8vc885e6/H2WvvvdY+41w3CQXoCzzhkgYwEHgTOARcpYMbwDtArwLrfhH4DPgDOJ6PoAUy2qcd+Fu/vwSeLtCo70zR+3WuwmpltPEVsAQYo2fTgF/0rBkoycPoScBbwH7gB+Ay0CbZN4G1wKBchVcArRJWn6HNIOBXtZkdUX4/kwucIzMngQk5OeApWidhB1Pu9/d+jwLuqt0LEWS/5I2m8ZfpARZpdGxO9s7LAU9Zo5TM0HUJ8K7mxutAlTcahyPIXeOFa4tkFW7B4JGRA3S9zXuDVxW7xhlgcEiZdepzXyNe0BXvAcA9Ke2p62bvLQZ8BAxxIQCGKYSMJa5YALel9EGsAtt1vRWoBkZHlLc7ahjGgjYgo0LX4xXbbVGXQk3eOwqpUfFYGBIvhB6+eaBB9z4GekSQZRPa+MQVG6BJyqd694YA13R/c4Z+1uZt4Bjwo/aCU+qztqhOGMA+KX/DeQCzFCb/MgxY4e0r6aj126vPN5ZLuUIBvCfl69I8e1Xx3h6sQMBKtb+nhcEcHqv9ZrVG6Jksc/HJQjlSJwUHMjxfLEdsdZupv7ZZzo2o54T0TI7NeB9gnBRczNLmA7W5pb97M7XNIiPIcNdE7RsKK5y8pDHtcguUpeRMc8JJf0zGXPU9FbVvaFTQpJ2kXhvLYANGhpf+sH9v4JL6z4vaPxTA8nQZcJp03HKv67lmrEokjbNAn1xkhMmP2lUhZlQADA8KrlwANnmjujNXOVkBvpWCl10BsKQ0ZZ4ZGzJlDnYfeB54H7hglWtYRask/GjcTki+lc/pOALUAKUa8deAXSqDo9fxVo8otCzEpsfsxGDgNxkU1DfLgN/Jzs/AFmBKlJzPFK6XgPOWycbkRDnwXTDawOf6XSMHt3gh16bDDzuEeC6S8SlKS73CqinflUX1jK1Qxk/AU8AeXc9Po7tHPvpSlY/wyl/Lm8oj9C1T/1d05BNUn5YwDlWbzbq3Kjaj/+NNBjFtKfpETcJPveQvDJbSbPRrdmChnjW4YkDHEdDpCEYHhl/WXKjPkAVXqu2VWEMpG3a2BXyo3dz2maVxHJtqNTKqXZIBdnRaJRknlj10Wm0fJ8CzcqTFJRltkkarSzK2HMuRuy7pBOu1SzrdjnQ1ukekq/F/GpE/5UuVSzLeB6Xvg28ziURnBHY6EnyfrHRJRbXJOa9erw++ZSYOHq/jjUaXZOj4pxoLsS8625ai8w+VjS4Js5IdxwAAAABJRU5ErkJggg==" />
+        <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="2em" viewBox="0 0 512 512"><path d="M228.3 469.1L47.6 300.4c-4.2-3.9-8.2-8.1-11.9-12.4h87c22.6 0 43-13.6 51.7-34.5l10.5-25.2 49.3 109.5c3.8 8.5 12.1 14 21.4 14.1s17.8-5 22-13.3L320 253.7l1.7 3.4c9.5 19 28.9 31 50.1 31H476.3c-3.7 4.3-7.7 8.5-11.9 12.4L283.7 469.1c-7.5 7-17.4 10.9-27.7 10.9s-20.2-3.9-27.7-10.9zM503.7 240h-132c-3 0-5.8-1.7-7.2-4.4l-23.2-46.3c-4.1-8.1-12.4-13.3-21.5-13.3s-17.4 5.1-21.5 13.3l-41.4 82.8L205.9 158.2c-3.9-8.7-12.7-14.3-22.2-14.1s-18.1 5.9-21.8 14.8l-31.8 76.3c-1.2 3-4.2 4.9-7.4 4.9H16c-2.6 0-5 .4-7.3 1.1C3 225.2 0 208.2 0 190.9v-5.8c0-69.9 50.5-129.5 119.4-141C165 36.5 211.4 51.4 244 84l12 12 12-12c32.6-32.6 79-47.5 124.6-39.9C461.5 55.6 512 115.2 512 185.1v5.8c0 16.9-2.8 33.5-8.3 49.1z" /></svg>
+        
       </Link>
       {isMobile ? (
         <div>
@@ -114,20 +110,7 @@ export const Header = () => {
             }
             
             <Menu color="primary">
-            <MenuItem color="success">
-              <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
-                  <Image src={gh_dropdown} width={30} height={30} alt='gh' loading='lazy'/>Source Code
-       </Link>
-              </MenuItem>
-              <hr/>
-              <MenuItem color="primary">
-              <FontAwesomeIcon icon={faStopwatch20} />
-                <Link href="/routines">
-                Routines
-       </Link>
-        </MenuItem>
-              
-              <MenuItem color="primary">
+            <MenuItem color="primary">
               <FontAwesomeIcon icon={faListCheck} />
                 <Link href="/progress">
                 
@@ -135,12 +118,21 @@ export const Header = () => {
           </Link>
               </MenuItem>
               <MenuItem color="primary">
+              <FontAwesomeIcon icon={faStopwatch20} />
+                <Link href="/routines">
+                Routines
+       </Link>
+        </MenuItem>
+              
+
+              <MenuItem color="primary">
               <FontAwesomeIcon icon={faCarrot} />
                 <Link href="/nutrition">
                 
                 Nutritions
           </Link>
               </MenuItem>
+ 
               <hr />
               <MenuItem color="primary">
               <FontAwesomeIcon icon={faEnvelope} />
@@ -148,12 +140,14 @@ export const Header = () => {
               Contact
           </Link>
               </MenuItem>
-
+              <hr/>
+              <MenuItem color="success">
+                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
+                <FontAwesomeIcon icon={faCodeBranch} />
+                  Source Code
+       </Link>
+              </MenuItem>
              
-              
-
-
-
               <hr />
               <MenuItem color="primary">
               <FontAwesomeIcon icon={faUserPlus} /> <Link href="/login">
@@ -205,6 +199,12 @@ export const Header = () => {
                     
                       </MenuButton>
                   <Menu color="primary">
+                    <MenuItem color="primary">
+                    <FontAwesomeIcon icon={faFileCircleExclamation} />
+                <Link href="/documentation">
+                Documentation
+       </Link>
+        </MenuItem>
                     <MenuItem color="warning">
                   <FontAwesomeIcon icon={faUserPlus} />
                 <Link href="/login">
