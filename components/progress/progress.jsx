@@ -51,8 +51,8 @@ export const Progress = () => {
   }, []);
 
   return (
-    <div className='mb-4 flex justify-center flex-col items-center p-2'>
-      Your Progress {username}
+    <div className='bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-center flex-col items-center p-2  [&>*]:font-bold'>
+      <h1 className='p-2 text-2xl'>{username.substring(0, username.indexOf('@'))} progress</h1>
       {isLoading &&
       <Reload/> }
        
@@ -66,7 +66,7 @@ export const Progress = () => {
       )}
    
    <div className="py-8">
-            <a className="w-full md:w-auto flex gap-x-2 items-center text-lg font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900" href='/routines' >
+            <a className="w-full md:w-auto flex gap-x-2 items-center text-lg font-bold rounded-lg p-2 text-zinc-900 bg-slate-200 hover:bg-zinc-300 duration-900" href='/routines' >
             <FontAwesomeIcon icon={faPlus} />
               Add A Routine
             </a>
