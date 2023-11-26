@@ -6,7 +6,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import { Button } from '@mui/joy';
 import {DeleteRoutine} from '@/lib/auth/DeleteRoutine'
-export const HighLevel = ({ RoutinesFetched , Username}) => {
+export const HighLevel = ({ RoutinesFetched , Username, fetchData}) => {
   const [loading, setloading] = React.useState(false);
 
   const handleDeleteRoutine = async (RoutineID) => { 
@@ -18,9 +18,7 @@ export const HighLevel = ({ RoutinesFetched , Username}) => {
         Notify.success('routine deleted from record', {
           position: 'center-top',
         });
-        setTimeout(() => {
-          window.location.reload();
-        }, 200);
+        fetchData(Username)
       }
       else {
         Notify.success('something went wrong please try again later', {

@@ -32,7 +32,7 @@ const Login = () => {
       }
     } catch (error) {
       console.log('signupUsererr', error.code, error.message);
-      Notify.failure(' error.message', {
+      Notify.failure(error.message, {
         position: 'center-top',
       });
     }

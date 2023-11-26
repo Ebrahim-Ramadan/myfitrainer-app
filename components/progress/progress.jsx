@@ -12,36 +12,36 @@ export const Progress = () => {
   const [empty, setempty] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [username, setusername] = useState('');
+  const fetchData = async (PropUserName) => {
+    setusername(PropUserName)
+  setIsLoading(true);
+    try {
+      const response = await fetchActivityDocuments(PropUserName);
+      console.log('response', response);
+      if (response && response.length > 0) {
+        setRoutines(response)
+        setempty(false)
 
+      }
+      else {
+        setempty(true)
+      }
+    } catch (error) {
+      setempty(true)
+      Notify.info((error.message||'Error happened please try again later'), {
+        position: 'center-top',
+      })
+    }
+  setIsLoading(false);
+
+  };
   useEffect(() => {
     const storedUserName = secureLocalStorage.getItem("username");
     const IsloggedIn = secureLocalStorage.getItem("loggedIn");
-    const fetchData = async () => {
-      setusername(storedUserName)
-    setIsLoading(true);
-      try {
-        const response = await fetchActivityDocuments(storedUserName);
-        console.log('response', response);
-        if (response && response.length > 0) {
-          setRoutines(response)
-          setempty(false)
 
-        }
-        else {
-          setempty(true)
-        }
-      } catch (error) {
-        setempty(true)
-        Notify.info((error.message||'Error happened please try again later'), {
-          position: 'center-top',
-        })
-      }
-    setIsLoading(false);
-
-    };
     if (IsloggedIn) {
       
-      fetchData();
+      fetchData(storedUserName);
     }
     else {
       Notify.info('you are signed out, please log in first', {
@@ -60,7 +60,7 @@ export const Progress = () => {
         <p>No activity routines yet.</p>
       ) : (
         <React.Suspense fallback={<Reload/>}>
-                <HighLevel RoutinesFetched={Routines} Username={username} />
+                <HighLevel RoutinesFetched={Routines} Username={username} fetchData={fetchData} />
 
       </React.Suspense>
       )}
