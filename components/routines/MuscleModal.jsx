@@ -10,6 +10,8 @@ import { handlerCreateRoutine } from '@/lib/auth/AddRoutine'
 import secureLocalStorage from "react-secure-storage";
 import { Notify } from 'notiflix';
 import { useRouter } from 'next/navigation';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 
 export const MuscleModal = ({routine}) => {
   const router = useRouter();
@@ -60,7 +62,11 @@ export const MuscleModal = ({routine}) => {
         <ModalDialog>
           <DialogTitle>{routine.name} Routine</DialogTitle>
           <p className='font-medium text-sm text-gray-400'>#{routine.muscle}</p>
-          <span className='font-bold text-lg'>Some Instructions To Read</span>
+          <span className='font-bold text-lg'>
+          <FontAwesomeIcon icon={faCircleInfo} className='mr-2'/>Instructions</span>
+
+         
+
           <DialogContent>
             {showFullInstructions ? routine.instructions : `${truncatedInstructions}....
             
