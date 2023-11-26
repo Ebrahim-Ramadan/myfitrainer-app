@@ -52,7 +52,7 @@ export const Progress = () => {
 
   return (
     <div className='bg-gradient-to-r from-cyan-500 to-blue-500 flex justify-center flex-col items-center p-2  [&>*]:font-bold'>
-      <h1 className='p-2 text-2xl'>{username.substring(0, username.indexOf('@'))} progress</h1>
+      <h1 className='p-2 md:text-3xl text-xl'>{username.substring(0, username.indexOf('@'))} progress</h1>
       {isLoading &&
       <Reload/> }
        

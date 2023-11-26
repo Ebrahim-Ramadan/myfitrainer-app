@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleInfo, faClock, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-import { Button } from '@mui/joy';
 import {DeleteRoutine} from '@/lib/auth/DeleteRoutine'
 export const HighLevel = ({ RoutinesFetched , Username, fetchData}) => {
   const [loading, setloading] = React.useState(false);
@@ -34,11 +33,11 @@ export const HighLevel = ({ RoutinesFetched , Username, fetchData}) => {
     setloading(false)
   }
   return (
-    <div className="[&>*]:backdrop-filter [&>*]:backdrop-brightness-95 [&>*]:backdrop-blur-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
+    <div className="[&>*]:backdrop-filter [&>*]:backdrop-brightness-75 [&>*]:backdrop-blur-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
       {RoutinesFetched.map((routine) => (
-        <div key={routine.id} className="min-w-max rounded-lg p-2 cursor-pointer hover:backdrop-brightness-75 transition-all duration-300">
+        <div key={routine.id} className="min-w-max rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-95 transition-all duration-300">
           <div className="flex flex-col items-start">
-            <p className="text-xl font-bold w-full">{routine.data.name.length < 10 ? (
+            <p className="text-xl font-bold w-full">{routine.data.name.length < 20 ? (
             routine.data.name
             ): (
               routine.data.name.substring(0, 20)+'...'
@@ -49,8 +48,8 @@ export const HighLevel = ({ RoutinesFetched , Username, fetchData}) => {
           <p className="text-sm text-stone-200">
           {routine.data.equipment||'no equapment'} | {routine.data.difficulty}
             </p>
-            <div className='mt-2 border border-2 border-slate-400  rounded-lg p-2 w-full flex flex-row items-center justify-between'>
-              <p>duration: 20 min</p>
+            <div className='mt-2 text-sm border border-2 border-slate-400  rounded-lg p-1 w-full flex flex-row items-center justify-between'>
+              <p>Duration: 20 min</p>
               <FontAwesomeIcon icon={faClock} />
                 </div>
           
