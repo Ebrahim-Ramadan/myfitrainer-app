@@ -48,7 +48,9 @@ export const RoutineSearch = () => {
         }
         else {
           const data = await fetchExercises(OneMuscle.trim());
+          if (data) {
         setExercises(data);
+          }
         }
       } catch (error) {
         console.error(error);

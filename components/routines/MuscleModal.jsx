@@ -32,7 +32,7 @@ export const MuscleModal = ({routine}) => {
     const res = await handlerCreateRoutine(storedUserName, routine)
       console.log('Create_Routine res', res);
       if (res) {
-        Notify.success('Activity document added successfully', {
+        Notify.success('Routine added successfully', {
           position: 'center-top',
         })
         setOpen(false)
