@@ -51,14 +51,12 @@ const handleSubmit = (event) => {
   return (
     <React.Fragment>
       
-      <Button
-        variant="soft"
-        color="primary"
+      <a
         className='underline text-gray-400 hover:text-gray-700'
         onClick={() => setOpen(true)}
       >
         Forget Password?
-      </Button>
+      </a>
       <Modal open={open} onClose={() => setOpen(false)} keepMounted>
         
         <ModalDialog>

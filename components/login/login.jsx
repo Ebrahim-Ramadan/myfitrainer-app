@@ -43,9 +43,9 @@ const Login = () => {
     <>
      
       
-      <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-4">
+      <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-2">
       <h1 className='text-4xl font-bold'>Login</h1>
-        <form onSubmit={(e) => loginUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-9 w-full">
+        <form onSubmit={(e) => loginUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-4 w-full">
          
         <div className="w-full flex flex-col gap-y-2">
           <label htmlFor="username" className="text-xl font-medium">
@@ -81,7 +81,7 @@ const Login = () => {
         </div>
         
 
-          <button role='submit' className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900' disabled={isLoading}>
+          <button role='submit' className=' text-lg font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900' disabled={isLoading}>
             {isLoading ?
             'processing...':'Login'}
             </button>
@@ -92,7 +92,7 @@ const Login = () => {
       </div>
     <div className="flex flex-col text-md font-bold justify-center items-center mt-2 space-y-1 mb-4">
     <div className="text-xl ">Don&#8217;t have an account yet?</div>
-    <Link href="/signup" className="rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900">
+    <Link href="/signup" className="rounded-lg px-2 py-1 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900">
       Sign up
     </Link>
       </div>

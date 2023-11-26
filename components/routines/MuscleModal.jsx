@@ -15,6 +15,7 @@ export const MuscleModal = ({routine}) => {
   const router = useRouter();
 
   const [open, setOpen] = React.useState(false);
+  const [adding, setadding] = React.useState(false);
   const [showFullInstructions, setShowFullInstructions] = React.useState(false);
   const truncatedInstructions = routine.instructions.slice(0, 150);
   const remainingInstructions = routine.instructions.slice(150);
@@ -25,6 +26,7 @@ export const MuscleModal = ({routine}) => {
   const storedUserName = secureLocalStorage.getItem("username");
   const IsloggedIn = secureLocalStorage.getItem("loggedIn");
   const Create_Routine = async (event) => {
+    setadding(true)
     event.preventDefault();
     if (IsloggedIn) {
     const res = await handlerCreateRoutine(storedUserName, routine)
@@ -35,9 +37,10 @@ export const MuscleModal = ({routine}) => {
         })
         setOpen(false)
       }
+      setadding(false)
     }
     else {
-      Notify.info('not logged in, go login first', {
+      Notify.info('not logged in, login first', {
         position: 'center-top',
       })
       setOpen(false)
@@ -72,8 +75,9 @@ export const MuscleModal = ({routine}) => {
           <hr />
           <Stack spacing={2}>
             <Button type="submit" color='primary' variant='outlined'
-            onClick={Create_Routine}>
-                ADD
+            onClick={Create_Routine} disabled={adding}>
+              
+              {adding?'adding...':'ADD'}
               </Button>
             </Stack>
         </ModalDialog>
