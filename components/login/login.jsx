@@ -80,8 +80,8 @@ const Login = () => {
           </div>
         </div>
         
-
-          <button role='submit' className=' text-lg font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900' disabled={isLoading}>
+<p className='text-gray-400 md:text-base text-xs'>by logging in, you agree to our <a href='/privacy-and-policy' className='underline'>privacy and policy</a></p>
+          <button role='submit' className='mt-[-8px] text-lg font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900' disabled={isLoading}>
             {isLoading ?
             'processing...':'Login'}
             </button>

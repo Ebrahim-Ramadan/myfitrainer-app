@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleChevronDown, faUserPlus, faFileCircleExclamation,faCodeBranch, faListCheck , faStopwatch20, faEnvelope, faCarrot } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown, faUserPlus, faBuildingShield, faFolderOpen,faCodeBranch, faListCheck , faStopwatch20, faEnvelope, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
@@ -134,26 +134,45 @@ export const Header = () => {
               </MenuItem>
  
               <hr />
+
               <MenuItem color="primary">
+                    <FontAwesomeIcon icon={faFolderOpen} />
+                <Link href="/documentation">
+                Documentation
+       </Link>
+        </MenuItem>
+
+
+        <MenuItem color="primary">
               <FontAwesomeIcon icon={faEnvelope} />
               <Link href="/contact">
               Contact
           </Link>
               </MenuItem>
-              <hr/>
-              <MenuItem color="success">
-                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
-                <FontAwesomeIcon icon={faCodeBranch} />
-                  Source Code
+
+
+              <MenuItem color="primary">
+                    <FontAwesomeIcon icon={faBuildingShield} />
+                <Link href="/privacy-and-policy">
+                privacy and policy
        </Link>
-              </MenuItem>
+        </MenuItem>
+
+              <hr/>
+
              
               <hr />
               <MenuItem color="primary">
               <FontAwesomeIcon icon={faUserPlus} /> <Link href="/login">
                 Add Account
        </Link>
-        </MenuItem>
+              </MenuItem>
+              <MenuItem color="success">
+                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
+                <FontAwesomeIcon icon={faCodeBranch} />
+                  Source Code
+       </Link>
+              </MenuItem>
               <MenuItem color="danger">
               <button onClick={handleSignOut}>log out</button>
         </MenuItem>
@@ -200,9 +219,21 @@ export const Header = () => {
                       </MenuButton>
                   <Menu color="primary">
                     <MenuItem color="primary">
-                    <FontAwesomeIcon icon={faFileCircleExclamation} />
+                    <FontAwesomeIcon icon={faFolderOpen} />
                 <Link href="/documentation">
                 Documentation
+       </Link>
+        </MenuItem>
+                    <MenuItem color="primary">
+                    <FontAwesomeIcon icon={faEnvelope} />
+                <Link href="/contact">
+                Contact
+       </Link>
+        </MenuItem>
+                    <MenuItem color="primary">
+                    <FontAwesomeIcon icon={faBuildingShield} />
+                <Link href="/privacy-and-policy">
+                privacy and policy
        </Link>
         </MenuItem>
                     <MenuItem color="warning">
