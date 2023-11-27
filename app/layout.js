@@ -32,6 +32,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
       <script dangerouslySetInnerHTML={clarityScript} />
+      <meta name="keywords" content="fitness, gym progress, gym sets tracker, fitness routines, gymrat, gymbruh, gymbro" />
       </head>
       <body className={GeistSans.className}>
         <Header />
