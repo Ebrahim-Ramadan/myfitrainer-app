@@ -156,7 +156,7 @@ export const RoutineSearch = () => {
       <hr/>
       <div className='py-2 md:space-x-2 text-sm text-bg-00 flex flex-row justify-center items-center'>
         <Image src={US} width={50} height={50} alt='no muscles found' loading='lazy'/>
-          <p className='font-bold'>{loading ?
+          <p className='font-bold text-white'>{loading ?
           'fetchng routines...':'smash it! here you go'}</p>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-2'>
