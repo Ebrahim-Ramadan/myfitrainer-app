@@ -114,11 +114,10 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
               {localload &&
               <Reload/>
               }
-  Routine Sets
   {Array.isArray(routine.sets) && routine.sets.length > 0 ? (
             routine.sets.map((set) => (
               <div key={set.setId} 
-              className={`rounded-lg p-1 flex justify-between items-center ${!set.setData.finished ? 'bg-gray-200 hover:bg-gray-300 cursor-pointer':'text-gray-500'}`}
+              className={`rounded-lg p-2 flex justify-between items-center ${!set.setData.finished ? 'bg-gray-200 hover:bg-gray-300 cursor-pointer':'text-gray-500'}`}
               onClick={async()=>
               {
                 if (!set.setData.finished) {
@@ -154,25 +153,28 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
               
       <div className="flex flex-col">
         <FormLabel htmlFor="kilograms">Kilograms</FormLabel>
-        <Input
+        <input
           id="kilograms"
           placeholder="Enter weight in kilograms"
           required
-          step="0.1"
-          type="number"
+          step="2.5"
+                  type="number"
+                  min={2.5}
+                  className='border border-2 border-slate-200 rounded-lg p-2'
           value={SetData.kilograms}
           onChange={handleSetsInputs}
         />
       </div>
       <div className="flex flex-col">
         <FormLabel htmlFor="repetitions">Repetitions</FormLabel>
-        <Input
+        <input
           id="repetitions"
-          min="1"
+                  min={1}
           placeholder="Enter number of repetitions"
           required
           step="1"
-          type="number"
+                  type="number"
+                  className='border border-2 border-slate-200 rounded-lg p-2'
           value={SetData.repetitions}
           onChange={handleSetsInputs}
         />
