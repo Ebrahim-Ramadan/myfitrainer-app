@@ -13,15 +13,18 @@ import Image from 'next/image';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { Reload } from '@/components/globals/Reload';
 
+
 export const RoutineSearch = () => {
+  const [multipleLoading, setmultipleLoading] = useState(false);
   const [loading, setLoading] = useState(false);
   const [exercises, setExercises] = useState([]);
+  const [empty, setempty] = useState(false);
 
   const [OneMuscle, setOneMuscle] = useState('');
 
 
   const handleSearch = async (Muscles) => {
-    setLoading(true);
+    setmultipleLoading(true);
     try {
       const data = await fetchExercises(Muscles);
       setExercises(data);
@@ -31,7 +34,7 @@ export const RoutineSearch = () => {
         position: 'center-top',
       });
     }
-    setLoading(false);
+    setmultipleLoading(false);
   };
 
 
@@ -50,6 +53,10 @@ export const RoutineSearch = () => {
           const data = await fetchExercises(OneMuscle.trim());
           if (data) {
         setExercises(data);
+          }
+          else {
+            setempty(true)
+            setExercises(null)
           }
         }
       } catch (error) {
@@ -79,16 +86,7 @@ export const RoutineSearch = () => {
       <div >
 
         <div className='flex md:flex-row flex-col md:space-x-2 justify-center'>
-          <form >
-          <Input
-            autoComplete='on'
-            placeholder='start typing...' required type='text'
-            value={OneMuscle}
-            onChange={(e) => setOneMuscle(e.target.value)}
-          />
-          
-            </form>
-            <label className='text-sm text-gray-400 font-bold flex justify-center py-2'>OR</label>
+
 
             <form
               
@@ -134,8 +132,8 @@ export const RoutineSearch = () => {
               ))}
                   </Select>
                  
-                <Button className='bg-blue-500 ' type="submit" variant='solid' color='primary' disabled={loading}>
-                  {loading ?
+                <Button className='bg-blue-500 ' type="submit" variant='solid' color='primary' disabled={multipleLoading}>
+                  {multipleLoading ?
                     'on it...'
                   :
                   'Search'}
@@ -144,7 +142,17 @@ export const RoutineSearch = () => {
               </Stack>
               
             </form>
-            
+            <label className='text-sm text-gray-400 font-bold flex justify-center py-2'>OR</label>
+
+            <form >
+          <Input
+            autoComplete='on'
+            placeholder='search for a muscle...' required type='text'
+            value={OneMuscle}
+            onChange={(e) => setOneMuscle(e.target.value)}
+          />
+          
+            </form>
 
         </div>
 
@@ -156,23 +164,26 @@ export const RoutineSearch = () => {
       <hr/>
       <div className='py-2 md:space-x-2 text-sm text-bg-00 flex flex-row justify-center items-center'>
         <Image src={US} width={50} height={50} alt='no muscles found' loading='lazy'/>
-          <p className='font-bold text-white'>{loading ?
+          <p className='font-bold text-white'>{loading ||multipleLoading ?
           'fetchng routines...':'smash it! here you go'}</p>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-2'>
       
-      {exercises ? (
+      {exercises && (
             exercises.map((exercise) => (
     <Suspense fallback={<Reload/>} key={exercise.muscle} >
                 <RoutinesMap data={exercise} />
     </Suspense>
                 
       ))
-    ) : (
-      <p>No Data returned, Maybe A typo in the muscle name?</p>
           )}
-          
-      </div>
+        </div>
+        {empty &&!exercises &&
+                 <div className='flex flex-col items-center space-y-2 justify-center space-x-2'>
+                 <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="28" width="30" viewBox="0 0 576 512"><path d="M80 160c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H464c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80zM0 176c0-44.2 35.8-80 80-80H464c44.2 0 80 35.8 80 80v16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z" /></svg>
+               <p className='text-xs text-gray-200'>Maybe A muscle typo? please try again</p>
+               </div>
+          }
 </div>
      
     </>

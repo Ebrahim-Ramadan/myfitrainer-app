@@ -11,7 +11,7 @@ import secureLocalStorage from "react-secure-storage";
 import { Notify } from 'notiflix';
 import { useRouter } from 'next/navigation';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export const MuscleModal = ({routine}) => {
   const router = useRouter();
@@ -53,10 +53,10 @@ export const MuscleModal = ({routine}) => {
   return (
     <React.Fragment>
       <button
-        className='text-white rounded-lg p-2 h-fit bg-[#181616] font-bold hover:bg-[#282424] transition-all duration-900'
+        className='text-white rounded-lg p-2 h-fit bg-[#181616] font-bold hover:bg-[#282424] transition-all duration-900 flex items-center justify-between  transition-all duration-300 transform transition-transform duration-200 hover:scale-105'
         onClick={() => setOpen(true)}
       >
-        {routine.name}.
+        {routine.name} <FontAwesomeIcon icon={faPlus} />
       </button>
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
