@@ -35,7 +35,7 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
         e.preventDefault();
       const res = await addSetToRoutine(Username, routine.id, SetData)
       if (res) {
-        Notify.info('added a set successfully', {
+        Notify.success('added a set successfully', {
           position: 'center-top',
         })
       }
@@ -88,7 +88,7 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
             routine.sets.map((set) => (
       <div key={set.setId} className='text-cyan-500  items-center rounded-lg p-2 bg-[#1E2745] flex justify-between'>
       <span>
-        Weight: {set.setData.kilograms} Reps: {set.setData.repetitions}
+                  Weight: {set.setData.kilograms.substring(0, 3)}{set.setData.kilograms.length > 3 && '..'}, Reps: {set.setData.repetitions.substring(0, 3)}{set.setData.repetitions.length>3&&'..'}
                 </span>
                 <FontAwesomeIcon icon={set.setData.finished ? faCircleCheck:faCircleHalfStroke } />
       </div>
@@ -121,18 +121,23 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
               className={`rounded-lg p-1 flex justify-between items-center ${!set.setData.finished ? 'bg-gray-200 hover:bg-gray-300 cursor-pointer':'text-gray-500'}`}
               onClick={async()=>
               {
-                setlocalload(true)
-                const res = await updateSetFinishedState(Username, routine.id, set.setId)
-                setlocalload(false)
-                if (res) {
-                  fetchData(Username)
-                  Notify.info(`finished the ${set.setData.kilograms}kg set successfully`, {
-                    position: 'center-top',
-                  })
-                }
+                if (!set.setData.finished) {
+                  setlocalload(true)
+                  const res = await updateSetFinishedState(Username, routine.id, set.setId)
+                  setlocalload(false)
+                  if (res) {
+                    fetchData(Username)
+                    Notify.success(`finished the ${set.setData.kilograms}kg set successfully`, {
+                      position: 'center-top',
+                    })
+                  }
+              }
+              Notify.info(`you have already finished the ${set.setData.kilograms}kg set`, {
+                position: 'center-top',
+              }) 
               }}>
       <span>
-        Weight: {set.setData.kilograms} Reps: {set.setData.repetitions}
+      Weight: {set.setData.kilograms.substring(0, 4)}{set.setData.kilograms.length > 5 && '..'}, Reps: {set.setData.repetitions.substring(0, 4)}{set.setData.repetitions.length>5&&'..'}
                 </span>
                 <FontAwesomeIcon icon={set.setData.finished ? faCircleCheck : faCircleHalfStroke} 
                   
