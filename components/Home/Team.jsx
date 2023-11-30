@@ -6,7 +6,8 @@ export const Team = () => {
     return (
       <div className='mt-12 grid grid-cols-2 md:grid-cols-5 justify-center items-center gap-4'>
         
-          {OurTeam.map((member) => (
+        {OurTeam.map((member) => (
+            
             <div key={member.name} className="dev-card p-2 rounded-lg font-bold text-center">
               <figure>
                 <div className="h-fit flex flex-col justify-center items-center"> 
@@ -14,7 +15,7 @@ export const Team = () => {
                     <Image
                       width={100}
                       height={100}
-                      src={member.img}
+                      src={`/${member.img}`} 
                       alt={member.name}
                     />
                   </div>

@@ -154,7 +154,7 @@ export const Header = () => {
               <MenuItem color="primary">
                     <FontAwesomeIcon icon={faBuildingShield} />
                 <Link href="/privacy-and-policy">
-                privacy and policy
+                Privacy and Policy
        </Link>
         </MenuItem>
 
