@@ -93,3 +93,20 @@ stage {
 .gh:hover>*{
   filter: invert(99%) sepia(5%) saturate(19%) hue-rotate(217deg) brightness(118%) contrast(87%);
 }
+
+
+div.dev-card{
+  background-image: url('../assets/team-bg.png');
+  
+  background-size: cover; 
+  background-position: center;
+  width: 100%;
+}
+div.routines-bg{
+  background-image: url('../assets/routines-bg.png');
+  
+  background-size: cover; 
+  background-position: center; 
+  width: 100%;
+  object-fit:contain;
+}

@@ -40,10 +40,10 @@ const Login = () => {
   };
 
   return (
-    <>
+    <div className='min-h-screen bg-black'>
      
       
-      <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-2">
+      <div className="min-h-screen  flex justify-center flex-col items-center  gap-y-2">
       <h1 className='text-4xl font-bold'>Login</h1>
         <form onSubmit={(e) => loginUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-4 w-full">
          
@@ -80,7 +80,7 @@ const Login = () => {
           </div>
         </div>
         
-<p className='text-gray-400 md:text-base text-xs'>by logging in, you agree to our <a href='/privacy-and-policy' className='underline'>privacy and policy</a></p>
+<p className='text-gray-400 md:text-base text-xs'>By logging in, you agree to our <a href='/privacy-and-policy' className='underline'>privacy and policy</a></p>
           <button role='submit' className='mt-[-8px] text-lg font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900' disabled={isLoading}>
             {isLoading ?
             'processing...':'Login'}
@@ -88,15 +88,16 @@ const Login = () => {
       </form>
          <a className="flex justify-end cursor-pointer ">
         <BasicModalDialog/>
-            </a> 
-      </div>
-    <div className="flex flex-col text-md font-bold justify-center items-center mt-2 space-y-1 mb-4">
+        </a> 
+        <div className="flex flex-col text-md font-bold justify-center items-center mt-2 space-y-1 mb-4">
     <div className="text-xl ">Don&#8217;t have an account yet?</div>
     <Link href="/signup" className="rounded-lg px-2 py-1 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900">
       Sign up
     </Link>
       </div>
-    </>
+      </div>
+
+    </div>
 
   );
 };

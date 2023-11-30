@@ -35,8 +35,10 @@ export const HighLevel = ({ RoutinesFetched , Username, fetchData}) => {
   }
   return (
     <div className="[&>*]:backdrop-filter [&>*]:backdrop-brightness-95 [&>*]:backdrop-blur-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-2">
+      
       {RoutinesFetched.map((routine) => (
         <RoutineModal key={routine.id} routine={routine} loading={loading} handleDeleteRoutine={handleDeleteRoutine} Username={Username} fetchData={fetchData} />
+        
         
       ))}
       

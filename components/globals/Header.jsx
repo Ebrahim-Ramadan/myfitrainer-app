@@ -98,7 +98,7 @@ export const Header = () => {
               
               :
               <div className='flex flex-row gap-x-2'>
-               <Link href="/login" className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900'>
+               <Link href="/signup" className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900'>
            
            Get started
          
@@ -257,7 +257,7 @@ export const Header = () => {
               :
               <>
                 
-              <Link href="/login" className='text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 rounded-lg px-1 duration-900'>
+              <Link href="/signup" className='text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 rounded-lg px-1 duration-900'>
            
               Get started
             

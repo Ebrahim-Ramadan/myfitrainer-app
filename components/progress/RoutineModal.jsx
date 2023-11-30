@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react';
 import Button from '@mui/joy/Button';
-import {addSetToRoutine} from '@/lib/auth/Addsets';
+import {addSetToRoutine, updateSetFinishedState} from '@/lib/auth/Addsets';
 import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Modal from '@mui/joy/Modal';
@@ -9,9 +9,12 @@ import ModalDialog from '@mui/joy/ModalDialog';
 import DialogTitle from '@mui/joy/DialogTitle';
 import DialogContent from '@mui/joy/DialogContent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo, faClock, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCircleInfo, faClock, faTrash, faCircleCheck , faCircleHalfStroke} from '@fortawesome/free-solid-svg-icons';
 import { Checkbox } from '@mui/joy';
-export const RoutineModal = ({routine, loading, handleDeleteRoutine, Username, fetchData}) => {
+import { Reload } from '../globals/Reload';
+import { Notify } from 'notiflix';
+
+export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, fetchData }) => {
   const [open, setOpen] = React.useState(false);
   const [localload, setlocalload] = React.useState(false);
 
@@ -30,9 +33,13 @@ export const RoutineModal = ({routine, loading, handleDeleteRoutine, Username, f
     const handleAddSet = async (e) => {
         setlocalload(true)
         e.preventDefault();
-          const res = await addSetToRoutine(Username, routine.id, SetData)
-          console.log('res', res);
-        console.log(SetData);
+      const res = await addSetToRoutine(Username, routine.id, SetData)
+      if (res) {
+        Notify.info('added a set successfully', {
+          position: 'center-top',
+        })
+      }
+      
         setSetData({
           kilograms: '',
           repetitions: '',
@@ -43,21 +50,16 @@ export const RoutineModal = ({routine, loading, handleDeleteRoutine, Username, f
         fetchData(Username)
         
       };
-    const handleOpenModal = (e) => { 
-        if (e.target.id === 'not-to-trigger') {
-            
-            return;
-          }
-        setOpen(true)
-    }
+
   return (
     <React.Fragment>
       
           <div
         
-        className="min-w-max rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300 transform transition-transform duration-300 hover:scale-105 h-fit">
+        className="border border-1 backdrop-blur-lg md:border-none min-w-max rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300 transform transition-transform duration-300 hover:scale-105 h-fit">
+        
               <div
-                  onClick={handleOpenModal}
+                  onClick={()=>setOpen(true)}
                   className="flex flex-col items-start">
             <p className="text-xl font-bold w-full">{routine.data.name.length < 20 ? (
             routine.data.name
@@ -77,30 +79,25 @@ export const RoutineModal = ({routine, loading, handleDeleteRoutine, Username, f
           
           </div>
 
-              <div
-                  onClick={handleOpenModal}
-                  className="flex flex-col m-2 text-sm font-semibold bg-sky-600 p-2 rounded-lg">
-         Routine Sets
-          {Array.isArray(routine.data.sets) && routine.data.sets.length>0 ? (
-              routine.data.sets.map((set, index) => (
-                <div key={index} className="flex justify-between">
-                      <span>{`kg: ${set.kilograms.substring(0, 2)}${set.kilograms.length > 2 ? '..' : ''}, reps: ${set.repetitions.substring(0, 2)}${set.repetitions.length > 2 ? '..' : ''}, ${set.finished ? 'finished' : 'in progress'}`}</span>
-                      {!set.finished &&
-                     <Checkbox id='not-to-trigger'/>
-                          
-                      }
-                </div>
-              ))
-              
-            ) : (
-                          <div className=' text-center flex flex-col gap-y-2'>
-                              <p className='text-xs font-normal text-stone-200'>no sets for this routine.</p>
-                              <Button variant='outlined' color='neutral' size='sm'>Add</Button>
-             </div>
-            )}
-{/* <hr/> */}
-            
-          </div>
+          <div
+  onClick={() => setOpen(true)}
+  className="flex flex-col m-2 text-sm font-bold rounded-lg gap-y-1"
+>
+  Routine Sets
+  {Array.isArray(routine.sets) && routine.sets.length > 0 ? (
+            routine.sets.map((set) => (
+      <div key={set.setId} className='text-cyan-500  items-center rounded-lg p-2 bg-[#1E2745] flex justify-between'>
+      <span>
+        Weight: {set.setData.kilograms} Reps: {set.setData.repetitions}
+                </span>
+                <FontAwesomeIcon icon={set.setData.finished ? faCircleCheck:faCircleHalfStroke } />
+      </div>
+    ))
+  ) : (
+    <p className='text-center text-gray-600'>No sets</p>
+  )}
+</div>
+
           <div className="mt-2 flex justify-between flex-row  items-center [&>*]:p-2">
             <FontAwesomeIcon icon={faCircleInfo} className='hover:text-gray-200'/>
             <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteRoutine(routine.id)} className={`text-red-400 rounded-full ${loading&&'opacity-50'} items-center hover:text-red-800`}/>
@@ -108,13 +105,49 @@ export const RoutineModal = ({routine, loading, handleDeleteRoutine, Username, f
           </div>
           <Modal open={open} onClose={() => setOpen(false)} keepMounted>
   <ModalDialog>
-    <DialogTitle>Add set</DialogTitle>
+    <DialogTitle>Routine Sets</DialogTitle>
     <DialogContent>
 
-                      
-
-    <form className="flex flex-col gap-y-4" onSubmit={handleAddSet}>
-      <div className="flex flex-col gap-y-2">
+    <div
+  className="flex flex-col text-cyan-800 m-2 text-sm font-bold rounded-lg "
+            >
+              {localload &&
+              <Reload/>
+              }
+  Routine Sets
+  {Array.isArray(routine.sets) && routine.sets.length > 0 ? (
+            routine.sets.map((set) => (
+              <div key={set.setId} 
+              className={`rounded-lg p-1 flex justify-between items-center ${!set.setData.finished ? 'bg-gray-200 hover:bg-gray-300 cursor-pointer':'text-gray-500'}`}
+              onClick={async()=>
+              {
+                setlocalload(true)
+                const res = await updateSetFinishedState(Username, routine.id, set.setId)
+                setlocalload(false)
+                if (res) {
+                  fetchData(Username)
+                  Notify.info(`finished the ${set.setData.kilograms}kg set successfully`, {
+                    position: 'center-top',
+                  })
+                }
+              }}>
+      <span>
+        Weight: {set.setData.kilograms} Reps: {set.setData.repetitions}
+                </span>
+                <FontAwesomeIcon icon={set.setData.finished ? faCircleCheck : faCircleHalfStroke} 
+                  
+                />
+      </div>
+    ))
+  ) : (
+    <p className='text-center text-gray-600'>No sets</p>
+  )}
+</div>
+            
+            <form className="flex flex-col gap-y-2 mt-4 font-bold" onSubmit={handleAddSet}>
+    <h1 className='text-black text-lg '>Add A Set</h1>
+              
+      <div className="flex flex-col">
         <FormLabel htmlFor="kilograms">Kilograms</FormLabel>
         <Input
           id="kilograms"
@@ -126,7 +159,7 @@ export const RoutineModal = ({routine, loading, handleDeleteRoutine, Username, f
           onChange={handleSetsInputs}
         />
       </div>
-      <div className="flex flex-col gap-y-2">
+      <div className="flex flex-col">
         <FormLabel htmlFor="repetitions">Repetitions</FormLabel>
         <Input
           id="repetitions"
@@ -141,11 +174,11 @@ export const RoutineModal = ({routine, loading, handleDeleteRoutine, Username, f
       </div>
       <div className="flex items-center gap-2">
         <Checkbox id="finished" checked={SetData.finished} onChange={handleSetsInputs} />
-        <FormLabel className="text-sm font-normal" htmlFor="finished">
-          Finished?
+        <FormLabel className="text-sm " htmlFor="finished">
+          Finished this one?
         </FormLabel>
       </div>
-      <Button className="w-full" type="submit" disabled={localload}>
+      <Button className="w-full" color='primary' variant='soft' type="submit" disabled={localload}>
                               {localload?'adding':'Add Set'}
       </Button>
     </form>

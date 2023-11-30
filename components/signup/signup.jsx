@@ -44,9 +44,9 @@ const Signup = () => {
   
    
   return (
-    <>
+    <div className='min-h-screen '>
       
-      <div className="flex justify-center flex-col items-center mt-16 md:mt-28 gap-y-2">
+      <div className="flex justify-center flex-col items-center gap-y-2 min-h-screen ">
       <h1 className='text-4xl font-bold'>Sign Up</h1>
       <form onSubmit={(e)=>registerUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-4 w-full">
         <div className="w-full flex flex-col gap-y-2">
@@ -87,15 +87,15 @@ const Signup = () => {
             'processing...':'Signup'}
             </button>
       </form>
-      
-    </div>
-    <div className="mt-4 flex flex-col font-bold text-md justify-center items-center mt-4 space-y-1 mb-4">
+      <div className="mt-4 flex flex-col font-bold text-md justify-center items-center mt-4 space-y-1 mb-4">
     <div className="text-xl">Already have an account?</div>
     <Link href="/login" className=" rounded-lg px-2 py-1 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900">
       Log in
     </Link>
       </div>
-    </>
+    </div>
+
+    </div>
   )
 }
 

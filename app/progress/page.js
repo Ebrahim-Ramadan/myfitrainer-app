@@ -5,7 +5,7 @@ import { Reload } from '@/components/globals/Reload';
 const Page = () => {
   return (
     <Suspense fallback={<Reload/>}>
-      <Progress />
+      <Progress />    
     </Suspense>
   );
 };
