@@ -5,13 +5,13 @@ import {OurTeam} from './OurTeam'
 export const Team = () => {
   return (
       
-      <div className='mt-12 md:w-2/3 w-full p-2 md:p-0 grid grid-cols-1 md:grid-cols-5 justify-center items-center gap-4'>
+      <div className='mt-12 md:w-fit w-full p-2 md:p-0 grid grid-cols-1 md:grid-cols-5 justify-center items-center gap-4'>
         {OurTeam.map((member) => (
             
             <div key={member.name} className="dev-card flex md:flex-col flex-row p-2 rounded-lg font-bold items-center">
               <figure>
                 <div className="h-fit flex flex-col justify-center items-center"> 
-                  <div className="rounded-full border border-2 border-slate-200 overflow-hidden">
+                  <div className="rounded-full border border-2 border-slate-200  overflow-hidden">
                     <Image
                       width={100}
                       height={100}
@@ -21,18 +21,16 @@ export const Team = () => {
                   </div>
                 </div>
               </figure>
-            <div className="w-full md:text-center text-start ml-2">
+            <div className="w-full md:text-center text-start px-2">
             <p className=' mt-2 text-base'>{member.name}</p>
-                <p className="text-gray-900 text-sm">{member.role}</p>
-                <div className="justify-end  ">
-                  <Link
+                <p className="text-gray-300 text-sm">{member.role}</p>
+                <Link
                     aria-label="View developer profile"
-                    className="hover:text-gray-200 dark:hover:text-gray-200 "
+                    className="hover:text-gray-200 dark:hover:text-gray-300 "
                     href={member.visit}
                   >
                     Visit
                   </Link>
-                </div>
               </div>
             </div>
           ))}

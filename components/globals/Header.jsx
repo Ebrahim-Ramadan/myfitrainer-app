@@ -18,7 +18,7 @@ import { useRouter } from 'next/navigation';
 import { Reload } from './Reload';
 import { Notify } from 'notiflix';
 import gh from '@/assets/gh.svg';
-import gh_dropdown from '@/assets/gh-dropdown.svg';
+
 export const Header = () => {
   const router = useRouter();
   const [loggedIn, setLoggedIn] = useState(false);
@@ -68,7 +68,7 @@ export const Header = () => {
   };
 
   return (
-    <header className={`backdrop-blur-xl backdrop-grayscale backdrop-blur-md flex h-20 w-full items-center px-4 md:px-6 sticky top-0 z-40 ${isMobile && 'justify-between'}`}>
+    <header className={`backdrop-blur-xl backdrop-grayscale backdrop-blur-md flex h-16 w-full items-center px-4 md:px-6 sticky top-0 z-40 ${isMobile && 'justify-between'}`}>
       {loading &&
       <Reload/>}
         <Link href="/">
@@ -185,15 +185,17 @@ export const Header = () => {
         (
           <nav className="ml-auto flex space-x-5 [&>*]:text-md [&>*]:font-bold items-center navlinks [&>*]:p-2 [&>*]:rounded-lg">
           
-          <Link href="/routines">
+          <Link href="/routines" className='flex flex-row items-center gap-x-2'>
            
                Routines
+               <FontAwesomeIcon icon={faStopwatch20} />
             
             </Link>
             
-          <Link href="/nutrition">
+          <Link href="/nutrition" className='flex flex-row items-center gap-x-2'>
            
               Nutritions
+              <FontAwesomeIcon icon={faCarrot} />
             
           </Link>
           

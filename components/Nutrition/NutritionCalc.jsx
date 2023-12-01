@@ -51,7 +51,7 @@ const NutritionCalc = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center   bg-gray-950 p-4">
+    <div className="min-h-screen flex flex-col items-center   bg-[#080808] p-4">
       <form onSubmit={getNutritionInfo} className="w-full max-w-2xl shadow-md rounded-md p-4">
         <h1 className="text-2xl font-bold mb-4 text-center text-white">Calculate Your Food Nutritions</h1>
         <div className="grid w-full max-w-sm gap-4 mx-auto">
@@ -64,7 +64,7 @@ const NutritionCalc = () => {
               <Input
                 className="bg-gray-900 text-white col-span-5"
                 id="food-quantity"
-                placeholder="[100g] [chicken breasts]"
+                placeholder="(e.g: 1lb brisket and fries)"
                 type="text"
                 required
                 value={meal}
@@ -81,13 +81,13 @@ const NutritionCalc = () => {
                 
               </Button>
             </div>
-            <label className="text-gray-400 font-medium">(e.g: 1lb brisket and fries)</label>
+            <a target='_blank' className="flex justify-center flex-row items-center gap-x-2 text-center mt-2 underline text-xs md:text-sm hover:text-blue-600 text-blue-500 font-medium" href='https://api-ninjas.com/api/nutrition'> <Image priority src={alienEats} width={40} height={40} alt='alien-eating' className='rounded-full shadow-lg' />
+          <p className='text-sm md:text-md'>See ningasAPI documentation</p>
+          </a>
           </div>
           </div>
       </form>
-          <a target='_blank' className="flex justify-center flex-row items-center gap-x-2 text-center underline text-xs md:text-sm hover:text-blue-600 text-blue-500 font-medium" href='https://api-ninjas.com/api/nutrition'> <Image priority src={alienEats} width={40} height={40} alt='alien-eating' className='rounded-full shadow-lg' />
-          <p className='text-sm md:text-md'>See ningasAPI documentation</p>
-          </a>
+         
           {!empty ?
             <div className='flex gap-2 flex-col md:flex-row w-full'>
 { nutritionsData.map((nutritionData, idx) => (

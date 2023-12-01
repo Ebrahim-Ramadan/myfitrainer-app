@@ -117,7 +117,7 @@ export const RoutineSearch = () => {
                       <div>
                         {selected.map((muscle) => (
                           <span key={muscle.value}>
-                            {muscle.value},
+                            {muscle.value} {` `}
                           </span>
                         ))}
                       </div>

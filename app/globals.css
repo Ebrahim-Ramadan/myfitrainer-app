@@ -101,7 +101,8 @@ div.dev-card{
   background-size: cover; 
   background-position: center;
   width: 100%;
-  background: radial-gradient(circle at 0% 93%,#000294, #3f41bd, #b2b2b2)
+  /* background: radial-gradient(circle at 0% 93%,#000294, #3f41bd, #b2b2b2) */
+  background: radial-gradient(circle at 0% 125%,#5c57ff, #9d64ff, #d572ff)
 }
 div.routines-bg{
   background-image: url('../assets/routines-bg.png');
