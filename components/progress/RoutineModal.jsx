@@ -1,7 +1,7 @@
 'use client'
 import * as React from 'react';
 import Button from '@mui/joy/Button';
-import {addSetToRoutine, updateSetFinishedState} from '@/lib/auth/Addsets';
+import {addSetToRoutine, updateSetFinishedState, updateRoutineFinished} from '@/lib/auth/Addsets';
 import FormLabel from '@mui/joy/FormLabel';
 import Input from '@mui/joy/Input';
 import Modal from '@mui/joy/Modal';
@@ -53,10 +53,12 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
 
   return (
     <React.Fragment>
-      
+      {localload &&
+              <Reload/>
+              }
           <div
         
-        className="border border-1 backdrop-blur-lg md:border-none min-w-max rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300 transform transition-transform duration-300 hover:scale-105 h-fit">
+        className="border border-1 border-slate-200 backdrop-blur-lg rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300  h-fit">
         
               <div
                   onClick={()=>setOpen(true)}
@@ -94,12 +96,32 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
       </div>
     ))
   ) : (
-    <p className='text-center text-gray-600'>No sets</p>
+    <p className='text-center text-gray-600'>no sets atm</p>
   )}
 </div>
 
           <div className="mt-2 flex justify-between flex-row  items-center [&>*]:p-2">
-            <FontAwesomeIcon icon={faCircleInfo} className='hover:text-gray-200'/>
+          <FontAwesomeIcon icon={routine.finished? faCircleCheck:faCircleHalfStroke} className='hover:text-gray-200'
+            onClick={async () => {
+              setlocalload(true)
+
+            const res = await updateRoutineFinished(Username, routine.id)
+            console.log('res', res);
+              if (res) {
+                Notify.success(`you just finished the ${routine.data.name} successfully`, {
+                  position: 'center-top',
+                })
+            fetchData(Username)
+              }
+              else {
+                Notify.info(`finish the ${routine.data.name} sets first`, {
+                  position: 'center-top',
+                })
+              }
+              setlocalload(false)
+
+          }}
+          />
             <FontAwesomeIcon icon={faTrash} onClick={() => handleDeleteRoutine(routine.id)} className={`text-red-400 rounded-full ${loading&&'opacity-50'} items-center hover:text-red-800`}/>
           </div>
           </div>
@@ -117,23 +139,31 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
   {Array.isArray(routine.sets) && routine.sets.length > 0 ? (
             routine.sets.map((set) => (
               <div key={set.setId} 
-              className={`rounded-lg p-2 flex justify-between items-center ${!set.setData.finished ? 'bg-gray-200 hover:bg-gray-300 cursor-pointer':'text-gray-500'}`}
+              className={`rounded-lg p-2 flex justify-between items-center ${!set.setData.finished ? 'bg-gray-200 hover:bg-gray-300 cursor-pointer':'text-gray-500 pointer-events-none'}`}
               onClick={async()=>
               {
                 if (!set.setData.finished) {
                   setlocalload(true)
                   const res = await updateSetFinishedState(Username, routine.id, set.setId)
-                  setlocalload(false)
                   if (res) {
                     fetchData(Username)
                     Notify.success(`finished the ${set.setData.kilograms}kg set successfully`, {
                       position: 'center-top',
                     })
                   }
-              }
-              Notify.info(`you have already finished the ${set.setData.kilograms}kg set`, {
-                position: 'center-top',
-              }) 
+                  else {
+                    Notify.failure(`something went wrong, please try again`, {
+                      position: 'center-top',
+                    })
+                  }
+                  setlocalload(false)
+                }
+                else {
+                  Notify.info(`you have already finished the ${set.setData.kilograms}kg set`, {
+                    position: 'center-top',
+                  }) 
+                }
+              
               }}>
       <span>
       Weight: {set.setData.kilograms.substring(0, 4)}{set.setData.kilograms.length > 5 && '..'}, Reps: {set.setData.repetitions.substring(0, 4)}{set.setData.repetitions.length>5&&'..'}
@@ -144,11 +174,11 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
       </div>
     ))
   ) : (
-    <p className='text-center text-gray-600'>No sets</p>
+    <p className='text-center text-gray-600'>no sets atm</p>
   )}
 </div>
             
-            <form className="flex flex-col gap-y-2 mt-4 font-bold" onSubmit={handleAddSet}>
+            <form className="flex flex-col gap-y-1 mt-4 font-bold" onSubmit={handleAddSet}>
     <h1 className='text-black text-lg '>Add A Set</h1>
               
       <div className="flex flex-col">
@@ -157,9 +187,8 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
           id="kilograms"
           placeholder="Enter weight in kilograms"
           required
-          step="2.5"
                   type="number"
-                  min={2.5}
+                  min={1}
                   className='border border-2 border-slate-200 rounded-lg p-2'
           value={SetData.kilograms}
           onChange={handleSetsInputs}

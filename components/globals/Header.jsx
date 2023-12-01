@@ -213,7 +213,7 @@ export const Header = () => {
           My Progress
           
           </Link>
-                <Dropdown style={{margin:'0'}}>
+                <Dropdown >
                       <MenuButton color="primary" className='hover:bg-white'>
                     {username}
             <FontAwesomeIcon icon={faCircleChevronDown} style={{ width: '35px' }} />

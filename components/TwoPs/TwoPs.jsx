@@ -1,5 +1,3 @@
-import React from 'react'
-
  const TwoPs = () => {
   return (
     <div className="md:p-24 p-6 space-y-8">
