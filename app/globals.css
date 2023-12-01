@@ -96,11 +96,12 @@ stage {
 
 
 div.dev-card{
-  background-image: url('../assets/team-bg.png');
+  /* background-image: url('../assets/team-bg.png'); */
   
   background-size: cover; 
   background-position: center;
   width: 100%;
+  background: radial-gradient(circle at 0% 93%,#000294, #3f41bd, #b2b2b2)
 }
 div.routines-bg{
   background-image: url('../assets/routines-bg.png');
