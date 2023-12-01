@@ -3,7 +3,7 @@ export const NutritionsResponse = ({nutritionsResponse}) => {
   return (
     <>
       
-     <div className="bg-gray-900 shadow-md rounded-md p-4 mt-4">
+     <div className="bg-gray-900 shadow-md rounded-md p-4 mt-4 ">
         <h2 className="text-lg font-bold mb-2 text-white capitalize">{nutritionsResponse.name} Nutritional Information</h2>
         <div className="grid gap-1.5">
         {Object.entries(nutritionsResponse).map(([key, value]) => (

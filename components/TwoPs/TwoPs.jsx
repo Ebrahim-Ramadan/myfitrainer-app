@@ -2,7 +2,7 @@ import React from 'react'
 
  const TwoPs = () => {
   return (
-    <div className="px-6 py-12 space-y-8">
+    <div className="md:p-24 p-6 space-y-8">
       <h1 className="text-4xl font-bold">Privacy & Policy</h1>
       <p className="text-lg text-zinc-500 dark:text-zinc-400">
         Welcome to the GymRat Fitness Progress Tracker&apos;s privacy and policy page. Here we outline our policies regarding

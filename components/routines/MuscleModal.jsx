@@ -32,7 +32,6 @@ export const MuscleModal = ({routine}) => {
     event.preventDefault();
     if (IsloggedIn) {
     const res = await handlerCreateRoutine(storedUserName, routine)
-      console.log('Create_Routine res', res);
       if (res) {
         Notify.success('Routine added successfully', {
           position: 'center-top',

@@ -52,7 +52,7 @@ const handleSubmit = (event) => {
     <React.Fragment>
       
       <a
-        className='underline text-gray-400 hover:text-gray-700'
+        className='underline text-gray-300 hover:text-gray-400'
         onClick={() => setOpen(true)}
       >
         Forget Password?

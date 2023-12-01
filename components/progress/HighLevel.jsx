@@ -1,7 +1,5 @@
 'use client'
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleInfo, faClock, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 import {DeleteRoutine} from '@/lib/auth/DeleteRoutine'
@@ -13,7 +11,6 @@ export const HighLevel = ({ RoutinesFetched , Username, fetchData}) => {
     setloading(true)
     try {
       const resDlt = await DeleteRoutine(Username, RoutineID)
-      console.log('resDlt', resDlt);
       if (resDlt) {
         Notify.success('routine deleted from record', {
           position: 'center-top',

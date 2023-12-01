@@ -17,7 +17,6 @@ export const Progress = () => {
   setIsLoading(true);
     try {
       const response = await fetchActivityDocuments(PropUserName);
-      console.log('fetchActivityDocuments response', response);
       if (response && response.length > 0) {
         setRoutines(response)
         setempty(false)

@@ -10,12 +10,11 @@ import React from 'react'
       <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Oops!</h1>
       <h2 className="mt-2 text-2xl font-semibold text-gray-700 dark:text-gray-300">404</h2>
       <p className="mt-2 text-lg text-gray-600 dark:text-gray-400 flex flex-col gap-y-2">
-          We can not find the page you are looking for.
           <Button
           color='primary'
           variant="outlined"
         >
-         Go Home
+         Go Home nigga
         </Button>
       </p>
      
