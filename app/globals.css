@@ -112,3 +112,7 @@ div.routines-bg{
   width: 100%;
   object-fit:contain;
 }
+
+svg.rbh polygon:hover{
+fill: #9d64ff !important;
+}

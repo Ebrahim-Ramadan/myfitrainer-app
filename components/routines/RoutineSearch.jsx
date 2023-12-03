@@ -114,7 +114,7 @@ export const RoutineSearch = () => {
                       return <span>Select a muscle...</span>;
                     }
                     return (
-                      <div className='flex flex-row gap-x-1 text-xs'>
+                      <div className='flex flex-row gap-1 text-xs flex-wrap'>
                         {selected.map((muscle) => (
                           <span key={muscle.value} className='bg-gray-200 rounded-lg px-1'>
                             {muscle.value} {` `}

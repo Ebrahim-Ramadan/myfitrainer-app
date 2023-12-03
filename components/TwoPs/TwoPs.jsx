@@ -1,4 +1,4 @@
- const TwoPs = () => {
+const TwoPs = () => {
   return (
     <div className="md:p-24 p-6 space-y-8">
       <h1 className="text-4xl font-bold">Privacy & Policy</h1>
@@ -8,9 +8,9 @@
         associated with that data. We strive to be transparent about how we collect and use your information, to keep
         your information secure and to provide you meaningful choices.
       </p>
-      <div className="space-y-6">
-        <div className="p-6 space-y-4">
-          <h2 className="text-2xl font-semibold">Data Collection</h2>
+      <div className="space-y-6 ">
+        <div className="p-6 space-y-4 scroll-mt-12 scroll-smooth" id="Data-Collection">
+          <a href="#Data-Collection" className="scroll-smooth text-2xl font-semibold" >Data Collection</a>
           <p className="text-zinc-500 dark:text-zinc-400">
             We collect several different types of information for various purposes to provide and improve our Service to
             you. Personal data, Usage data, Tracking & Cookies data are few among the types of data we collect. Personal
@@ -18,8 +18,8 @@
             service, we may also collect information on how the service is accessed and used.
           </p>
         </div>
-        <div className="p-6 space-y-4">
-          <h2 className="text-2xl font-semibold">Use of Data</h2>
+        <div className="p-6 space-y-4 scroll-mt-12" id="Use-of-Data">
+          <a href="#Use-of-Data" className=" text-2xl font-semibold">Use of Data</a> 
           <p className="text-zinc-500 dark:text-zinc-400">
             GymRat uses the collected data for various purposes. To provide and maintain our service, to notify you
             about changes to our service, to allow you to participate in interactive features of our service when you
@@ -28,8 +28,8 @@
             are among the uses of the data we collect.
           </p>
         </div>
-        <div className="p-6 space-y-4">
-          <h2 className="text-2xl font-semibold ">Security of Data</h2>
+        <div className="p-6 space-y-4 scroll-mt-12" id="Security-of-Data">
+          <a href="#Security-of-Data" className="scroll-mt-6 scroll-smooth text-2xl font-semibold ">Security of Data</a>
                   <p className="text-zinc-500 dark:text-zinc-400" >
                   At [Your Fitness Tracker App Name], we prioritize the security and confidentiality of your personal information. We implement robust measures to safeguard your data against unauthorized access, alteration, disclosure, or destruction.
                   </p>
@@ -71,7 +71,6 @@ While we employ stringent security measures, we encourage our users to take resp
                       External Links
 Please note that our app may contain links to external websites or services. We do not have control over the privacy practices or content of these third-party sites. We recommend reviewing the privacy policies of these external sites before sharing any personal information.
 </p>
-
 
 
         </div>

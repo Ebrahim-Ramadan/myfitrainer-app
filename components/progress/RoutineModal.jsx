@@ -58,23 +58,23 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
               }
           <div
         
-        className="border border-1 border-slate-200 backdrop-blur-lg rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300  h-fit">
+        className=" border border-1 border-slate-200 backdrop-blur-lg rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300  h-fit">
         
               <div
                   onClick={()=>setOpen(true)}
-                  className="flex flex-col items-start">
-            <p className="text-xl font-bold w-full">{routine.data.name.length < 20 ? (
+                  className=" flex flex-col items-start">
+            <p className="text-xl text-white  w-full">{routine.data.name.length < 20 ? (
             routine.data.name
             ): (
               routine.data.name.substring(0, 20)+'...'
           )}</p>
-          <p className="text-sm text-stone-200">
+          <p className="text-sm text-stone-300">
           #{routine.data.muscle}
           </p>
-          <p className="text-sm text-stone-200">
+          <p className="text-sm text-stone-400">
           {routine.data.equipment||'no equapment'} | {routine.data.difficulty}
             </p>
-            <div className='mt-2 text-sm border border-2 border-slate-400  rounded-lg p-1 w-full flex flex-row items-center justify-between'>
+            <div className='mt-2 text-sm border border-2 text-stone-200 border-slate-300  rounded-lg p-1 w-full flex flex-row items-center justify-between'>
               <p>Duration: 20 min</p>
               <FontAwesomeIcon icon={faClock} />
                 </div>
@@ -83,7 +83,7 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
 
           <div
   onClick={() => setOpen(true)}
-  className="flex flex-col m-2 text-sm font-bold rounded-lg gap-y-1"
+  className="flex flex-col text-white m-2 text-sm font-bold rounded-lg gap-y-1"
 >
   Routine Sets
   {Array.isArray(routine.sets) && routine.sets.length > 0 ? (
@@ -100,8 +100,8 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
   )}
 </div>
 
-          <div className="mt-2 flex justify-between flex-row  items-center [&>*]:p-2">
-          <FontAwesomeIcon icon={routine.finished? faCircleCheck:faCircleHalfStroke} className='hover:text-gray-200'
+          <div className="mt-2 flex justify-between flex-row  items-center [&>*]:rounded-lg [&>*]:p-2">
+          <FontAwesomeIcon icon={routine.finished? faCircleCheck:faCircleHalfStroke} className='bg-gray-100 hover:bg-gray-300 text-gray-700'
             onClick={async () => {
               setlocalload(true)
 
@@ -114,7 +114,7 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
             fetchData(Username)
               }
               else {
-                Notify.info(`finish the ${routine.data.name} sets first`, {
+                Notify.failure(`routine sets unfinished`, {
                   position: 'center-top',
                 })
               }
