@@ -162,10 +162,12 @@ export const RoutineSearch = () => {
      
       <div className='mt-6'>
       <hr/>
-      <div className='py-2 md:space-x-2 text-sm text-bg-00 flex flex-row justify-center items-center'>
-        <Image src={US} width={50} height={50} alt='no muscles found' loading='lazy'/>
-          <p className='font-bold text-white'>{loading ||multipleLoading ?
-          'fetchng routines...':'smash it! here you go'}</p>
+      <div className='font-bold py-2 text-sm text-bg-00 flex flex-col justify-center items-center'>
+       
+          <p className='text-white flex flex-row items-center md:gap-x-2'>
+          <Image src={US} width={50} height={50} alt='no muscles found' loading='lazy'/>{loading || multipleLoading ?
+            'fetchng routines...' : 'smash it! here you go'}</p>
+          <a href='/progress' className='border border-2 border-slate-200 p-2 rounded-lg hover:bg-gray-600 transition-all duration-300'>see progress</a>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-2'>
       
@@ -179,11 +181,13 @@ export const RoutineSearch = () => {
           )}
         </div>
         {empty &&!exercises &&
-                 <div className='flex flex-col items-center space-y-2 justify-center space-x-2'>
+                 <div className='flex flex-col items-center space-y-2 justify-center space-x-2 mt-8'>
                  <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="28" width="30" viewBox="0 0 576 512"><path d="M80 160c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H464c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80zM0 176c0-44.2 35.8-80 80-80H464c44.2 0 80 35.8 80 80v16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z" /></svg>
                <p className='text-xs text-gray-200'>Maybe A muscle typo? please try again</p>
                </div>
-          }
+        }
+        
+        
 </div>
      
     </>

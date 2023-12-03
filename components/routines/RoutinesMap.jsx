@@ -14,6 +14,7 @@ export const RoutinesMap = ({data}) => {
           <MuscleModal key={routine.name} routine={ routine} />
         ))}
       </ul>
+     
     </div>
   );
 };
