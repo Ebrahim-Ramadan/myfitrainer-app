@@ -44,7 +44,7 @@ const Login = () => {
      
       
       <div className="min-h-screen  flex justify-center flex-col items-center  gap-y-2">
-      <h1 className='text-4xl font-bold'>Login</h1>
+      <h1 className='text-4xl font-bold text-white'>Login</h1>
         <form onSubmit={(e) => loginUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-4 w-full">
          
         <div className="w-full flex flex-col gap-y-2">
@@ -81,7 +81,9 @@ const Login = () => {
         </div>
         
 <p className='text-gray-300 hover:text-gray-400 w-fit md:text-base text-xs'>By logging in, you agree to our <a href='/privacy-and-policy' className='underline'>privacy and policy</a></p>
-          <button role='submit' className='mt-[-8px] text-lg font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900' disabled={isLoading}>
+          <button role='submit' className=' mt-[-8px] text-lg font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900'
+            
+            disabled={isLoading}>
             {isLoading ?
             'processing...':'Login'}
             </button>

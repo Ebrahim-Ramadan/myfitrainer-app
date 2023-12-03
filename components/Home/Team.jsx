@@ -8,7 +8,7 @@ export const Team = () => {
       <div className='mt-12 md:w-fit w-full p-2 md:p-0 grid grid-cols-1 md:grid-cols-5 justify-center items-center gap-4'>
         {OurTeam.map((member) => (
             
-            <div key={member.name} className="dev-card flex md:flex-col flex-row p-2 rounded-lg font-bold items-center">
+            <a href={member.visit} key={member.name} className="dev-card flex md:flex-col flex-row p-2 rounded-lg font-bold items-center">
               <figure>
                 <div className="h-fit flex flex-col justify-center items-center"> 
                   <div className="rounded-full border border-2 border-slate-200  overflow-hidden">
@@ -32,7 +32,7 @@ export const Team = () => {
                     Visit
                   </Link>
               </div>
-            </div>
+            </a>
           ))}
         </div>
       );
