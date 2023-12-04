@@ -32,6 +32,14 @@ const NutritionCalc = () => {
       if (Array.isArray(nutritions)&&nutritions.length > 0) {
         setempty(false)
         setnutritionsData(nutritions)
+
+        //calc the summations values
+        nutritions.forEach((nutrition) => {
+          Protein_Sum += nutrition['protein_g'];
+          fats_Sum += nutrition['fat_total_g'];
+          calories_Sum += nutrition['calories'];
+        });
+        
       }
       else {
         setempty(true)
@@ -49,7 +57,27 @@ const NutritionCalc = () => {
     }
     setloading(false)
   };
-
+  const calculateSums = () => {
+    let Protein_Sum = 0;
+    let fats_Sum = 0;
+    let calories_Sum = 0;
+  
+    nutritionsData.forEach((nutrition) => {
+      Protein_Sum += nutrition['protein_g'] || 0;
+      fats_Sum += nutrition['fat_total_g'] || 0;
+      calories_Sum += nutrition['calories'] || 0;
+    });
+  
+    // Round the sums to two decimal places
+    Protein_Sum = parseFloat(Protein_Sum.toFixed(2));
+    fats_Sum = parseFloat(fats_Sum.toFixed(2));
+    calories_Sum = parseFloat(calories_Sum.toFixed(2));
+  
+    return { Protein_Sum, fats_Sum, calories_Sum };
+  };
+  
+  let { Protein_Sum, fats_Sum, calories_Sum } = calculateSums();
+  
   return (
     <div className="min-h-screen flex flex-col items-center   bg-[#080808] p-4">
       <form onSubmit={getNutritionInfo} className="w-full max-w-2xl shadow-md rounded-md p-4">
@@ -81,6 +109,11 @@ const NutritionCalc = () => {
                 
               </Button>
             </div>
+            <p className='text-xs text-gray-400'>The default amount set to
+            <kbd className='font-bold underline ml-1'>100g</kbd>
+              , and kindly try to separate each meal with &apos;
+              <kbd className='font-bold underline'>and</kbd>
+              &apos; instead of comma</p>
             <a target='_blank' className="flex justify-center flex-row items-center gap-x-2 text-center mt-2 underline text-xs md:text-sm hover:text-blue-600 text-blue-500 font-medium" href='https://api-ninjas.com/api/nutrition'> <Image priority src={alienEats} width={40} height={40} alt='alien-eating' className='rounded-full shadow-lg' />
           <p className='text-sm md:text-md'>See ningasAPI documentation</p>
           </a>
@@ -88,29 +121,43 @@ const NutritionCalc = () => {
           </div>
       </form>
          
-          {!empty ?
-            <div className='flex gap-2 flex-col md:flex-row w-full'>
-{ nutritionsData.map((nutritionData, idx) => (
-    <Suspense fallback={<Reload/>} key={idx} >
-
-                <NutritionsResponse nutritionsResponse={nutritionData}  />
-    </Suspense>
-                
+      {!empty && nutritionsData.length > 0 && (
+        <>
+          <p className='font-bold text-lg text-yellow-400 text-center '>TOTAL
+            <br />
+            <div className='text-base flex flex-row gap-1 hover:[&>*]:bg-yellow-900 
+            [&>*]:transition [&>*]:duration-200
+            [&>*]:bg-yellow-950 [&>*]:px-2 [&>*]:rounded-lg'>
+            <p>
+            Protein {Protein_Sum}
+            </p>
+            <p>
+            Fats {fats_Sum} 
+            </p>
+            <p>
+            Calories {calories_Sum}
+            </p>
+</div>
+          </p>
+                  
+          <div className='flex gap-2 flex-col md:flex-row w-full'>
+            {nutritionsData.map((nutritionData, idx) => (
+              <Suspense fallback={<Reload />} key={idx}>
+                <NutritionsResponse nutritionsResponse={nutritionData} />
+              </Suspense>
             ))}
-            </div> 
-           
-        : (
-          <div className='mt-4 flex flex-col items-center space-y-2 justify-center space-x-2'>
-                 <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="28" width="30" viewBox="0 0 576 512"><path d="M80 160c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H464c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80zM0 176c0-44.2 35.8-80 80-80H464c44.2 0 80 35.8 80 80v16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z" /></svg>
-               <p className='text-xs text-gray-200'>Maybe A muscle typo? please try again</p>
-               </div>
-            )
-            
-          }
-          
-          
-      
+          </div>
+        </>
+      )}
 
+      {empty && (
+        <div className='mt-4 flex flex-col items-center space-y-2 justify-center space-x-2'>
+          <svg xmlns="http://www.w3.org/2000/svg" fill='white' height="28" width="30" viewBox="0 0 576 512">
+            <path d="M80 160c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H464c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80zM0 176c0-44.2 35.8-80 80-80H464c44.2 0 80 35.8 80 80v16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176z" />
+          </svg>
+          <p className='text-xs text-gray-200'>Maybe a muscle typo? Please try again.</p>
+        </div>
+      )}
 
     </div>
   );

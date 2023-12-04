@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchActivityDocuments } from '@/lib/auth/FetchRoutines'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faQuestion, faRotateRight } from '@fortawesome/free-solid-svg-icons';
 import secureLocalStorage from "react-secure-storage";
 import { Notify } from 'notiflix';
 import {HighLevel} from './HighLevel'
@@ -12,8 +12,9 @@ import TabList from '@mui/joy/TabList';
 import Tab from '@mui/joy/Tab';
 import TabPanel from '@mui/joy/TabPanel';
 import { Reload } from '../globals/Reload';
-
+import { useRouter } from 'next/navigation';
 export const Progress = () => {
+  const router = useRouter()
   const [UnfinishedRoutines, setUnfinishedRoutines] = useState([]);
   const [finishedRoutines, setfinishedRoutines] = useState([]);
   const [empty, setempty] = useState(false);
@@ -72,10 +73,16 @@ export const Progress = () => {
               disableIndicator
       color="primary">Past</Tab>
         </TabList>
-        <a className=" flex md:gap-x-2 gap-x-1 items-center md:text-md text-xs font-bold rounded-lg p-2 text-zinc-900 bg-slate-200 hover:bg-zinc-300 duration-900" href='/routines' >
-            <FontAwesomeIcon icon={faPlus} />
-              Add Routine
-            </a>
+          <div className='flex flex-row items-center gap-x-2 [&>*]:rounded-lg [&>*]:cursor-pointer [&>*]:p-2 [&>*]:bg-slate-200 hover:[&>*]:bg-zinc-300 [&>*]:duration-900'>
+          <FontAwesomeIcon icon={faPlus} onClick={()=>router.push('/routines')}/>
+
+            <FontAwesomeIcon icon={faRotateRight} onClick={async() => {
+              await fetchData(username)
+            }} />
+
+            <FontAwesomeIcon icon={faQuestion} />
+
+</div>
      </div>
         <TabPanel value={0}
         >

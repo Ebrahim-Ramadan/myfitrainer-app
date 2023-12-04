@@ -68,7 +68,7 @@ export const Header = () => {
   };
 
   return (
-    <header className={`backdrop-blur-xl backdrop-grayscale backdrop-blur-md flex h-16 w-full items-center px-4 md:px-6 sticky top-0 z-40 ${isMobile && 'justify-between'}`}>
+    <header className={`backdrop-blur-2xl backdrop-grayscale flex h-16 w-full items-center px-4 md:px-6 sticky top-0 z-40 ${isMobile && 'justify-between'}`}>
       {loading &&
       <Reload/>}
         <Link href="/">
@@ -183,7 +183,7 @@ export const Header = () => {
          </div>
       ) :
         (
-          <nav className="ml-auto flex space-x-5 [&>*]:text-md [&>*]:font-bold items-center navlinks [&>*]:p-2 [&>*]:rounded-lg">
+          <nav className="ml-auto flex space-x-2 [&>*]:text-md [&>*]:font-bold items-center navlinks [&>*]:p-1 [&>*]:rounded-lg">
           
           <Link href="/routines" className='flex flex-row items-center gap-x-2'>
            

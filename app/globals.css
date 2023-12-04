@@ -30,8 +30,7 @@ body {
 }
 .navlinks >*:hover{
   transition: all 0.4s;
-  color: #191919;
-  background-color: #ffffff;
+  opacity: 75%;
 }
 
 @keyframes dot-flashing {
@@ -41,13 +40,6 @@ body {
   50%, 100% {
     background-color: rgba(152, 128, 255, 0.2);
   }
-}
-stage {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .dot-flashing {
@@ -90,8 +82,8 @@ stage {
   animation: dot-flashing 1s infinite alternate;
   animation-delay: 1s;
 }
-.gh:hover>*{
-  filter: invert(99%) sepia(5%) saturate(19%) hue-rotate(217deg) brightness(118%) contrast(87%);
+.gh:hover>* {
+  filter: invert(29%) sepia(5%) saturate(19%) hue-rotate(217deg) brightness(118%) contrast(87%);
 }
 
 

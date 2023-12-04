@@ -47,7 +47,7 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
         });
         setlocalload(false)
           setOpen(false)
-        fetchData(Username)
+        await fetchData(Username)
         
       };
 
@@ -74,7 +74,7 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
           <p className="text-sm text-stone-400">
           {routine.data.equipment||'no equapment'} | {routine.data.difficulty}
             </p>
-            <div className='mt-2 text-sm border border-2 text-stone-200 border-slate-300  rounded-lg p-1 w-full flex flex-row items-center justify-between'>
+            <div className='mt-2 text-sm border-b-2 text-stone-200 border-slate-300  p-1 w-full flex flex-row items-center justify-between'>
               <p>Duration: 20 min</p>
               <FontAwesomeIcon icon={faClock} />
                 </div>
@@ -111,7 +111,7 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
                 Notify.success(`you just finished the ${routine.data.name} successfully`, {
                   position: 'center-top',
                 })
-            fetchData(Username)
+            await fetchData(Username)
               }
               else {
                 Notify.failure(`routine sets unfinished`, {
@@ -146,7 +146,7 @@ export const RoutineModal = ({ routine, loading, handleDeleteRoutine, Username, 
                   setlocalload(true)
                   const res = await updateSetFinishedState(Username, routine.id, set.setId)
                   if (res) {
-                    fetchData(Username)
+                    await fetchData(Username)
                     Notify.success(`finished the ${set.setData.kilograms}kg set successfully`, {
                       position: 'center-top',
                     })
