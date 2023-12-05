@@ -8,7 +8,8 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Image from 'next/image';
 import alienEats from '@/assets/alien-eating.webp'
 import { Reload } from '@/components/globals/Reload';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDna, faPersonDress, faFire, faHeartCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 const NutritionCalc = () => {
   const [meal, setMeal] = React.useState('');
@@ -61,22 +62,25 @@ const NutritionCalc = () => {
     let Protein_Sum = 0;
     let fats_Sum = 0;
     let calories_Sum = 0;
+    let cholesterol_mg = 0;
   
     nutritionsData.forEach((nutrition) => {
       Protein_Sum += nutrition['protein_g'] || 0;
       fats_Sum += nutrition['fat_total_g'] || 0;
       calories_Sum += nutrition['calories'] || 0;
+      cholesterol_mg += nutrition['cholesterol_mg'] || 0;
     });
   
     // Round the sums to two decimal places
     Protein_Sum = parseFloat(Protein_Sum.toFixed(2));
     fats_Sum = parseFloat(fats_Sum.toFixed(2));
     calories_Sum = parseFloat(calories_Sum.toFixed(2));
+    cholesterol_mg = parseFloat(cholesterol_mg.toFixed(2));
   
-    return { Protein_Sum, fats_Sum, calories_Sum };
+    return { Protein_Sum, fats_Sum, calories_Sum, cholesterol_mg };
   };
   
-  let { Protein_Sum, fats_Sum, calories_Sum } = calculateSums();
+  let { Protein_Sum, fats_Sum, calories_Sum , cholesterol_mg} = calculateSums();
   
   return (
     <div className="min-h-screen flex flex-col items-center   bg-[#080808] p-4">
@@ -124,19 +128,25 @@ const NutritionCalc = () => {
       {!empty && nutritionsData.length > 0 && (
         <>
           <p className='font-bold text-lg text-yellow-400 text-center '>TOTAL
-            <br />
-            <div className='text-base flex flex-row gap-1 hover:[&>*]:bg-yellow-900 
+            <div className='mt-2 md:text-base text-sm [&>*]:flex [&>*]:flex-row [&>*]:gap-x-1 [&>*]:items-center grid grid-cols-2 md:grid-cols-4   gap-2 hover:[&>*]:bg-yellow-900 
             [&>*]:transition [&>*]:duration-200
             [&>*]:bg-yellow-950 [&>*]:px-2 [&>*]:rounded-lg'>
-            <p>
-            Protein {Protein_Sum}
+              <p>
+           <FontAwesomeIcon icon={faFire} />
+                Calories: {calories_Sum}
+              </p>
+              <p>
+                <FontAwesomeIcon icon={faPersonDress} />
+                Fats: {fats_Sum} 
             </p>
             <p>
-            Fats {fats_Sum} 
-            </p>
+         <FontAwesomeIcon icon={faDna} />
+                Protein: {Protein_Sum}
+              </p>
             <p>
-            Calories {calories_Sum}
-            </p>
+            <FontAwesomeIcon icon={faHeartCircleCheck} />
+           Cholesterol: {cholesterol_mg}
+              </p>
 </div>
           </p>
                   
