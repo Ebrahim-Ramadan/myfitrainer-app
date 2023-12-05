@@ -100,7 +100,7 @@ body {
   background: radial-gradient(circle at 50% 50%,#5651ff, #8f70ff, #bd8fff)
 }
 div.routines-bg{
-  background-image: url('../assets/routines-bg.png');
+  background-image: url('../assets/routines-bg.webp');
   
   background-size: cover; 
   background-position: center; 
