@@ -14,7 +14,7 @@ import { Reload } from '../globals/Reload';
 export const History = ({finishedRoutines, Username, fetchData, handleDeleteRoutine, isLoading}) => {
   return (
     <div className='flex flex-col gap-y-4 [&>*]:p-2 text-white'>
-      {Array.isArray(finishedRoutines.sets) && finishedRoutines.length > 0 ? (
+      {Array.isArray(finishedRoutines) && finishedRoutines.length > 0 ? (
         
         finishedRoutines.map((routine) => (
       <AccordionBasic key={routine.id} className='w-full flex flex-col md:flex-row justify-between rounded-lg items-center border border-2 border-green-950' routine={routine} Username={Username} fetchData={fetchData} handleDeleteRoutine={handleDeleteRoutine} isLoading={isLoading} />
@@ -44,23 +44,29 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
         <AccordionDetails >
         {localload &&
               <Reload/>
-              }
+          }
+          
           <div>
             Routine Sets
             <div className='grid md:grid-cols-6 grid-cols-2 gap-4 [&>*]:px-2'>
-            {Array.isArray(routine.sets) && routine.sets.length > 0 ? (
+            {Array.isArray(routine.sets) && routine.sets.length > 0 && (
             routine.sets.map((set) => (
       <div key={set.setId} className={`text-[#2F4858] underline w-fit items-center rounded-lg `}>
-      <span>
-                  kg: {set.setData.kilograms.substring(0, 3)}{set.setData.kilograms.length > 3 && '..'}, reps: {set.setData.repetitions.substring(0, 3)}{set.setData.repetitions.length>3&&'..'}
+                <span>
+                {set.setData.repetitions.substring(0, 3)}{set.setData.repetitions.length>3&&'..'} reps,  {' '}
+                  {set.setData.kilograms.substring(0, 3)}{set.setData.kilograms.length > 3 && '..'}kg each
                 </span>
       </div>
     ))
-  ) : (
-    <FontAwesomeIcon icon={faBatteryEmpty} />
-  )}
+              )}
+              
             </div>
-            
+            <div className='flex justify-center'>
+              
+            {Array.isArray(routine.sets) && routine.sets.length == 0 && (
+                <FontAwesomeIcon icon={faBatteryEmpty} />
+              )}
+            </div>
             <div>
               <div className="mt-2 flex justify-end flex-row  items-center [&>*]:rounded-lg [&>*]:cursor-pointer [&>*]:transition-all [&>*]:duration-200 text-center">
                 <input
@@ -71,7 +77,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
       />
                 <label
                   htmlFor="addRoutinePics"
-          className="w-full mr-12 hover:border hover:border-1 hover:border-cyan-400 flex items-center justify-center font-semibold text-cyan-700"
+          className="w-full mr-12 hover:bg-cyan-200 py-2 flex items-center justify-center font-semibold text-cyan-700"
           variant="outline"
         >
                   <FontAwesomeIcon icon={faCloudArrowUp} style={{marginRight:'5px'}} />

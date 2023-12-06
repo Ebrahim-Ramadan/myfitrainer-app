@@ -133,10 +133,7 @@ export const RoutineSearch = () => {
                   </Select>
                  
                 <Button className='bg-blue-500 ' type="submit" variant='solid' color='primary' disabled={multipleLoading}>
-                  {multipleLoading ?
-                    'on it...'
-                  :
-                  'Search'}
+                Search
                   </Button>
         
               </Stack>

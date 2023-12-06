@@ -14,6 +14,8 @@ import TabPanel from '@mui/joy/TabPanel';
 import { Reload } from '../globals/Reload';
 import { useRouter } from 'next/navigation';
 import {DeleteRoutine} from '@/lib/auth/DeleteRoutine'
+import DeleteAllRoutines from './DeleteAllRoutines';
+import Help from './Help';
 
 export const Progress = () => {
   const router = useRouter()
@@ -27,7 +29,7 @@ export const Progress = () => {
   setIsLoading(true);
     try {
       const response = await fetchActivityDocuments(PropUserName);
-      if (response && response.unfinishedRoutines.length > 0) {
+      if (response && (response.unfinishedRoutines.length > 0||response.finishedRoutines.length > 0)) {
         setUnfinishedRoutines(response.unfinishedRoutines)
         setfinishedRoutines(response.finishedRoutines)
         setempty(false)
@@ -108,8 +110,9 @@ export const Progress = () => {
               await fetchData(username)
             }} />
 
-            <FontAwesomeIcon icon={faQuestion} />
-
+            <Help/>
+            <DeleteAllRoutines Username={username}  fetchData={fetchData}/>
+            {/* delete all routines btn */}
 </div>
      </div>
         <TabPanel value={0}
