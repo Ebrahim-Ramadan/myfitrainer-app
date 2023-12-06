@@ -38,13 +38,20 @@ const Login = () => {
     }
     setIsLoading(false);
   };
-
+  
   return (
     <div className='min-h-screen bg-black'>
      
       
       <div className="min-h-screen  flex justify-center flex-col items-center  gap-y-2">
-      <h1 className='text-4xl font-bold text-white'>Login</h1>
+      <svg xmlns="http://www.w3.org/2000/svg" height="2rem" width="2rem" viewBox="0 0 512 512"><path fill="#ffffff" d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0h32c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64H64c123.7 0 224 100.3 224 224v32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V320C100.3 320 0 219.7 0 96z"/></svg>
+        <h1 className='text-4xl font-bold text-white'>Login</h1>
+        <div className="flex flex-row text-white text-base font-semibold justify-start items-center gap-x-2">
+    <p>Don&#8217;t have an account yet?</p>
+    <Link href="/signup" className="rounded-lg underline  duration-900">
+      Sign up
+    </Link>
+      </div>
         <form onSubmit={(e) => loginUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-4 w-full">
          
         <div className="w-full flex flex-col gap-y-2">
@@ -89,12 +96,7 @@ const Login = () => {
             </button>
       </form>
       <BasicModalDialog/>
-        <div className="flex flex-col text-md font-bold justify-center items-center mt-2 space-y-1 mb-4">
-    <div className="text-xl ">Don&#8217;t have an account yet?</div>
-    <Link href="/signup" className="rounded-lg px-2 py-1 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900">
-      Sign up
-    </Link>
-      </div>
+        
       </div>
 
     </div>

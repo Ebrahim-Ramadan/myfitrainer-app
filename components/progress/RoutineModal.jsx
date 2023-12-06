@@ -12,7 +12,6 @@ import {  faCheckDouble, faClock, faTrash, faCircleCheck , faCircleHalfStroke} f
 import { Checkbox } from '@mui/joy';
 import { Reload } from '../globals/Reload';
 import { Notify } from 'notiflix';
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export const RoutineModal = ({ routine, isLoading, handleDeleteRoutine, Username, fetchData }) => {
   const [open, setOpen] = React.useState(false);
@@ -58,7 +57,7 @@ export const RoutineModal = ({ routine, isLoading, handleDeleteRoutine, Username
               }
           <div
         
-        className=" border border-1 border-slate-200 backdrop-blur-lg rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300  min-w-[300px] h-fit">
+        className=" border border-1 border-slate-200 backdrop-blur-lg rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300 h-fit min-w-[300px]">
         
               <div
                   onClick={()=>setOpen(true)}
@@ -83,12 +82,12 @@ export const RoutineModal = ({ routine, isLoading, handleDeleteRoutine, Username
 
           <div
   onClick={() => setOpen(true)}
-  className="flex flex-col text-white m-2 text-sm  rounded-lg gap-y-1"
+  className={`flex flex-col text-white  m-2 text-sm ${routine.sets.length > 4 && 'max-h-[150px] overflow-y-scroll' }  rounded-lg gap-y-1}`}
 >
  
           {Array.isArray(routine.sets) && routine.sets.length > 0 ? (
             routine.sets.map((set) => (
-      <div key={set.setId} className={`text-cyan-500 ${set.setData.finished && 'text-green-600'} items-center rounded-lg p-2 bg-[#202229] flex justify-between`}>
+      <div key={set.setId} className={`text-cyan-500 ${set.setData.finished && 'text-green-600'} mb-1  items-center rounded-lg p-2 bg-[#202229] flex justify-between`}>
       <span>
                   Weight: {set.setData.kilograms.substring(0, 3)}{set.setData.kilograms.length > 3 && '..'}, Reps: {set.setData.repetitions.substring(0, 3)}{set.setData.repetitions.length>3&&'..'}
                 </span>
@@ -132,7 +131,7 @@ export const RoutineModal = ({ routine, isLoading, handleDeleteRoutine, Username
     <DialogContent>
 
     <div
-  className="flex flex-col text-cyan-800 m-2 text-sm font-semibold rounded-lg "
+              className={`flex flex-col text-cyan-800 m-2 text-sm font-semibold rounded-lg ${routine.sets.length > 10 && 'max-h-1/3 overflow-y-scroll'} `}
             >
               {localload &&
               <Reload/>

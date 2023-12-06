@@ -55,7 +55,7 @@ const handleSubmit = (event) => {
         className='underline text-gray-300 hover:text-gray-400'
         onClick={() => setOpen(true)}
       >
-        Forget Password?
+        Forget Your Password?
       </button>
       <Modal open={open} onClose={() => setOpen(false)} keepMounted>
         

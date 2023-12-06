@@ -32,26 +32,41 @@ export const History = ({finishedRoutines, Username, fetchData, handleDeleteRout
 }
 function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
   const [localload, setlocalload] = React.useState(false);
+
+  const calculateSums = () => {
+    let totalWeight = 0;
+    let totalReps = 0;
+    routine.sets.map((set) => {
+      const kilograms = parseFloat(set.setData.kilograms);
+      const repetitions = parseFloat(set.setData.repetitions);
+    
+      totalWeight += kilograms;
+      totalReps += repetitions;
+     })
+
+
+  return { totalWeight, totalReps };
+  };
   
+  let {  totalWeight, totalReps} = calculateSums();
   return (
     <AccordionGroup
     color="success"
       variant="soft"
       size='sm' sx={{ width: 'full', borderRadius:'5px' , fontWeight:'bolder'}} transition="0.2s ease">
       <Accordion>
-        <AccordionSummary >{routine.data.name}
+        <AccordionSummary >{routine.data.name} kgtotal={totalWeight} totalReps={totalReps}
          </AccordionSummary>
         <AccordionDetails >
         {localload &&
               <Reload/>
           }
-          
           <div>
             Routine Sets
-            <div className='grid md:grid-cols-6 grid-cols-2 gap-4 [&>*]:px-2'>
+            <div className='mt-2 flex flex-row max-w-full flex-wrap gap-2 [&>*]:px-2'>
             {Array.isArray(routine.sets) && routine.sets.length > 0 && (
             routine.sets.map((set) => (
-      <div key={set.setId} className={`text-[#2F4858] underline w-fit items-center rounded-lg `}>
+      <div key={set.setId} className={`text-[#2F4858] shadow-md bg-gray-100 w-fit items-center rounded-lg `}>
                 <span>
                 {set.setData.repetitions.substring(0, 3)}{set.setData.repetitions.length>3&&'..'} reps,  {' '}
                   {set.setData.kilograms.substring(0, 3)}{set.setData.kilograms.length > 3 && '..'}kg each
@@ -59,6 +74,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
       </div>
     ))
               )}
+          <p className='text-green-800 text-xs bg-gray-100 shadow-lg p-2 rounded-lg'>JUST HIT TOTAL {totalWeight}KG, {totalReps}REPS YOU HARD SMASHED THERE</p>
               
             </div>
             <div className='flex justify-center'>
@@ -68,7 +84,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
               )}
             </div>
             <div>
-              <div className="mt-2 flex justify-end flex-row  items-center [&>*]:rounded-lg [&>*]:cursor-pointer [&>*]:transition-all [&>*]:duration-200 text-center">
+              <div className="mt-8 flex gap-x-2 justify-end flex-row  items-center [&>*]:rounded-lg [&>*]:cursor-pointer [&>*]:transition-all [&>*]:duration-200 text-center">
                 <input
                   id='addRoutinePics'
         type="file"
@@ -77,14 +93,14 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
       />
                 <label
                   htmlFor="addRoutinePics"
-          className="w-full mr-12 hover:bg-cyan-200 py-2 flex items-center justify-center font-semibold text-cyan-700"
+          className="w-full  hover:bg-cyan-200 py-2 flex items-center justify-center font-semibold text-cyan-700"
           variant="outline"
         >
                   <FontAwesomeIcon icon={faCloudArrowUp} style={{marginRight:'5px'}} />
           add pump pictures
         </label>
                 
-                <FontAwesomeIcon icon={faCircleLeft} style={{color: "#002566",}} className='p-2 hover:bg-gray-400  bg-gray-300'  onClick={async () => {
+                <FontAwesomeIcon icon={faCircleLeft} style={{color: "#002566",}} className='shadow-md p-2 hover:bg-gray-300  bg-gray-200'  onClick={async () => {
             setlocalload(true)
 
           const res = await updateRoutineFinished(Username, routine.id, false)
@@ -103,7 +119,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
             setlocalload(false)
 
         }}/>
-                <FontAwesomeIcon icon={faTrash} className='p-2 text-red-400 rounded-full  items-center hover:text-red-600'
+                <FontAwesomeIcon icon={faTrash} className='p-2 text-red-400 rounded-full shadow-md items-center hover:text-red-600'
                 onClick={() => handleDeleteRoutine(routine.id)}/>
           </div>
 </div>

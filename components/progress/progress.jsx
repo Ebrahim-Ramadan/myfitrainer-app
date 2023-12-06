@@ -29,15 +29,19 @@ export const Progress = () => {
   setIsLoading(true);
     try {
       const response = await fetchActivityDocuments(PropUserName);
-      if (response && (response.unfinishedRoutines.length > 0||response.finishedRoutines.length > 0)) {
+      if (response) {
+        if (response.unfinishedRoutines.length > 0 ) {
         setUnfinishedRoutines(response.unfinishedRoutines)
-        setfinishedRoutines(response.finishedRoutines)
         setempty(false)
-
+        }
+        else {
+          setempty(true)
+        }
+        if (response.finishedRoutines.length > 0) {
+        setfinishedRoutines(response.finishedRoutines)
+        }
       }
-      else {
-        setempty(true)
-      }
+      
     } catch (error) {
       setempty(true)
       Notify.info((error.message||'Error happened please try again later'), {
