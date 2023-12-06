@@ -74,7 +74,10 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
       </div>
     ))
               )}
-          <p className='text-green-800 text-xs bg-gray-100 shadow-lg p-2 rounded-lg'>JUST HIT TOTAL {totalWeight}KG, {totalReps}REPS YOU HARD SMASHED THERE</p>
+             {Array.isArray(routine.sets) && routine.sets.length > 2 && (
+                 <p className='text-green-800 text-xs bg-gray-100 shadow-lg p-2 rounded-lg'>JUST HIT TOTAL {totalWeight}KG, {totalReps}REPS YOU HARD SMASHED THERE</p>
+              )} 
+         
               
             </div>
             <div className='flex justify-center'>
@@ -100,7 +103,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
           add pump pictures
         </label>
                 
-                <FontAwesomeIcon icon={faCircleLeft} style={{color: "#002566",}} className='shadow-md p-2 hover:bg-gray-300  bg-gray-200'  onClick={async () => {
+                <FontAwesomeIcon icon={faCircleLeft} style={{color: "#002566",}} className='shadow-md p-2 hover:bg-gray-100 '  onClick={async () => {
             setlocalload(true)
 
           const res = await updateRoutineFinished(Username, routine.id, false)
@@ -119,7 +122,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
             setlocalload(false)
 
         }}/>
-                <FontAwesomeIcon icon={faTrash} className='p-2 text-red-400 rounded-full shadow-md items-center hover:text-red-600'
+                <FontAwesomeIcon icon={faTrash} className='hover:bg-gray-100 p-2 text-red-400 rounded-full shadow-md items-center hover:text-red-600'
                 onClick={() => handleDeleteRoutine(routine.id)}/>
           </div>
 </div>
