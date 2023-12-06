@@ -123,3 +123,7 @@ svg.subscribe-focused {
   fill: rgb(16, 16, 189); /* Change the fill color to red */
   transform:scale(1.4);
 }
+.pastRows>*{
+  background-color: transparent !important;
+  color: #f3f3f3 !important;
+}

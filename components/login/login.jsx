@@ -88,9 +88,7 @@ const Login = () => {
             'processing...':'Login'}
             </button>
       </form>
-         <a className="flex justify-end cursor-pointer ">
-        <BasicModalDialog/>
-        </a> 
+      <BasicModalDialog/>
         <div className="flex flex-col text-md font-bold justify-center items-center mt-2 space-y-1 mb-4">
     <div className="text-xl ">Don&#8217;t have an account yet?</div>
     <Link href="/signup" className="rounded-lg px-2 py-1 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900">

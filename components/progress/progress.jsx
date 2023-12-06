@@ -13,6 +13,8 @@ import Tab from '@mui/joy/Tab';
 import TabPanel from '@mui/joy/TabPanel';
 import { Reload } from '../globals/Reload';
 import { useRouter } from 'next/navigation';
+import {DeleteRoutine} from '@/lib/auth/DeleteRoutine'
+
 export const Progress = () => {
   const router = useRouter()
   const [UnfinishedRoutines, setUnfinishedRoutines] = useState([]);
@@ -57,6 +59,32 @@ export const Progress = () => {
       })
     }
   }, []);
+
+
+
+  const handleDeleteRoutine = async (RoutineID) => { 
+    setIsLoading(true)
+    try {
+      const resDlt = await DeleteRoutine(username, RoutineID)
+      if (resDlt) {
+        Notify.success('routine deleted from record', {
+          position: 'center-top',
+        });
+        await fetchData(username)
+      }
+      else {
+        Notify.success('something went wrong please try again later', {
+          position: 'center-top',
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      Notify.failure(`${error.message} check your interent connection`, {
+        position: 'center-top',
+      });
+    }
+    setIsLoading(false)
+  }
   return (
     <div className=''>
       <Tabs aria-label="Basic tabs" className='min-h-screen routines-bg flex justify-center flex-col items-center p-2 relative [&>*]:font-bold' defaultValue={0} size="sm">
@@ -92,13 +120,13 @@ export const Progress = () => {
         </p>
       ) : (
         <React.Suspense fallback={<Reload/>}>
-                <HighLevel RoutinesFetched={UnfinishedRoutines} Username={username} fetchData={fetchData} />
+                <HighLevel RoutinesFetched={UnfinishedRoutines} Username={username} fetchData={fetchData} handleDeleteRoutine={handleDeleteRoutine} isLoading={isLoading} />
 
       </React.Suspense>
       )}
       </TabPanel>
-      <TabPanel value={1}>
-        <History />
+      <TabPanel value={1} className='w-full md:w-4/6'>
+          <History finishedRoutines={finishedRoutines} Username={username} fetchData={fetchData} handleDeleteRoutine={handleDeleteRoutine} isLoading={isLoading} />
       </TabPanel>
     </Tabs>
       

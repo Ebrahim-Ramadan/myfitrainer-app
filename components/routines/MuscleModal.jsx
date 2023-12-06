@@ -49,6 +49,18 @@ export const MuscleModal = ({routine}) => {
 
     }
   }
+
+  const formatInstructions = (instructions) => {
+    const splitInstructions = instructions.split('. ');
+    const formattedInstructions = splitInstructions
+      .map((instruction, index) => {
+        // Add a new line after each full stop or two
+        return (index + 1) % 2 === 0 ? `${instruction}.\n\n` : `${instruction}. `;
+      })
+      .join('');
+    return formattedInstructions;
+  };
+
   return (
     <React.Fragment>
       <button
@@ -67,12 +79,11 @@ export const MuscleModal = ({routine}) => {
          
 
           <DialogContent>
-            {showFullInstructions ? routine.instructions : `${truncatedInstructions}....
-            
-            `}
-
+          {showFullInstructions
+              ? formatInstructions(routine.instructions)
+              : `${formatInstructions(truncatedInstructions)}...\n`}
             {!showFullInstructions && remainingInstructions.length > 0 && (
-              <button className='text-sm underline' onClick={toggleInstructions}>
+              <button className="text-sm underline" onClick={toggleInstructions}>
                 Read More...
               </button>
             )}
@@ -82,7 +93,7 @@ export const MuscleModal = ({routine}) => {
             <Button type="submit" color='primary' variant='outlined'
             onClick={Create_Routine} disabled={adding}>
               
-              {adding?'adding...':'ADD'}
+              <FontAwesomeIcon icon={faPlus} style={{marginRight:'5px'}} /> {adding?'adding...':'ADD'}
               </Button>
             </Stack>
         </ModalDialog>
