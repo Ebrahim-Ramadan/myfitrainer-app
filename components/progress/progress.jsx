@@ -27,21 +27,14 @@ export const Progress = () => {
   const fetchData = async (PropUserName) => {
     setusername(PropUserName)
   setIsLoading(true);
-    try {
-      const response = await fetchActivityDocuments(PropUserName);
-      if (response) {
-        if (response.unfinishedRoutines.length > 0 ) {
-        setUnfinishedRoutines(response.unfinishedRoutines)
-        setempty(false)
-        }
-        else {
-          setempty(true)
-        }
-        if (response.finishedRoutines.length > 0) {
-        setfinishedRoutines(response.finishedRoutines)
-        }
-      }
-    } catch (error) {
+  try {
+    const response = await fetchActivityDocuments(PropUserName);
+    if (response) {
+      setUnfinishedRoutines(response.unfinishedRoutines)
+      setfinishedRoutines(response.finishedRoutines)
+    }
+
+  } catch (error) {
       Notify.info((error.message||'Error happened please try again later'), {
         position: 'center-top',
       })
