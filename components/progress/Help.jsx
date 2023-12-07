@@ -35,12 +35,10 @@ export default function Help() {
             fontWeight="lg"
             mb={1}
           >
-            T help
+            How-todos
           </Typography>
           <Typography id="modal-desc" textColor="text.tertiary">
-                      help helhelp hepl
-            help help help help hepl
-                      
+                     Click on the routine to open its sets, there you can/update sets. Also you can finish the whole routine if and only if when all its sets are finished. <br/> in the Past tab, you can see all your completed-out routines and its sets, you also can upload pictures for your pump for the records.
           </Typography>
         </Sheet>
           </Modal>
