@@ -29,8 +29,12 @@ export const Progress = () => {
     try {
       const response = await fetchActivityDocuments(PropUserName);
       if (response) {
-        setUnfinishedRoutines(response.unfinishedRoutines)
-        setfinishedRoutines(response.finishedRoutines)
+        if (response.finishedRoutines.length > 0) {
+          setfinishedRoutines(response.finishedRoutines)
+        }
+        if (response.unfinishedRoutines.length > 0) {
+          setUnfinishedRoutines(response.unfinishedRoutines)
+        }
       }
       
     } catch (error) {
