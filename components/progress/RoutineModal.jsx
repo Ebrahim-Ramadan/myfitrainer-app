@@ -57,15 +57,15 @@ export const RoutineModal = ({ routine, isLoading, handleDeleteRoutine, Username
               }
           <div
         
-        className=" border border-1 border-slate-200 backdrop-blur-lg rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300 h-fit min-w-[300px]">
+        className=" border border-1 border-slate-200 backdrop-blur-lg rounded-lg p-2 cursor-pointer  hover:backdrop-brightness-75 transition-all duration-300 h-fit min-w-[250px]">
         
               <div
                   onClick={()=>setOpen(true)}
                   className=" flex flex-col items-start">
-            <p className="text-xl text-white  w-full">{routine.data.name.length < 30 ? (
+            <p className="text-xl text-white  w-full">{routine.data.name.length < 25 ? (
             routine.data.name
             ): (
-              routine.data.name.substring(0, 30)+'...'
+              routine.data.name.substring(0, 25)+'...'
           )}</p>
           <p className="text-sm text-stone-300">
           #{routine.data.muscle}

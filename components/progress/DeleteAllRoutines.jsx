@@ -9,19 +9,24 @@ import ModalDialog from '@mui/joy/ModalDialog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
 import {DeleteAllUserRoutines} from '@/lib/auth/DeleteRoutine'
+import { Reload } from '../globals/Reload';
 export default function DeleteAllRoutines({Username, fetchData}) {
   const [open, setOpen] = React.useState(false);
+  const [localLoad, setlocalLoad] = React.useState(false);
   const handleDeleteAllRoutines = async () => {
     try {
+      setlocalLoad(true)
       const res = await DeleteAllUserRoutines(Username)
       console.log('DeleteAllUserRoutines', res);
       if (res) {
         await fetchData(Username)
+
       }
     } catch (error) {
       console.log('error', error);
     }
-    
+    setlocalLoad(false)
+    setOpen(false)
   }
   return (
     <React.Fragment>
@@ -36,6 +41,9 @@ export default function DeleteAllRoutines({Username, fetchData}) {
           </DialogTitle>
           <Divider />
           <DialogContent>
+          {localLoad &&
+              <Reload/>
+          }
             Are you sure you want to delete all of your routines? <br/> There would be no return from this operation
           </DialogContent>
           <DialogActions>
