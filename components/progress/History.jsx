@@ -58,7 +58,9 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
     for (let i = 0; i < files.length; i++) {
       imagesArray.push(files[i]);
     }
+    
     try {
+      if (imagesArray.length > 0) {
       const res = await addImagesToRoutine(Username, routine.id, imagesArray)
       console.log('res', res);
       if (res) {
@@ -71,6 +73,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
         Notify.info(`something went wrong please try again late`, {
           position: 'center-top',
         })
+      } 
       }
     } catch (error) {
       console.log('handlePumpPicsUpload error', error.message);
