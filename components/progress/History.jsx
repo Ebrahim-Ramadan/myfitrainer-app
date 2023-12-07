@@ -14,7 +14,7 @@ import Image from 'next/image';
 
 export const History = ({finishedRoutines, Username, fetchData, handleDeleteRoutine, isLoading}) => {
   return (
-    <div className='flex flex-col gap-y-4 [&>*]:p-2 text-white'>
+    <div className='flex flex-col gap-y-2 [&>*]:p-2 text-white'>
        {Array.isArray(finishedRoutines) && finishedRoutines.length > 0 ? (
         
         finishedRoutines.map((routine) => (
@@ -90,7 +90,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
       variant="soft"
       size='sm' sx={{ width: 'full', borderRadius:'5px' , fontWeight:'bolder'}} transition="0.2s ease">
       <Accordion>
-        <AccordionSummary >{routine.data.name}
+        <AccordionSummary sx={{height:'2rem'}}>{routine.data.name}
          </AccordionSummary>
         <AccordionDetails >
         {localload &&
