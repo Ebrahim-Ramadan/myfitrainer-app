@@ -122,12 +122,11 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
               )}
             </div>
             <div className='flex flex-row items-center flex-wrap [&>*]:shadow-md [&>*]:cursor-pointer gap-2 p-2'>
-              {routine.data.images?.length > 0 &&
-              routine.data.images.map((picture, idx) => (
-                  <Image key={idx} src={picture} width={70} height={70} priority alt='pump picture' className='rounded-md shadow-lg' />
+            {routine.data.images && routine.data.images.length > 0 && routine.data.images.map((picture, idx) => (
+    <Image key={idx} src={picture} width={70} height={70} priority alt='pump picture' className='rounded-md shadow-lg' />
+))}
 
-              ))}
-              {routine.data.images.length > 0 &&
+              {routine.data.images && routine.data.images.length > 0  &&
               <FontAwesomeIcon icon={faSquareMinus} style={{ color: "#002566", }} size='lg' className='p-2 hover:bg-gray-100 rounded-lg '
                 onClick={async () => {
     setlocalload(true)
