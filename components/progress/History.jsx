@@ -118,7 +118,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
                 <FontAwesomeIcon icon={faBatteryEmpty} />
               )}
             </div>
-            {/* <div className='flex flex-row items-center flex-wrap [&>*]:shadow-md [&>*]:cursor-pointer gap-2 p-2'>
+            <div className='flex flex-row items-center flex-wrap [&>*]:shadow-md [&>*]:cursor-pointer gap-2 p-2'>
               {routine.data.images?.length > 0 &&
               routine.data.images.map((picture, idx) => (
                   <Image key={idx} src={picture} width={70} height={70} priority alt='pump picture' className='rounded-md shadow-lg' />
@@ -145,7 +145,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
               }
               
 
-            </div> */}
+            </div>
 
             <div>
               <div className="mt-8 flex gap-x-2 justify-end flex-row  items-center [&>*]:rounded-lg [&>*]:cursor-pointer [&>*]:transition-all [&>*]:duration-200 text-center">
