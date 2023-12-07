@@ -108,72 +108,66 @@ export const Header = () => {
             }
             
             <Menu color="primary">
-            <MenuItem color="primary">
-              <FontAwesomeIcon icon={faListCheck} />
+              <ul className='header-Dropdown'>
+                <li>
                 <Link href="/progress">
-                
+                <FontAwesomeIcon icon={faListCheck} />
                 Progress
-          </Link>
-              </MenuItem>
-              <MenuItem color="primary">
-              <FontAwesomeIcon icon={faStopwatch20} />
-                <Link href="/routines">
+          </Link>   
+</li>
+                <li>
+                  <Link href="/routines">
+                <FontAwesomeIcon icon={faStopwatch20} />
                 Routines
-       </Link>
-        </MenuItem>
-              
-
-              <MenuItem color="primary">
-              <FontAwesomeIcon icon={faCarrot} />
+       </Link>  
+</li>
+                <li>
                 <Link href="/nutrition">
-                
+                <FontAwesomeIcon icon={faCarrot} />
                 Nutritions
           </Link>
-              </MenuItem>
- 
+                </li>
               <hr />
 
-              <MenuItem color="primary">
-                    <FontAwesomeIcon icon={faFolderOpen} />
-                <Link href="/documentation">
+                <li>
+                  <Link href="/documentation">
+                <FontAwesomeIcon icon={faFolderOpen} />
                 Documentation
        </Link>
-        </MenuItem>
-
-
-        <MenuItem color="primary">
-              <FontAwesomeIcon icon={faEnvelope} />
-              <Link href="/contact">
+                </li>
+                
+                <li>
+                  <Link href="/contact">
+                <FontAwesomeIcon icon={faEnvelope} />
               Contact
           </Link>
-              </MenuItem>
-
-
-              <MenuItem color="primary">
-                    <FontAwesomeIcon icon={faBuildingShield} />
-                <Link href="/privacy-and-policy">
+                </li>
+                <li>
+                  <Link href="/privacy-and-policy">
+                <FontAwesomeIcon icon={faBuildingShield} />
                 Privacy and Policy
        </Link>
-        </MenuItem>
-
+                </li>
               <hr/>
 
-             
-              <hr />
-              <MenuItem color="primary">
-              <FontAwesomeIcon icon={faUserPlus} /> <Link href="/login">
+                <li>
+                  <Link href="/login">
+                  <FontAwesomeIcon icon={faUserPlus} />
                 Add Account
        </Link>
-              </MenuItem>
-              <MenuItem color="success">
+                </li>
+                <li>
                 <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
                 <FontAwesomeIcon icon={faCodeBranch} />
                   Source Code
        </Link>
-              </MenuItem>
-              <MenuItem color="danger">
+
+                </li>
+                <li>
               <button onClick={handleSignOut}>log out</button>
-        </MenuItem>
+
+                </li>
+              </ul>
 
       </Menu>
           </Dropdown>
@@ -218,34 +212,38 @@ export const Header = () => {
                     
                       </MenuButton>
                   <Menu color="primary">
-                    <MenuItem color="primary">
-                    <FontAwesomeIcon icon={faFolderOpen} />
-                <Link href="/documentation">
+                    <ul className='header-Dropdown'>
+                      <li>
+                        <Link href="/documentation">
+                      <FontAwesomeIcon icon={faFolderOpen} />
+                          
                 Documentation
        </Link>
-        </MenuItem>
-                    <MenuItem color="primary">
-                    <FontAwesomeIcon icon={faEnvelope} />
-                <Link href="/contact">
+                      </li>
+                      <li>
+                        <Link href="/contact">
+                      <FontAwesomeIcon icon={faEnvelope} />
                 Contact
        </Link>
-        </MenuItem>
-                    <MenuItem color="primary">
-                    <FontAwesomeIcon icon={faBuildingShield} />
-                <Link href="/privacy-and-policy">
+                      </li>
+                      <li>
+                        <Link href="/privacy-and-policy">
+                      <FontAwesomeIcon icon={faBuildingShield} />
                 privacy and policy
        </Link>
-        </MenuItem>
-                    <MenuItem color="warning">
-                  <FontAwesomeIcon icon={faUserPlus} />
-                <Link href="/login">
+                      </li>
+                      <li>
+                        <Link href="/login">
+                      <FontAwesomeIcon icon={faUserPlus} />
+                          
                 Add Account
        </Link>
-        </MenuItem>
-                    <MenuItem onClick={handleSignOut} color="danger">
+                      </li>
+                      <li onClick={handleSignOut} >
                       log out
-                      </MenuItem>
-                    
+                      </li>
+                    </ul>
+                   
                       </Menu>
                       {/* <ReAuthModal Username={username} /> */}
 

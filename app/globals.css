@@ -127,3 +127,23 @@ svg.subscribe-focused {
   background-color: transparent !important;
   color: #f3f3f3 !important;
 }
+.header-Dropdown{
+  padding: 0px 5px;
+}
+.header-Dropdown>*{
+padding: 5px;
+width: 100%;
+cursor: pointer;
+/* margin-left: 5px; */
+transition: all;
+transition-duration: 300ms;
+}
+.header-Dropdown>*:hover{
+  background-color: #edecffd3;
+}
+.header-Dropdown>*>*{
+  display: flex ;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+}
