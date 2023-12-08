@@ -13,7 +13,7 @@ import secureLocalStorage from "react-secure-storage";
 import { getUserByAccessToken } from '@/lib/auth/getUserByAccessToken'
 import { signoutfunc } from '@/lib/auth/signout'
 import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
+import { lightBlue, red } from '@mui/material/colors';
 import { useRouter } from 'next/navigation';
 import { Reload } from './Reload';
 import { Notify } from 'notiflix';
@@ -83,13 +83,12 @@ export const Header = () => {
             {loggedIn ?
               
               
-              <MenuButton color="primary" className='space-x-2'>
-              <Avatar sx={{ bgcolor: deepOrange[600] }}>
-              {username.substring(0, [2])}
+              <MenuButton color="primary" className='space-x-1'>
+              <Avatar sx={{ bgcolor: lightBlue[400] }}>
+              {username.substring(0, [1])}
       </Avatar>
                 <span>{
-                  username.length < 10? (username.substring(0, username.indexOf('@'))):
-                  (username.substring(0, 11))+'...'}</span>
+                  (username.substring(0, username.indexOf('@')))}</span>
               
             <FontAwesomeIcon icon={faCircleChevronDown} style={{ width: '35px' }} />
                 </MenuButton>
@@ -175,7 +174,7 @@ export const Header = () => {
                   Source Code
        </Link>
               </MenuItem>
-              <button onClick={handleSignOut} color="danger" className='mt-2 text-white py-4 px-1 bg-red-700 hover:bg-red-600 rounded-lg'>
+              <button onClick={handleSignOut} color="danger" className='logout text-white  bg-red-700 hover:bg-red-600 rounded-lg'>
                       log out
                       </button>
 
@@ -207,7 +206,7 @@ export const Header = () => {
               <>
               
                 <Link href="/progress" className='flex flex-row items-center gap-x-2'>
-                <Avatar sx={{ bgcolor: deepOrange[600] }}>
+                <Avatar sx={{ bgcolor: lightBlue[700] }}>
                   {username.substring(0, [2])}
                   
                   </Avatar>
@@ -249,7 +248,7 @@ export const Header = () => {
                 Add Account
        </Link>
         </MenuItem>
-                    <button onClick={handleSignOut} color="danger" className='mt-2 text-white py-4 px-1 bg-red-700 hover:bg-red-600 rounded-lg'>
+                    <button onClick={handleSignOut} color="danger" className='text-white logout bg-red-700 hover:bg-red-600 rounded-lg'>
                       log out
                       </button>
                     

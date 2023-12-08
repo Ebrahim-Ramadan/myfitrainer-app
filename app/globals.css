@@ -140,23 +140,7 @@ margin: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
 }
-/* 
-.header-Dropdown{
-  padding: 0px 5px;
+.logout{
+  padding: 2px !important;
+  margin-top: 2px !important;
 }
-.header-Dropdown>*{
-padding: 5px;
-width: 100%;
-cursor: pointer;
-transition: all;
-transition-duration: 300ms;
-}
-.header-Dropdown>*:hover{
-  background-color: #edecffd3;
-}
-.header-Dropdown>*>*{
-  display: flex ;
-  flex-direction: row;
-  gap: 5px;
-  align-items: center;
-} */
