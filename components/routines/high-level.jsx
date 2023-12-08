@@ -1,3 +1,4 @@
+import WarpComponent from './ExploreRoutines';
 import {RoutineSearch} from './RoutineSearch';
 const Entry = () => {
   // const data = await getData()
@@ -5,7 +6,8 @@ const Entry = () => {
     <div className="h-fit min-h-screen bg-black mb-12 flex flex-col  p-4 md:p-8 w-full">
     <label className='text-white text-xl m-2 flex justify-center font-bold'>Add a muscle routine</label>
 
-    <RoutineSearch/>
+      <RoutineSearch />
+      {/* <WarpComponent  /> */}
     </div>
   )
 }

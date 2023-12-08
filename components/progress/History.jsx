@@ -12,13 +12,17 @@ import { faTrash, faCloudArrowUp, faCircleLeft, faBatteryEmpty, faSquareMinus, }
 import { Reload } from '../globals/Reload';
 import Image from 'next/image';
 
-export const History = ({finishedRoutines, Username, fetchData, handleDeleteRoutine, isLoading}) => {
+export const History = ({ finishedRoutines, Username, fetchData, handleDeleteRoutine, isLoading }) => {
+  console.log('finishedRoutines', finishedRoutines);
   return (
     <div className='flex flex-col gap-y-2 [&>*]:p-2 text-white'>
        {Array.isArray(finishedRoutines) && finishedRoutines.length > 0 ? (
         
         finishedRoutines.map((routine) => (
-      <AccordionBasic key={routine.id} className='w-full flex flex-col md:flex-row justify-between rounded-lg items-center border border-2 border-green-950' routine={routine} Username={Username} fetchData={fetchData} handleDeleteRoutine={handleDeleteRoutine} isLoading={isLoading} />
+          <AccordionBasic
+            key={routine.id}
+            className='w-full flex flex-col md:flex-row justify-between rounded-lg items-center border border-2 border-green-950'
+            routine={routine} Username={Username} fetchData={fetchData} handleDeleteRoutine={handleDeleteRoutine} isLoading={isLoading} />
 
         ))
       ) : (
@@ -31,7 +35,7 @@ export const History = ({finishedRoutines, Username, fetchData, handleDeleteRout
     
   )
 }
-function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
+function AccordionBasic({ routine, Username,  fetchData, handleDeleteRoutine }) {
   const [localload, setlocalload] = React.useState(false);
 
   const calculateSums = () => {
@@ -58,7 +62,6 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
     for (let i = 0; i < files.length; i++) {
       imagesArray.push(files[i]);
     }
-    
     try {
       if (imagesArray.length > 0) {
       const res = await addImagesToRoutine(Username, routine.id, imagesArray)
@@ -153,7 +156,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
             <div>
               <div className="mt-8 flex gap-x-2 justify-end flex-row  items-center [&>*]:rounded-lg [&>*]:cursor-pointer [&>*]:transition-all [&>*]:duration-200 text-center">
                 <input
-                  id='addRoutinePics'
+                  id={routine.id}
         type="file"
         accept="image/*"
                   className="hidden"
@@ -162,7 +165,7 @@ function AccordionBasic({ routine,Username,  fetchData, handleDeleteRoutine }) {
       />
                 <label
                   
-                  htmlFor="addRoutinePics"
+                  htmlFor={routine.id}
           className="w-full  hover:bg-cyan-200 py-2 flex items-center justify-center font-semibold text-cyan-700"
           variant="outline"
         >
