@@ -1,4 +1,6 @@
 import './globals.css'
+import { SpeedInsights } from "@vercel/speed-insights/next"
+
 import { Header } from '@/components/globals/Header'
 import { GeistSans } from "geist/font/sans";
 import { Footer } from '@/components/globals/Footer';
@@ -38,6 +40,7 @@ export default function RootLayout({ children }) {
         <Header />
         {children}
         <Footer/>
+        <SpeedInsights />
       </body>
     </html>
     
