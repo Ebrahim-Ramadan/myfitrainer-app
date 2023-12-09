@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import { useMediaQuery } from 'react-responsive';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleChevronDown, faUserPlus, faDumbbell, faCircleInfo , faMoneyCheck, faEnvelope, faCodeBranch } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown, faUserPlus, faBuildingShield, faFolderOpen,faCodeBranch, faListCheck , faStopwatch20, faEnvelope, faCarrot } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from '@mui/joy/Dropdown';
 import Menu from '@mui/joy/Menu';
 import MenuButton from '@mui/joy/MenuButton';
@@ -13,10 +13,11 @@ import secureLocalStorage from "react-secure-storage";
 import { getUserByAccessToken } from '@/lib/auth/getUserByAccessToken'
 import { signoutfunc } from '@/lib/auth/signout'
 import Avatar from '@mui/material/Avatar';
-import { deepOrange } from '@mui/material/colors';
+import { lightBlue, red } from '@mui/material/colors';
 import { useRouter } from 'next/navigation';
 import { Reload } from './Reload';
 import { Notify } from 'notiflix';
+import gh from '@/assets/gh.svg';
 
 export const Header = () => {
   const router = useRouter();
@@ -62,22 +63,17 @@ export const Header = () => {
       window.location.reload();
     }, 100);
     Notify.info('signed out', {
-      position: 'right-bottom',
+      position: 'center-top',
     })
   };
 
   return (
-    <header className={`backdrop-blur-xl backdrop-grayscale backdrop-blur-md flex h-20 w-full items-center px-4 md:px-6 sticky top-0 ${isMobile && 'justify-between z-40'}`}>
+    <header className={`backdrop-blur-2xl backdrop-grayscale flex h-16 w-full items-center px-4 md:px-6 sticky top-0 z-40 ${isMobile && 'justify-between'}`}>
       {loading &&
       <Reload/>}
         <Link href="/">
           
-            
-        <Image
-          width={50}
-          height={50}
-           alt="Logo"
-          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD90lEQVR4nO2aa4hVVRTHt42O44OJHMnw7WCigw7pFxMZE1HESPsQyVTKoCB+EGUsfICIQUQqZEKC+klBwQcTmKBWED0cJ6KYVIxERoXyQUU26eC7+cVy/ke3t3tv59x77p05Mb8vc885e6/H2WvvvdY+41w3CQXoCzzhkgYwEHgTOARcpYMbwDtArwLrfhH4DPgDOJ6PoAUy2qcd+Fu/vwSeLtCo70zR+3WuwmpltPEVsAQYo2fTgF/0rBkoycPoScBbwH7gB+Ay0CbZN4G1wKBchVcArRJWn6HNIOBXtZkdUX4/kwucIzMngQk5OeApWidhB1Pu9/d+jwLuqt0LEWS/5I2m8ZfpARZpdGxO9s7LAU9Zo5TM0HUJ8K7mxutAlTcahyPIXeOFa4tkFW7B4JGRA3S9zXuDVxW7xhlgcEiZdepzXyNe0BXvAcA9Ke2p62bvLQZ8BAxxIQCGKYSMJa5YALel9EGsAtt1vRWoBkZHlLc7ahjGgjYgo0LX4xXbbVGXQk3eOwqpUfFYGBIvhB6+eaBB9z4GekSQZRPa+MQVG6BJyqd694YA13R/c4Z+1uZt4Bjwo/aCU+qztqhOGMA+KX/DeQCzFCb/MgxY4e0r6aj126vPN5ZLuUIBvCfl69I8e1Xx3h6sQMBKtb+nhcEcHqv9ZrVG6Jksc/HJQjlSJwUHMjxfLEdsdZupv7ZZzo2o54T0TI7NeB9gnBRczNLmA7W5pb97M7XNIiPIcNdE7RsKK5y8pDHtcguUpeRMc8JJf0zGXPU9FbVvaFTQpJ2kXhvLYANGhpf+sH9v4JL6z4vaPxTA8nQZcJp03HKv67lmrEokjbNAn1xkhMmP2lUhZlQADA8KrlwANnmjujNXOVkBvpWCl10BsKQ0ZZ4ZGzJlDnYfeB54H7hglWtYRask/GjcTki+lc/pOALUAKUa8deAXSqDo9fxVo8otCzEpsfsxGDgNxkU1DfLgN/Jzs/AFmBKlJzPFK6XgPOWycbkRDnwXTDawOf6XSMHt3gh16bDDzuEeC6S8SlKS73CqinflUX1jK1Qxk/AU8AeXc9Po7tHPvpSlY/wyl/Lm8oj9C1T/1d05BNUn5YwDlWbzbq3Kjaj/+NNBjFtKfpETcJPveQvDJbSbPRrdmChnjW4YkDHEdDpCEYHhl/WXKjPkAVXqu2VWEMpG3a2BXyo3dz2maVxHJtqNTKqXZIBdnRaJRknlj10Wm0fJ8CzcqTFJRltkkarSzK2HMuRuy7pBOu1SzrdjnQ1ukekq/F/GpE/5UuVSzLeB6Xvg28ziURnBHY6EnyfrHRJRbXJOa9erw++ZSYOHq/jjUaXZOj4pxoLsS8625ai8w+VjS4Js5IdxwAAAABJRU5ErkJggg==" />
+        <svg xmlns="http://www.w3.org/2000/svg" height="2rem" width="2rem" viewBox="0 0 512 512"><path fill="#ffffff" d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0h32c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64H64c123.7 0 224 100.3 224 224v32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V320C100.3 320 0 219.7 0 96z"/></svg>
       </Link>
       {isMobile ? (
         <div>
@@ -87,63 +83,100 @@ export const Header = () => {
             {loggedIn ?
               
               
-              <MenuButton color="primary" className='space-x-2'>
-              <Avatar sx={{ bgcolor: deepOrange[600] }}>
-              {username.substring(0, [2])}
+              <MenuButton color="primary" className='space-x-1'>
+              <Avatar sx={{ bgcolor: lightBlue[400] }}>
+              {username.substring(0, [1])}
       </Avatar>
                 <span>{
-                  username.length < 10? (username.substring(0, username.indexOf('@'))):
-                  (username.substring(0, 11))+'...'}</span>
+                  (username.substring(0, username.indexOf('@')))}</span>
               
             <FontAwesomeIcon icon={faCircleChevronDown} style={{ width: '35px' }} />
                 </MenuButton>
               
               :
-              <Link href="/login" className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900'>
+              <div className='flex flex-row gap-x-2'>
+               <Link href="/signup" className='font-bold rounded-lg p-2 text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 duration-900'>
            
-              Get started
-            
+           Get started
+         
+           </Link>
+           <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
+           <Image src={gh} width={30} height={30} alt='gh' loading='lazy'/>
                 </Link>
+              </div>
             }
             
-            <Menu color="primary">
-            
+            <Menu color="primary" className='ASS'>
+            <MenuItem color="primary">
+                <Link href="/progress">
+              <FontAwesomeIcon icon={faListCheck} />
+                Progress
+          </Link>
+              </MenuItem>
               <MenuItem color="primary">
-              <FontAwesomeIcon icon={faDumbbell} />
                 <Link href="/routines">
+              <FontAwesomeIcon icon={faStopwatch20} />
                 Routines
        </Link>
         </MenuItem>
               
+
               <MenuItem color="primary">
-              <FontAwesomeIcon icon={faMoneyCheck} />
-                <Link href="/progress">
+                <Link href="/nutrition">
+              <FontAwesomeIcon icon={faCarrot} />
+
                 
-                My Progress
+                Nutritions
           </Link>
               </MenuItem>
+ 
               <hr />
+
               <MenuItem color="primary">
+                <Link href="/documentation">
+                <FontAwesomeIcon icon={faFolderOpen} />
+
+                Documentation
+       </Link>
+        </MenuItem>
+
+
+        <MenuItem color="primary">
+                <Link href="/contact">
               <FontAwesomeIcon icon={faEnvelope} />
-              <Link href="/contact">
+                  
               Contact
           </Link>
               </MenuItem>
+
+
               <MenuItem color="primary">
-              <FontAwesomeIcon icon={faCircleInfo} />
-                <Link href="/about">
-                About
+                <Link href="/privacy-and-policy">
+                <FontAwesomeIcon icon={faBuildingShield} />
+
+                Privacy and Policy
        </Link>
         </MenuItem>
+
+
+             
               <hr />
               <MenuItem color="primary">
-              <FontAwesomeIcon icon={faUserPlus} /> <Link href="/login">
+                <Link href="/login">
+                <FontAwesomeIcon icon={faUserPlus} />
+
                 Add Account
        </Link>
-        </MenuItem>
-              <MenuItem color="danger">
-              <button onClick={handleSignOut}>sign out</button>
-        </MenuItem>
+              </MenuItem>
+              <MenuItem color="success">
+                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2 p-0'>
+                <FontAwesomeIcon icon={faCodeBranch} />
+                  Source Code
+       </Link>
+              </MenuItem>
+              <button onClick={handleSignOut} color="danger" className='logout text-white  bg-red-700 hover:bg-red-600 rounded-lg'>
+                      log out
+                      </button>
 
       </Menu>
           </Dropdown>
@@ -151,73 +184,95 @@ export const Header = () => {
          </div>
       ) :
         (
-          <nav className="ml-auto flex space-x-5 [&>*]:text-md [&>*]:font-bold items-center navlinks [&>*]:p-2 [&>*]:rounded-lg">
+          <nav className="ml-auto flex space-x-2 [&>*]:text-md [&>*]:font-bold items-center navlinks [&>*]:p-1 [&>*]:rounded-lg">
           
-          <Link href="/routines">
+          <Link href="/routines" className='flex flex-row items-center gap-x-2'>
            
                Routines
+               <FontAwesomeIcon icon={faStopwatch20} />
             
             </Link>
             
-          <Link href="/about">
+          <Link href="/nutrition" className='flex flex-row items-center gap-x-2'>
            
-              About
+              Nutritions
+              <FontAwesomeIcon icon={faCarrot} />
             
           </Link>
           
-          <Link href="/contact">
-           
-              Contact
-            
-          </Link>
+          
           
             {loggedIn ?
               <>
               
                 <Link href="/progress" className='flex flex-row items-center gap-x-2'>
-                <Avatar sx={{ bgcolor: deepOrange[600] }}>
-                  {username.substring(0, [2])}
+                <Avatar sx={{ bgcolor: lightBlue[700] }}>
+                  {username.substring(0, [1])}
                   
                   </Avatar>
                   
           My Progress
           
           </Link>
-                <Dropdown style={{margin:'0'}}>
+                <Dropdown >
                       <MenuButton color="primary" className='hover:bg-white'>
                     {username}
             <FontAwesomeIcon icon={faCircleChevronDown} style={{ width: '35px' }} />
                     
                       </MenuButton>
-                  <Menu color="primary">
-                  <MenuItem color="primary">
+                  <Menu color="primary" className='ASS'>
+                    <MenuItem color="primary">
+                      <Link href="/documentation">
+                    <FontAwesomeIcon icon={faFolderOpen} />
+                Documentation
+       </Link>
+        </MenuItem>
+                    <MenuItem color="primary">
+                      <Link href="/contact">
+                    <FontAwesomeIcon icon={faEnvelope} />
+                        
+                Contact
+       </Link>
+        </MenuItem>
+                    <MenuItem color="primary">
+                      <Link href="/privacy-and-policy">
+                    <FontAwesomeIcon icon={faBuildingShield} />
+                        
+                privacy and policy
+       </Link>
+        </MenuItem>
+                    <MenuItem color="warning">
+                      <Link href="/login">
                   <FontAwesomeIcon icon={faUserPlus} />
-                <Link href="/login">
+                        
                 Add Account
        </Link>
         </MenuItem>
-                  <MenuItem color="primary">
-                  <FontAwesomeIcon icon={faCodeBranch} />
-                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank'>
-                Source Code
-       </Link>
-        </MenuItem>
-                    <hr/>
-                    <MenuItem onClick={handleSignOut} color="warning">
+                    <button onClick={handleSignOut} color="danger" className='text-white logout bg-red-700 hover:bg-red-600 rounded-lg'>
                       log out
-                      </MenuItem>
+                      </button>
                     
                       </Menu>
                       {/* <ReAuthModal Username={username} /> */}
 
                 </Dropdown>
+                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2'>
+                  <Image src={gh} width={30} height={30} alt='gh' loading='lazy'/>
+       </Link>
               </>
               :
-              <Link href="/login" className='text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 rounded-lg px-1 duration-900'>
+              <>
+                
+              <Link href="/signup" className='text-zinc-900 border border-2 bg-slate-200 hover:bg-zinc-300 rounded-lg px-1 duration-900'>
            
               Get started
             
-            </Link>
+                </Link>
+                <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2'>
+                  <Image src={gh} width={30} height={30} alt='gh' loading='lazy'/>
+       </Link></>
+       
+
             }
           
         </nav> 

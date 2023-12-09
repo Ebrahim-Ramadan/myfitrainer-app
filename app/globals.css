@@ -8,28 +8,25 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
   }
-}
+} */
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: black;
+  background-color: black; 
+  /* background-image: linear-gradient(to bottom, transparent, rgb(var(--background-start-rgb))); */
 }
-
+.navlinks{
+  color: white;
+}
 .navlinks >*:hover{
   transition: all 0.4s;
-  background-color: #ffffff;
-  color: #191919;
+  opacity: 75%;
 }
 
 @keyframes dot-flashing {
@@ -39,13 +36,6 @@ body {
   50%, 100% {
     background-color: rgba(152, 128, 255, 0.2);
   }
-}
-stage {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .dot-flashing {
@@ -87,4 +77,66 @@ stage {
   color: #DBDBDB;
   animation: dot-flashing 1s infinite alternate;
   animation-delay: 1s;
+}
+.gh:hover>* {
+  filter: invert(29%) sepia(5%) saturate(19%) hue-rotate(217deg) brightness(118%) contrast(87%);
+}
+
+
+.dev-card{
+  /* background-image: url('../assets/team-bg.png'); */
+  background-size: cover; 
+  background-position: center;
+  width: 100%;
+  /* background: radial-gradient(circle at 0% 93%,#000294, #3f41bd, #b2b2b2) */
+  /* background: radial-gradient(circle at 0% 125%,#5c57ff, #9d64ff, #d572ff) */
+  background: radial-gradient(circle at 50% 50%,#5e8fffcc, #7e77ffe6, #bd8fff)
+}
+.dev-card:hover{
+  background: radial-gradient(circle at 50% 50%,#5651ff, #8f70ff, #bd8fff)
+}
+div.routines-bg{
+  background-image: url('../assets/routines-bg.webp');
+  
+  background-size: cover; 
+  background-position: center; 
+  width: 100%;
+  object-fit:contain;
+}
+
+svg.rbh polygon:hover{
+fill: #9d64ff !important;
+}
+svg.svg-subscribe{
+  transition: transform 0.3s ease;
+}
+input.subscribe.focus {
+  /* Add styles to the input when focused */
+}
+
+/* Styles when SVG is filled with red */
+svg.subscribe-focused {
+  fill: rgb(16, 16, 189); /* Change the fill color to red */
+  transform:scale(1.4);
+}
+.pastRows>*{
+  background-color: transparent !important;
+  color: #f3f3f3 !important;
+}
+.ASS>*>*{
+  width: 100% !important;
+padding: 5px;
+display: flex;
+flex-direction: row;
+gap: 5px !important;
+align-items: center;
+margin: 0 !important;
+}
+.ASS>*{
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.logout{
+  padding: 2px !important;
+  margin-top: 2px !important;
 }

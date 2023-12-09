@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { fetchExercises } from '@/lib/ningaAPI/getAllRoutines';
 import { RoutinesMap } from './RoutinesMap';
 import Select from '@mui/joy/Select';
@@ -10,50 +10,34 @@ import Button from '@mui/joy/Button';
 import Input from '@mui/joy/Input';
 import US from '@/assets/US.jpeg'
 import Image from 'next/image';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Reload } from '@/components/globals/Reload';
+import { BodyViewer } from './BodyViewer';
+import { Box, Chip } from '@mui/joy';
+
 export const RoutineSearch = () => {
-  const [loading, setLoading] = useState(false);
+  const [Loading, setLoading] = useState(false);
   const [exercises, setExercises] = useState([]);
 
-  const [OneMuscle, setOneMuscle] = useState('');
 
 
   const handleSearch = async (Muscles) => {
     setLoading(true);
     try {
       const data = await fetchExercises(Muscles);
-      console.log('data', data);
       setExercises(data);
     } catch (error) {
-      console.error(error);
+      console.error('handleSearch', error.message);
+      Notify.failure(`${error.message} check your interent connection`, {
+        position: 'center-top',
+      });
     }
     setLoading(false);
   };
 
 
-  const delayedSearch =  async() => {
-    if (OneMuscle) {
-      try {
-        setLoading(true);
-        const data = await fetchExercises(OneMuscle.trim());
-        console.log('handleSingleMuscleSearch', data);
-        setExercises(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    }
-  }
 
 
-  useEffect(() => {
-    const delayDebounceFn = setTimeout(() => {
-      console.log(OneMuscle)
-      delayedSearch()
-    }, 200)
-
-    return () => clearTimeout(delayDebounceFn)
-  }, [OneMuscle])
   return (
     <>
     
@@ -61,39 +45,28 @@ export const RoutineSearch = () => {
 
       <div >
 
-        <div className='flex md:flex-row flex-col md:space-x-2 justify-center'>
-          <form >
-          <Input
-            autoComplete='on'
-            placeholder='start searching...' required type='text'
-            value={OneMuscle}
-            onChange={(e) => setOneMuscle(e.target.value)}
-          />
-          
-            </form>
-            <label className='text-sm text-gray-400 font-bold flex justify-center py-2'>OR</label>
+        <div className='flex md:flex-row flex-col md:space-x-2 justify-center items-center'>
+
 
             <form
-              
       onSubmit={(event) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
         const formJson = Object.fromEntries(formData.entries());
         const selectedMuscles = JSON.parse(formJson.muscles);
-        console.log('selectedMuscles', selectedMuscles);
                   handleSearch(selectedMuscles)
       }}
     >
               <Stack spacing={1} alignItems="flex-start"
                 direction="row"
                 justifyContent="center"
+style={{alignItems:'center'}}
               >
                 
                 <Select
                       placeholder="Select a muscle..."
                       name="muscles"
                       required
-                      classname='w-full block flex-grow'
                   multiple
                   sx={{ maxWidth: 200, width:200 }}
                   renderValue={(selected) => {
@@ -101,11 +74,11 @@ export const RoutineSearch = () => {
                       return <span>Select a muscle...</span>;
                     }
                     return (
-                      <div>
+                      <div className='flex flex-row gap-1 text-xs flex-wrap'>
                         {selected.map((muscle) => (
-                          <span key={muscle.value}>
-                            {muscle.value},
-                          </span>
+                          <Chip key={muscle.value} variant="soft" color="primary">
+                            {muscle.value} 
+                          </Chip>
                         ))}
                       </div>
                     );
@@ -119,12 +92,16 @@ export const RoutineSearch = () => {
               ))}
                   </Select>
                  
-        <Button className='bg-blue-500' type="submit" variant='solid' color='primary' sx={{zindex: -11111}}>Search</Button>
+                <Button className='bg-blue-500 ' type="submit" variant='solid' color='primary' disabled={Loading}>
+                Search
+                  </Button>
         
               </Stack>
               
             </form>
-            
+            <label className='text-sm text-gray-400 font-bold flex justify-center py-2'>OR</label>
+
+            <BodyViewer handleSearch={handleSearch} />
 
         </div>
 
@@ -134,21 +111,27 @@ export const RoutineSearch = () => {
      
       <div className='mt-6'>
       <hr/>
-      <div className='py-2 md:space-x-2 text-sm text-bg-00 flex flex-row justify-center items-center'>
-        <Image src={US} width={50} height={50} alt='no muscles found' />
-          <p className='font-bold'>{loading ?
-          'fetchng routines...':'smash it! here you go'}</p>
+      <div className='font-bold py-2 text-sm text-bg-00 flex flex-col justify-center items-center'>
+       
+          <p className='text-white flex flex-row items-center md:gap-x-2'>
+          <Image src={US} width={50} height={50} alt='no muscles found' loading='lazy'/>{ Loading ?
+            'fetchng routines...' : 'smash it! here you go'}</p>
+          <a href='/progress' className='border border-2 border-slate-200 p-2 rounded-lg hover:bg-gray-600 transition-all duration-300'>see progress</a>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-2'>
       
-      {exercises ? (
-      exercises.map((exercise) => (
-        <RoutinesMap data={exercise} key={exercise.muscle} />
+      {exercises && (
+            exercises.map((exercise) => (
+    <Suspense fallback={<Reload/>} key={exercise.muscle} >
+                <RoutinesMap data={exercise} />
+    </Suspense>
+                
       ))
-    ) : (
-      <p>No Data returned, Maybe A typo in the muscle name?</p>
-      )}
-      </div>
+          )}
+        </div>
+        
+        
+        
 </div>
      
     </>

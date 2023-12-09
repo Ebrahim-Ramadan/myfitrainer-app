@@ -9,12 +9,12 @@ const Plans = () => {
     ];
 
     return (
-        <div className='grid md:grid-cols-3 gap-6 sm:grid-cols-1 mt-8 md:mt-40'>
+        <div className='grid md:grid-cols-3 gap-6 sm:grid-cols-1 mt-12 md:mt-36 [&>*]:text-white'>
             {plans.map((plan) => (
-                <div key={plan.id} className='backdrop-blur-lg backdrop-grayscale backdrop-blur-md rounded-lg border space-y-2 border-2 border-slate-200 p-4 opacity-80 flex flex-col'>
+                <div key={plan.id} className=' backdrop-blur-xs backdrop-grayscale rounded-lg  space-y-2 p-4 opacity-80 flex flex-col'>
                     <div className='flex justify-between items-center px-1'>
                         <p className='text-xl font-bold'>{plan.title}</p>
-                        <FontAwesomeIcon icon={plan.icon} style={{ width: '35px', color:'white' }} />
+                        <FontAwesomeIcon icon={plan.icon} style={{ maxWidth:'40px' }} size='lg' />
                     </div>
                     <p className='text-md px-2'>
                         {plan.desc}

@@ -20,7 +20,7 @@ export function BasicModalDialog() {
       const resetProcess = await ResetPassword(email)
       if (resetProcess === true) {
         Notify.info('email sent successfully', {
-          position: 'center-bottom',
+          position: 'center-top',
         });
         setNotFoundEmail(false)
         setOpen(false)
@@ -28,7 +28,7 @@ export function BasicModalDialog() {
       else {
         setNotFoundEmail(true)
         Notify.failure("we don't have this address in our data", {
-          position: 'right-bottom',
+          position: 'center-top',
         }); 
       }
              
@@ -51,14 +51,12 @@ const handleSubmit = (event) => {
   return (
     <React.Fragment>
       
-      <Button
-        variant="soft"
-        color="primary"
-        className='underline text-gray-400 hover:text-gray-700'
+      <button
+        className='underline text-gray-300 hover:text-gray-400'
         onClick={() => setOpen(true)}
       >
-        Forget Password?
-      </Button>
+        Forget Your Password?
+      </button>
       <Modal open={open} onClose={() => setOpen(false)} keepMounted>
         
         <ModalDialog>

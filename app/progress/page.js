@@ -1,8 +1,13 @@
-import React from 'react'
-import {Progress} from '@/components/progress/progress'
- const Page = () => {
+import React, { Suspense } from 'react';
+import { Progress } from '@/components/progress/progress';
+import { Reload } from '@/components/globals/Reload';
+
+const Page = () => {
   return (
-    <Progress/>
-  )
-}
+    <Suspense fallback={<Reload/>}>
+      <Progress />    
+    </Suspense>
+  );
+};
+
 export default Page;
