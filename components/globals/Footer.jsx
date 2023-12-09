@@ -59,11 +59,6 @@ export const Footer = () => {
                 Source Code
               </Link>
             </li>
-            <li>
-              <Link className="text-white hover:text-gray-300" href="/contact">
-                Contact Us
-              </Link>
-            </li>
           </ul>
         </div>
         <div>

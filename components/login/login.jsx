@@ -55,7 +55,7 @@ const Login = () => {
         <form onSubmit={(e) => loginUser(Username, Password, e)} className="md:p-0 p-4 max-w-[500px] flex flex-col gap-y-4 w-full">
          
         <div className="w-full flex flex-col gap-y-2">
-          <label htmlFor="username" className="text-xl font-medium">
+          <label htmlFor="username" className="text-xl font-medium text-white">
             E-mail
           </label>
           <input
@@ -70,7 +70,7 @@ const Login = () => {
         </div>
 
         <div className="w-full flex flex-col gap-y-2">
-          <label htmlFor="password" className="text-xl font-medium">
+          <label htmlFor="password" className="text-xl font-medium text-white">
             Password
           </label>
           <div className="flex flex-col gap-y-4">

@@ -13,7 +13,6 @@ import { Reload } from '../globals/Reload';
 import Image from 'next/image';
 
 export const History = ({ finishedRoutines, Username, fetchData, handleDeleteRoutine, isLoading }) => {
-  console.log('finishedRoutines', finishedRoutines);
   return (
     <div className='flex flex-col gap-y-2 [&>*]:p-2 text-white'>
        {Array.isArray(finishedRoutines) && finishedRoutines.length > 0 ? (
@@ -65,7 +64,6 @@ function AccordionBasic({ routine, Username,  fetchData, handleDeleteRoutine }) 
     try {
       if (imagesArray.length > 0) {
       const res = await addImagesToRoutine(Username, routine.id, imagesArray)
-      console.log('res', res);
       if (res) {
         Notify.success(`uploaded pictures. what a pump! `, {
           position: 'center-top',
@@ -177,7 +175,6 @@ function AccordionBasic({ routine, Username,  fetchData, handleDeleteRoutine }) 
             setlocalload(true)
 
           const res = await updateRoutineFinished(Username, routine.id, false)
-          console.log('res', res);
             if (res) {
               Notify.success(`${routine.data.name} gone unfinished again`, {
                 position: 'center-top',

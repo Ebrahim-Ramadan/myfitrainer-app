@@ -207,7 +207,7 @@ export const Header = () => {
               
                 <Link href="/progress" className='flex flex-row items-center gap-x-2'>
                 <Avatar sx={{ bgcolor: lightBlue[700] }}>
-                  {username.substring(0, [2])}
+                  {username.substring(0, [1])}
                   
                   </Avatar>
                   

@@ -4,6 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Header } from '@/components/globals/Header'
 import { GeistSans } from "geist/font/sans";
 import { Footer } from '@/components/globals/Footer';
+import { HeaderFloatUI } from '@/components/globals/HeaderFloatUI';
 
 export const metadata = {
   title: 'gymrat',
@@ -37,7 +38,7 @@ export default function RootLayout({ children }) {
       <meta name="keywords" content="fitness, gym progress, gym sets tracker, fitness routines, gymrat, gymbruh, gymbro" />
       </head>
       <body className={GeistSans.className}>
-        <Header />
+        <HeaderFloatUI />
         {children}
         <Footer/>
         <SpeedInsights />

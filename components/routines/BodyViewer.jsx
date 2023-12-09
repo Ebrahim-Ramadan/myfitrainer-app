@@ -63,8 +63,8 @@ export const BodyViewer = ({handleSearch}) => {
   return (
       
     <React.Fragment>
-      <button className='flex flex-row items-center font-bold gap-2 text-xs p-2 border border-2 border-slate-200 cursor-pointer hover:bg-[#181616] transition-all duration-300 rounded-lg ' onClick={() => setOpen(true)}>
-      <FontAwesomeIcon icon={faHandPointer} style={{ color: "#ffffff" }}   />
+      <button className='text-white flex flex-row items-center font-bold gap-2 text-xs p-2 border border-2 border-slate-200 cursor-pointer hover:bg-[#181616] transition-all duration-300 rounded-lg ' onClick={() => setOpen(true)}>
+      <FontAwesomeIcon icon={faHandPointer} style={{ color: "#ffffff" , fontSize:'1rem'}}   />
       Pick a muscle
       </button>
       

@@ -79,9 +79,6 @@ style={{alignItems:'center'}}
                           <Chip key={muscle.value} variant="soft" color="primary">
                             {muscle.value} 
                           </Chip>
-                          // <span key={muscle.value} className='bg-gray-200 rounded-lg px-1'>
-                          //   {muscle.value} {` `}
-                          // </span>
                         ))}
                       </div>
                     );

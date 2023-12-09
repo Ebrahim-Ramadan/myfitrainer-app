@@ -27,7 +27,7 @@ const Contact = () => {
       };
 
   return (
-    <div className="container min-h-screen  mx-auto p-8">
+    <div className="container min-h-screen  mx-auto p-8 text-white">
       <div className="grid gap-12 md:grid-cols-2">
         <div className="space-y-4">
           <h2 className="text-3xl font-bold">Contact Us</h2>
