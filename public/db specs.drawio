@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-12-10T23:42:59.020Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="umnKPvCByKezlTxMugZG" version="22.1.7" type="github">
+<mxfile host="app.diagrams.net" modified="2023-12-10T23:48:03.269Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="_-EOTNMs7m0TtP7klZqP" version="22.1.7" type="github">
   <diagram name="Page-1" id="ThI0r7UXNl11FDjZUg-2">
-    <mxGraphModel dx="1120" dy="808" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="470" dy="339" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -24,6 +24,27 @@
         </mxCell>
         <mxCell id="2kMPGm9N3gT2Wh9u5VH--9" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;client side&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="280" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--10" value="server-side&lt;br&gt;(contains app logic in js)" style="rounded=0;whiteSpace=wrap;html=1;shape=image;labelBackgroundColor=default;verticalAlign=top;verticalLabelPosition=bottom;aspect=fixed;perimeter=ellipsePerimeter;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="580" y="270" width="180" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--11" value="Database server &lt;br&gt;(firebase)" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="631.05" y="650" width="77.9" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--12" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.767;exitY=0.659;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="2kMPGm9N3gT2Wh9u5VH--4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="670" y="550" as="sourcePoint" />
+            <mxPoint x="670" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--14" value="external systems&lt;br&gt;(ningasAPI)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.key_management_service_external_key_store;" vertex="1" parent="1">
+          <mxGeometry x="314" y="550" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="2kMPGm9N3gT2Wh9u5VH--15" target="2kMPGm9N3gT2Wh9u5VH--9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--15" value="serving&amp;nbsp;&lt;br&gt;static assets" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.folders;" vertex="1" parent="1">
+          <mxGeometry x="325" y="340" width="30" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
