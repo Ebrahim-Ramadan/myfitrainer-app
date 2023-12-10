@@ -1,4 +1,3 @@
-// Import necessary components and functions
 import React from 'react';
 import Button from '@mui/joy/Button';
 import FormControl from '@mui/joy/FormControl';
