@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import React, { useEffect } from 'react';
 import firebase_app from '@/lib/auth/firebaseConfig.js';
 import Link from 'next/link';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
@@ -28,7 +28,7 @@ const Login = () => {
         router.push('/')
         setTimeout(() => {
           window.location.reload()
-        }, 100);
+        }, 200);
       }
     } catch (error) {
       console.log('signupUsererr', error.code, error.message);
@@ -38,7 +38,14 @@ const Login = () => {
     }
     setIsLoading(false);
   };
-  
+
+  React.useEffect(() => {
+    const IsloggedIn = secureLocalStorage.getItem("loggedIn");
+
+    if (IsloggedIn) {
+      router.push('/')
+    }
+  }, []);
   return (
     <div className='min-h-screen bg-black'>
      
