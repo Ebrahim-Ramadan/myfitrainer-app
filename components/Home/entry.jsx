@@ -8,7 +8,7 @@ const Entry = () => {
     const typed = new Typed(el.current, {
       strings: ['Get Fit','Stay Hydrated', 'Be Healthy'],
       typeSpeed: 40,
-      fadeOut:true,
+      fadeOut:true, 
       loop:true,
       showCursor:true
       
