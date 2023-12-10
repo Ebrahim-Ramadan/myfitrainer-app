@@ -5,16 +5,17 @@ import {OurTeam} from './OurTeam'
 export const Team = () => {
   return (
       
-      <div className='mt-12 md:w-fit w-full p-2 md:p-0 grid grid-cols-1 md:grid-cols-5 justify-center items-center gap-4'>
+      <div className=' mb-12 md:w-fit w-full p-2 md:p-0 grid grid-cols-1 md:grid-cols-5 justify-center items-center gap-4'>
         {OurTeam.map((member) => (
             
-          <a href={member.visit} key={member.name}
+          <a href={member.visit}
+            key={member.name}
           target='_blank'
           className="dev-card flex md:flex-col flex-row p-2 rounded-lg font-bold items-center">
             
               <figure>
                 <div className="h-fit flex flex-col justify-center items-center"> 
-                  <div className="rounded-full border border-2 border-slate-200  overflow-hidden">
+                  <div className="rounded-full border border-2 border-indigo-300  overflow-hidden">
                     <Image
                       width={100}
                       height={100}

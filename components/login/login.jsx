@@ -25,10 +25,10 @@ const Login = () => {
         Notify.success('logged in successfully', {
           position: 'center-top',
         });
+        router.push('/')
         setTimeout(() => {
           window.location.reload()
         }, 100);
-        router.push('/')
       }
     } catch (error) {
       console.log('signupUsererr', error.code, error.message);

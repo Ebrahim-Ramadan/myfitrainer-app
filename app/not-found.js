@@ -5,21 +5,27 @@ import React from 'react'
 
  const NotFound = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-teal-500 to-green-500 dark:from-gray-800 dark:via-gray-700 dark:to-gray-600">
-    <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg [&>*]:text-center justify-center">
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">Oops!</h1>
-      <h2 className="mt-2 text-2xl font-semibold text-gray-700 dark:text-gray-300">404</h2>
-      <p className="mt-2 text-lg text-gray-600 dark:text-gray-400 flex flex-col gap-y-2">
-          <Button
-          color='primary'
-          variant="outlined"
-        >
-         Go Home nigga
-        </Button>
-      </p>
-     
+    <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-start h-screen md:px-8">
+    <div className="max-w-lg mx-auto space-y-3 text-center">
+        <h3 className="text-indigo-600 font-semibold">
+            404 Error
+        </h3>
+        <p className="text-gray-100 text-4xl font-semibold sm:text-5xl">
+            Page not found
+        </p>
+        <p className="text-gray-200">
+            Sorry, the page you are looking for could not be found or has been removed.
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-3">
+            <a href="/" className="block py-2 px-4 text-white font-medium bg-indigo-600 duration-150 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg">
+                Go Home nigga
+            </a>
+            <a href="/contact" className="block py-2 px-4 text-gray-300 hover:bg-gray-700 font-medium duration-150 active:bg-gray-700 border rounded-lg">
+                Contact support
+            </a>
+        </div>
     </div>
-  </div>
+</div>
   )
 }
 export default NotFound

@@ -116,7 +116,7 @@ style={{alignItems:'center'}}
           <p className='text-white flex flex-row items-center md:gap-x-2'>
           <Image src={US} width={50} height={50} alt='no muscles found' loading='lazy'/>{ Loading ?
             'fetchng routines...' : 'smash it! here you go'}</p>
-          <a href='/progress' className='border border-2 border-slate-200 p-2 rounded-lg hover:bg-gray-600 transition-all duration-300'>see progress</a>
+          <a href='/progress' className='text-white border border-2 border-slate-200 p-2 rounded-lg hover:bg-gray-600 transition-all duration-300'>see progress</a>
       </div>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-2'>
       

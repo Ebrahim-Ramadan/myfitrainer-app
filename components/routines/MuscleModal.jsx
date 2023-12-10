@@ -41,7 +41,7 @@ export const MuscleModal = ({routine}) => {
       setadding(false)
     }
     else {
-      Notify.info('not logged in, login first', {
+      Notify.info('Your are not logged in, login first', {
         position: 'center-top',
       })
       setOpen(false)

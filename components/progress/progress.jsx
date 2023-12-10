@@ -50,9 +50,10 @@ export const Progress = () => {
       fetchData(storedUserName);
     }
     else {
-      Notify.info('you are signed out, please log in first', {
+      Notify.info('you are not logged in, please log in first', {
         position: 'center-top',
       })
+      router.push('/login')
     }
   }, []);
 
