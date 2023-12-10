@@ -15,7 +15,9 @@ export function BasicModalDialog() {
   const [open, setOpen] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [notFoundEmail, setNotFoundEmail] = React.useState(false);
+  const [loading, setloading] = React.useState(false);
   const resetpass = async () => {
+    setloading(true)
     try {
       const resetProcess = await ResetPassword(email)
       if (resetProcess === true) {
@@ -37,6 +39,7 @@ export function BasicModalDialog() {
     } catch (error) {
       console.log('resetProcess error', error);
     }
+    setloading(false)
     setEmail('')
   }
   const handleFocus = () => {
@@ -83,7 +86,11 @@ const handleSubmit = (event) => {
               <Button type="submit"
               variant="plain"
                 color="primary"
-              >Submit
+                disabled={loading}
+              >
+                {loading ?
+                'Submitting...':'Submit'}
+                
               
               </Button>
               

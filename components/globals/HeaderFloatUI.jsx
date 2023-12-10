@@ -95,8 +95,7 @@ export const HeaderFloatUI = () => {
 
     useEffect(() => {
         const storedUserName = secureLocalStorage.getItem("username");
-        const IsloggedIn = secureLocalStorage.getItem("loggedIn");
-    
+  const IsloggedIn = secureLocalStorage.getItem("loggedIn");
         if (storedUserName && IsloggedIn) {
           setLoggedIn(true);
     
@@ -134,6 +133,7 @@ export const HeaderFloatUI = () => {
     })
     };
     
+    
     const [state, setState] = useState(false)
     const [drapdownState, setDrapdownState] = useState({ isActive: false, idx: null })
 
@@ -142,7 +142,7 @@ export const HeaderFloatUI = () => {
         { title: "Features", path: "/", isDrapdown: true, navs: dropdownNavs },
         { title: "Routines", path: "/routines", isDrapdown: false },
         { title: "Nutritions", path: "/nutrition", isDrapdown: false },
-        { title: "Documentation", path: "/documentation", isDrapdown: false }
+        { title: "Progress", path: "/progress", isDrapdown: false }
     ]
 
     useEffect(() => {
@@ -154,7 +154,7 @@ export const HeaderFloatUI = () => {
 
     return (
         <>
-            <nav className={`items-center  sticky top-0 z-40 sticky top-0 z-40  w-full fixed md:text-sm md:border-none ${state ? "shadow-lg rounded-b-xl md:shadow-none" : ""}`}>
+            <nav className={`items-center bg-black sticky top-0 z-40 sticky top-0 z-40  w-full fixed md:text-sm md:border-none ${state ? "shadow-lg rounded-b-xl md:shadow-none" : ""}`}>
            
                 <div className="items-center gap-x-14 px-4 max-w-screen-xl mx-auto md:flex md:px-8">
                 {loading &&
@@ -164,40 +164,42 @@ export const HeaderFloatUI = () => {
                         <svg xmlns="http://www.w3.org/2000/svg" height="2rem" width="2rem" viewBox="0 0 512 512"><path fill="white" d="M512 32c0 113.6-84.6 207.5-194.2 222c-7.1-53.4-30.6-101.6-65.3-139.3C290.8 46.3 364 0 448 0h32c17.7 0 32 14.3 32 32zM0 96C0 78.3 14.3 64 32 64H64c123.7 0 224 100.3 224 224v32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V320C100.3 320 0 219.7 0 96z"/></svg>
                         </a>
                         <div className="md:hidden flex flex-row items-center">
-                           
+                            {!loggedIn &&
+                           <div className='font-bold flex flex-row items-center gap-2 mr-2'>
+                           <a href="/login" className="text-indigo-200 py-3 text-center  hover:text-indigo-600 ">
+                               Log in
+                           </a>
+                           <a href="/signup" className="text-white p-2 font-medium text-center text-white bg-indigo-500 hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline">
+                               Sign Up
+                           </a>
+                                </div>
+                            }
                                 
                             <button className="text-gray-500 hover:text-gray-800 flex flex-row items-center gap-2"
                                 onClick={() => setState(!state)}
                             >
                                  <div className='flex flex-row items-center gap-2 mr-2'>
-                            {loggedIn ?
+                            {loggedIn &&
                             
-                                    <span className='flex flex-row items-center gap-2'>
+                                    <span className='text-white flex flex-row items-center gap-2'>
                                     <Avatar sx={{ bgcolor: lightBlue[400] }}>
                                     {username.substring(0, [1])}
                                     
       </Avatar>
                                     {(username.substring(0, username.indexOf('@')))}
                                 </span>
-                                :
-                                <>
-                                    <a href="/login" className="text-indigo-600 py-3 text-center  hover:text-indigo-600 ">
-                                        Log in
-                                    </a>
-                                    <a href="/signup" className="text-white p-2 font-medium text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 active:shadow-none rounded-lg shadow md:inline">
-                                        Sign Up
-                                    </a>
-                                    </>
+                                
+                                
                                     
                                 }
                                 </div>
                                 {
                                     state ? (
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" viewBox="0 0 20 20" fill="white">
                                             <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
                                         </svg>
                                     ) : (
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" className="w-6 h-6">
                                             <path fillRule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm8.25 5.25a.75.75 0 01.75-.75h8.25a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75z" clipRule="evenodd" />
                                         </svg>
 
@@ -239,11 +241,11 @@ export const HeaderFloatUI = () => {
                                             }
                                             {
                                                 item.isDrapdown && drapdownState.idx == idx && drapdownState.isActive ? (
-                                                    <div className="md:bg-black md:text-white mt-6 inset-x-0 top-20 w-full md:absolute md:border-y md:shadow-md md:mt-0">
+                                                    <div className="md:bg-black md:text-white inset-x-0 md:top-12 md:mt-0 mt-6 w-full md:absolute md:border-y md:shadow-md md:mt-0">
                                                         <ul className='max-w-screen-xl mx-auto grid items-center gap-6 md:p-8 md:grid-cols-2 lg:grid-cols-3'>
                                                             {item?.navs.map((dropdownItem, idx) => (
                                                                 <li key={idx}>
-                                                                    <p className="text-indigo-600 text-sm">{dropdownItem.label}</p>
+                                                                    <p className="text-indigo-400 text-sm">{dropdownItem.label}</p>
                                                                     <ul className='mt-5 space-y-6'>
                                                                         {dropdownItem.navs.map((navItem, idx) => (
                                                                             <li key={idx} className="group">
@@ -272,7 +274,7 @@ export const HeaderFloatUI = () => {
                            <Link href="https://github.com/Ebrahim-Ramadan/myfitrainer-app" target='_blank' className='gh flex flex-row items-center gap-x-2'>
                   <Image src={gh} width={30} height={30} alt='gh' loading='lazy'/>
                                         </Link>
-                            <div className='flex-1 items-center justify-end gap-x-6 space-y-3 md:flex md:space-y-0'>
+                            <div className='font-bold flex-1 items-center justify-end gap-x-6 space-y-3 md:flex md:space-y-0'>
                             {!loggedIn ?
                                     <>
                                     <a href="/login" className="block py-3 text-center text-gray-300 hover:text-indigo-400 border rounded-lg md:border-none">
@@ -292,8 +294,8 @@ export const HeaderFloatUI = () => {
                                     {(username.substring(0, username.indexOf('@')))}
                                 </span>
                             </div>
-                                        <button onClick={handleSignOut}  className="block p-2 font-medium text-center text-white bg-red-600 hover:bg-red-500 active:bg-red-700 active:shadow-none rounded-lg shadow md:inline">
-                                        Log out
+                                        <button onClick={handleSignOut}  className="block p-1 font-medium text-center text-white bg-red-600 hover:bg-red-500 active:bg-red-700 active:shadow-none rounded-lg shadow md:inline">
+                                        log out
                                         </button>
                                         
                                     </div>
