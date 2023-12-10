@@ -140,3 +140,7 @@ margin: 0 !important;
   padding: 2px !important;
   margin-top: 2px !important;
 }
+.typed-cursor {
+color: #ffffff;
+font-size:large;
+}

@@ -32,7 +32,7 @@ const Plans= () => {
         <section className="relative py-28 ">
             <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-gray-300 justify-between gap-24 lg:flex md:px-8">
                 <div className="max-w-xl">
-                    <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-[#4F46E5] to-[#E114E5] text-3xl font-bold sm:text-4xl">
+                    <h3 className="md:text-transparent md:bg-clip-text md:bg-gradient-to-r md:from-[#4F46E5] md:to-[#E114E5] text-3xl font-bold text-white sm:text-4xl">
                         Watch Yourself Grow
                     </h3>
                     <p className="mt-3 ">
