@@ -1,4 +1,5 @@
-This is a [Next.js](https://nextjs.org/) fitness & training progress tracker, [live app](https://gymrat-sigma.vercel.app/) It is still on pre-release alpha version, so fuck around and raise issues 
-
+![image](https://github.com/Ebrahim-Ramadan/myfitrainer-app/assets/65041082/4a2e2917-9b45-482c-9f74-4e03cd8cd6e0)
 <br/>
-sequence diagram, UML, use cases
+<br/>
+[gymrat](https://gymrat-sigma.vercel.app/)
+is a free workout tracker & planner. Build your routines and track your progress.
