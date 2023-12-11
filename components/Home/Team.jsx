@@ -12,7 +12,7 @@ export const Team = () => {
           href={member.visit}
           key={member.name}
           target='_blank'
-          className="dev-card flex md:flex-col flex-row p-2 rounded-lg font-bold items-center transition duration-1000 ease-in-out transform hover:scale-110"
+          className="dev-card flex md:flex-col flex-row p-2 rounded-lg font-bold items-center transition duration-300 ease-in-out transform hover:scale-105"
         >
           {/* Image Section */}
           <figure>
@@ -35,7 +35,7 @@ export const Team = () => {
             <Link
               target='_blank'
               aria-label="View developer profile"
-              className="hover:text-gray-200 dark:hover:text-gray-300"
+              className="hover:text-gray-400 text-gray-200 text-sm"
               href={member.visit}
             >
               Visit
