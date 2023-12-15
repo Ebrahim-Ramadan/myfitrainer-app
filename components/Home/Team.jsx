@@ -47,7 +47,7 @@ export const Team = () => {
       
       
     </div>
-      <div className='hover:bg-slate-200 mb-12 flex flex-row bg-slate-100 [&>*]:h-12 w-full md:w-1/2 p-2 justify-center rounded-full'>
+      <a href='https://github.com/Ebrahim-Ramadan/myfitrainer-app' className='cursor-pointer hover:bg-slate-200 mb-12 flex flex-row bg-slate-100 [&>*]:h-12 w-full md:w-1/2 p-2 justify-center rounded-full'>
       <Image
           width={50}
           height={50} src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACx0lEQVR4nO2ZPWhUQRDHf+bUC37EUwQ5sRArEQQRPbASBSuxuNQWdhZWET+iCCoGLBRiUgiCpV/oGbEQ7AUrQYydH+BniKhBxHg5RZ8szMHw8M7dfbvvLN4fprid3dn539udnZ2FAgUKhEAfUAOGgQYwCcwALZEZabslfWoypueoAiPAGyBxlNcy1tjIHcuBMaDp4XhammKrkpfzg8CHAI6nZVpsR0NJ/qkkslyQuYKiH5jIwflEZELmDIKSRI8kZ7kLzA9BII9lk3SQ0azOD/bQ+QT4DdR9nV8GTPWYQCLRyYRtZ4z/B84nImYZO6Ea6JDqJAeBxcApy/5N1xN7xMGZIWARcMay/08V5wcc5jE+WaFP8hRbZ3RSdsdizJzqX3Yg8Mo2Aaw5GNXOGKy02Pi+BBJgiw2BYxkIGOyS8BeDwBEbAo2MBJB8JgaBmzYEngYg0C8XmNAEJm0IfPIksADYrH5v7BCKsxD4aEOg5UnAOPMcWKLahgITmItNwLRdVG3zgHsBCXy3IfA5IwEje1T7avn0IQi8j7mJtTPmyrlK6epKZ0LsjpibuBGAgJH7soTauKx074AVHgSu2BAYDkTAyAGlN5v7WSqmlx0JHI6ZSpQ7bLoNKds/lH6/I4FNoZM5mw35WHRtnFC6WQfnXxIhnbZNjc8p26b/A8d/PgFOxrrQHJL1fbpLn1/ATmV/LfDFwflZyXR7Wo14K5Gnjb0OY8/jgYEIl/rbqTmuWYyZkgKDd1mlW27vI/uU/co/AoaZezcZ0S2395GvwDplf7vskUz34G4oRaiLPkyVDc/+pc/1kI8g5QgkdFhcCDxSuhuh6qLpLzEacE+YM2Sbsr8e+CblmajPT3Up94Ug8QJYqmyvISdUAj4xXaKHqMont82d0rnNcZ8TNgbMmt0KHJXHkCdys2vJV5qWtquSepgLf4ECBciOP6PDOjC4WuCNAAAAAElFTkSuQmCC"
@@ -61,7 +61,7 @@ export const Team = () => {
         <Image
           width={50}
         height={50}  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABlElEQVR4nO2YPyhFYRiHH4QoSUpKGZRFKYPFgLLgDmzMrEyYWbkjGyszo0UZDCiLUv6VMkgpScLVvffVre8sN+fec+4953yv+p56plOn59eZzgsOh8PhwyiQNo7wz0gDUuQ6/4TUH/GehWeqaQCuSwy4AxpRzEqJeM9llNIBvAUY8A50opCdAPGe2yhjAMiGGJADBlHEcYh4zxOgBgXMVhDvOWM7vgl4qGLAI9Bsc8BaFfGeq7biu4CPCAZ8At02BuxFEC/G3aTjh4B8hAPywHBS8bXAWYTxYrww746d+RjixTgXd3wL8BTjgGegNc4BGzHGS9w/Pj3AdwIDMkBvHAMOEogX437U8WMJxotxPKr4OuDSwoAroD6KAYsW4sW4UG18G/BiccAr0F7NgC2L8WLcrDS+D/hRMCAL9Fcy4FBBvBiPwsZPK4iWIqfCXNduFARLkfdBr3pLCmLFx0JbWW4VhIqPhbtrWb4UhEqJ/+eynCsIFR9PgwyYNKc/UWYOmCAgKfMlMgrCM6YlcLzD4XA4CMovgtVZZPbHff8AAAAASUVORK5CYII=" alt='vercel'/>
-      </div>
+      </a>
     </>
   );
 };
