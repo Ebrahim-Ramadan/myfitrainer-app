@@ -1,6 +1,8 @@
 'use client'
 import React from 'react'
 import Typed from 'typed.js'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Entry = () => {
   const el = React.useRef(null);
 
@@ -19,6 +21,9 @@ const Entry = () => {
       typed.destroy();
     };
   }, []);
+  AOS.init({
+    duration:1500
+  });
     return (
       <div className='[&>*]:text-center space-y-4'>
 
@@ -28,14 +33,14 @@ const Entry = () => {
           <svg width="1000" height="1000" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" transform="translate(-217.252 25.924)"><path fill="url(#b)" d="M422 350.5q-56 100.5-174.5 105T104 355q-25-105 5.5-200t134-83.5q103.5 11.5 169 95t9.5 184Z" /></svg></g>
         </svg>
         
-    <div className="space-y-2">
+    <div className="space-y-2" data-aos="zoom-out">
               <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-4xl md:text-5xl lg:text-6xl/none" id="auto-type">
               Fitness & Gym Trainer
               </h1>
           <span className="mx-auto max-w-[700px] text-slate-200 md:text-xl" ref={el} >&#160;</span>
           
             </div>
-            <div className=" text-lg font-bold text-center text-slate-950">
+            <div className=" text-lg font-bold text-center text-slate-950" data-aos="slide-up">
               <a className='bg-gray-50 rounded-lg p-2 hover:bg-zinc-300 transition-all duration-900' href='routines'>Start Training</a>
             </div>
           </div >

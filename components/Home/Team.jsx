@@ -3,10 +3,15 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { OurTeam } from './OurTeam'; // Assuming this imports the array of team members
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export const Team = () => {
+  AOS.init({
+    duration:1500,
+  });
   return (
-    <div className='mb-12 md:w-fit w-full p-2 md:p-0 grid grid-cols-1 md:grid-cols-5 justify-center items-center gap-4'>
+    <div className='mb-12 md:w-fit w-full p-2 md:p-0 grid grid-cols-1 md:grid-cols-5 justify-center items-center gap-4' data-aos="fade-up">
       {OurTeam.map((member) => (
         <a
           href={member.visit}
