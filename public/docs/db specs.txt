@@ -1,0 +1,26 @@
+// Collection: users
+{
+  "uuid": "uniqueUserId1",
+  "username": "example_user",
+}
+
+// Subcollection: users/{userId}/activities
+{
+  "activityId": "uniqueActivityId1",
+  "name": "Squats",
+  "desc": "Lower body exercise",
+  "duration": 30,
+  "type": "Strength",
+  "muscle": "Legs",
+  "images": ["url1", "url2"],
+  "strength": "Intermediate",
+finished: boolean
+}
+
+// Subcollection: users/{userId}/activities/{activityId}/sets
+{
+  "setId": "uniqueSetId1",
+  "kg": 50,
+  "reps": 10, 
+finished: boolean
+}

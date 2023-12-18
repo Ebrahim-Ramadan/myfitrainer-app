@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net" modified="2023-12-10T23:54:15.071Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="athwc2KCIyb8gtIHykHM" version="22.1.7" type="github">
+  <diagram name="Page-1" id="ThI0r7UXNl11FDjZUg-2">
+    <mxGraphModel dx="809" dy="583" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--4" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="90" width="600" height="820" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--5" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="40" y="480" width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="2kMPGm9N3gT2Wh9u5VH--5">
+          <mxGeometry width="50" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--2" value="user" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.user;" vertex="1" parent="2kMPGm9N3gT2Wh9u5VH--5">
+          <mxGeometry x="10" y="10" width="25" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--8" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.003;entryY=0.513;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="2kMPGm9N3gT2Wh9u5VH--1" target="2kMPGm9N3gT2Wh9u5VH--4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="130" y="535" as="sourcePoint" />
+            <mxPoint x="180" y="485" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--9" value="&lt;font style=&quot;font-size: 20px;&quot;&gt;&lt;b&gt;client side&lt;/b&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="180" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--12" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=0.767;exitY=0.659;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="2kMPGm9N3gT2Wh9u5VH--4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="670" y="550" as="sourcePoint" />
+            <mxPoint x="670" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--14" value="external systems&lt;br&gt;(ningasAPI, ...etc)" style="sketch=0;outlineConnect=0;fontColor=#232F3E;gradientColor=none;fillColor=#DD344C;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;pointerEvents=1;shape=mxgraph.aws4.key_management_service_external_key_store;" vertex="1" parent="1">
+          <mxGeometry x="314" y="550" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--23" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="600" y="640" width="140" height="202" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--21" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="2kMPGm9N3gT2Wh9u5VH--23">
+          <mxGeometry y="2" width="140" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--11" value="Database server &lt;br&gt;(firebase)" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/database_server.svg;" vertex="1" parent="2kMPGm9N3gT2Wh9u5VH--23">
+          <mxGeometry x="31.049999999999955" y="52" width="77.9" height="95" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--22" value="Data Layer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="2kMPGm9N3gT2Wh9u5VH--23">
+          <mxGeometry x="30" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--32" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="260" y="270" width="540" height="141.99999999999994" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--26" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="2kMPGm9N3gT2Wh9u5VH--32">
+          <mxGeometry y="0.6999999999999886" width="527.5" height="140.59" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--15" value="serving&amp;nbsp;&lt;br&gt;static assets" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.folders;" vertex="1" parent="2kMPGm9N3gT2Wh9u5VH--32">
+          <mxGeometry x="70" y="50.69999999999999" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--25" value="" style="group" vertex="1" connectable="0" parent="2kMPGm9N3gT2Wh9u5VH--32">
+          <mxGeometry x="120" width="420" height="142" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--31" value="Business Layer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="2kMPGm9N3gT2Wh9u5VH--25">
+          <mxGeometry x="100.005" y="0.6999999999999886" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--29" value="server-side&lt;br&gt;(contains app logic in js)" style="rounded=0;whiteSpace=wrap;html=1;shape=image;labelBackgroundColor=default;verticalAlign=top;verticalLabelPosition=bottom;aspect=fixed;perimeter=ellipsePerimeter;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;" vertex="1" parent="2kMPGm9N3gT2Wh9u5VH--32">
+          <mxGeometry x="340" y="19.998514851485155" width="126.53465346534655" height="63.267326732673276" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="2kMPGm9N3gT2Wh9u5VH--14" target="2kMPGm9N3gT2Wh9u5VH--29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;exitX=0.411;exitY=-0.02;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="2kMPGm9N3gT2Wh9u5VH--31" target="2kMPGm9N3gT2Wh9u5VH--9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="2kMPGm9N3gT2Wh9u5VH--34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.544;entryY=1.011;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="2kMPGm9N3gT2Wh9u5VH--15" target="2kMPGm9N3gT2Wh9u5VH--9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

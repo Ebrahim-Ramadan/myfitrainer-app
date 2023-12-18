@@ -1,0 +1,34 @@
+<mxfile host="app.diagrams.net" modified="2023-12-11T00:06:08.814Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36" etag="KBcliTWW-Uk1m3hAlnf1" version="22.1.7" type="github">
+  <diagram name="Page-1" id="TD_NhwHEzrLlLnmRC9R1">
+    <mxGraphModel dx="955" dy="485" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="1_sCgLwZF15BT1TkICwS-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="1_sCgLwZF15BT1TkICwS-1" target="1_sCgLwZF15BT1TkICwS-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1_sCgLwZF15BT1TkICwS-1" value="&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;uuid&quot;: &quot;uniqueUserId1&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;username&quot;: &quot;example_user&quot;,&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="145" y="80" width="175" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="1_sCgLwZF15BT1TkICwS-2" value="users collection" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="145" y="50" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1_sCgLwZF15BT1TkICwS-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" edge="1" parent="1" source="1_sCgLwZF15BT1TkICwS-3" target="1_sCgLwZF15BT1TkICwS-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="1_sCgLwZF15BT1TkICwS-3" value="&lt;div&gt;&amp;nbsp; &quot;activityId&quot;: &quot;uniqueActivityId1&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;name&quot;: &quot;Squats&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;desc&quot;: &quot;Lower body exercise&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;duration&quot;: 30,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;type&quot;: &quot;Strength&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;muscle&quot;: &quot;Legs&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;images&quot;: [&quot;url1&quot;, &quot;url2&quot;],&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;strength&quot;: &quot;Intermediate&quot;,&lt;/div&gt;&lt;div&gt;finished: boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="150" y="220" width="230" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="1_sCgLwZF15BT1TkICwS-4" value="// activity subcollection: users/{userId}/activities" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="140" y="190" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="1_sCgLwZF15BT1TkICwS-5" value="&lt;div&gt;&amp;nbsp; &quot;setId&quot;: &quot;uniqueSetId1&quot;,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;kg&quot;: 50,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &quot;reps&quot;: 10,&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;finished: boolean&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="150" y="470" width="170" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="1_sCgLwZF15BT1TkICwS-6" value="// sets subcollection: users/{userId}/activities/{activityId}/sets" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="140" y="440" width="340" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
