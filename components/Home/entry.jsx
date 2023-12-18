@@ -21,7 +21,7 @@ const Entry = () => {
     };
   }, []);
   AOS.init({
-    duration:1500
+    duration:1500,
   });
     return (
       <div className='[&>*]:text-center space-y-4'>

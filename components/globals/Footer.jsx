@@ -1,6 +1,8 @@
+'use client'
 import Link from "next/link"
 import {Subscribe} from './Subscribe'
 export const Footer = () => {
+  
   return (
 
     <section className=" py-12 px-8 text-white z-40 bg-[#060606]">
