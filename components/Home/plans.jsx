@@ -31,9 +31,6 @@ const Plans= () => {
             desc: "A built-in nutrition calculator of calories and macronutrients."
         },
     ]
-    AOS.init({
-        duration:1500,
-      });
     return (
         <section className="relative py-28 " data-aos="slide-up">
             <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-gray-300 justify-between gap-24 lg:flex md:px-8">

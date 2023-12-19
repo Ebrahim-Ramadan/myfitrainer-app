@@ -8,7 +8,7 @@ import 'aos/dist/aos.css';
 
 export const Team = () => {
   AOS.init({
-    duration:200,
+    duration:1500,
   });
   return (
     <>
