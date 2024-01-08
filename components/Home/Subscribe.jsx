@@ -1,6 +1,9 @@
+'use client'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const  Subscribe= () => {
     return (
-        <section className="py-14 w-full">
+        <section className="py-14 w-full" data-aos="fade-right">
         <div className="max-w-screen-xl mx-auto px-4 justify-between items-center gap-12 md:px-8 md:flex">
             <div className="text-white flex-1 max-w-xl">
                 <h3 className="text-3xl font-bold">

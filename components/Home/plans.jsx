@@ -1,4 +1,8 @@
+'use client'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const Plans= () => {
+    
 
     const features = [
         {
@@ -27,9 +31,8 @@ const Plans= () => {
             desc: "A built-in nutrition calculator of calories and macronutrients."
         },
     ]
-
     return (
-        <section className="relative py-28 ">
+        <section className="relative py-28 " data-aos="slide-up">
             <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-gray-300 justify-between gap-24 lg:flex md:px-8">
                 <div className="max-w-xl">
                     <h3 className="md:text-transparent md:bg-clip-text md:bg-gradient-to-r md:from-[#4F46E5] md:to-[#E114E5] text-3xl font-bold text-white sm:text-4xl">
