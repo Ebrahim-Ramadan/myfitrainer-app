@@ -30,15 +30,16 @@ const NutritionCalc = () => {
 
     try {
       const nutritions = await nutritionsCalc(meal);
+      console.log('nutritions', nutritions);
       if (Array.isArray(nutritions)&&nutritions.length > 0) {
         setempty(false)
         setnutritionsData(nutritions)
 
         //calc the summations values
         nutritions.forEach((nutrition) => {
-          Protein_Sum += nutrition['protein_g'];
+          // Protein_Sum += nutrition['protein_g'];
           fats_Sum += nutrition['fat_total_g'];
-          calories_Sum += nutrition['calories'];
+          // calories_Sum += nutrition['calories'];
         });
         
       }
@@ -72,15 +73,15 @@ const NutritionCalc = () => {
     });
   
     // Round the sums to two decimal places
-    Protein_Sum = parseFloat(Protein_Sum.toFixed(2));
+    // Protein_Sum = parseFloat(Protein_Sum.toFixed(2));
     fats_Sum = parseFloat(fats_Sum.toFixed(2));
-    calories_Sum = parseFloat(calories_Sum.toFixed(2));
+    // calories_Sum = parseFloat(calories_Sum.toFixed(2));
     cholesterol_mg = parseFloat(cholesterol_mg.toFixed(2));
   
-    return { Protein_Sum, fats_Sum, calories_Sum, cholesterol_mg };
+    return {  fats_Sum,  cholesterol_mg };
   };
   
-  let { Protein_Sum, fats_Sum, calories_Sum , cholesterol_mg} = calculateSums();
+  let { fats_Sum,  cholesterol_mg} = calculateSums();
   
   return (
     <div className="min-h-screen flex flex-col items-center   bg-[#080808] p-4">
@@ -133,7 +134,7 @@ const NutritionCalc = () => {
             [&>*]:bg-yellow-950 [&>*]:px-2 [&>*]:rounded-lg'>
               <p>
            <FontAwesomeIcon icon={faFire} />
-                Calories: {calories_Sum}
+                Calories: ?
               </p>
               <p>
                 <FontAwesomeIcon icon={faPersonDress} />
@@ -141,7 +142,7 @@ const NutritionCalc = () => {
             </p>
             <p>
          <FontAwesomeIcon icon={faDna} />
-                Protein: {Protein_Sum}
+                Protein: ?
               </p>
             <p>
             <FontAwesomeIcon icon={faHeartCircleCheck} />
